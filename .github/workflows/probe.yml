@@ -1,0 +1,47 @@
+# One-off: count BGT buildings per 250 m cell around Hoogeveen, to choose the map area.
+name: Probe extent
+on: push
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - run: |
+          mkdir out && cd out
+          python3 - <<'PY'
+          import json, urllib.parse, urllib.request, time
+          X0, Y0, X1, Y1 = 223600, 521900, 233600, 531900
+          RD = "http://www.opengis.net/def/crs/EPSG/0/28992"
+          q = urllib.parse.urlencode({"bbox": f"{X0},{Y0},{X1},{Y1}", "bbox-crs": RD, "crs": RD, "limit": 1000, "f": "json"})
+          url = f"https://api.pdok.nl/lv/bgt/ogc/v1/collections/pand/items?{q}"
+          grid = [[0] * 40 for _ in range(40)]
+          n = 0
+          def get(u):
+              for a in range(6):
+                  try:
+                      return json.loads(urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "isometric-hoogeveen/0.1"}), timeout=120).read())
+                  except Exception as e:
+                      print("retry", e); time.sleep(5 * (a + 1))
+              raise SystemExit("failed")
+          while url:
+              page = get(url)
+              for f in page["features"]:
+                  if f["properties"].get("eind_registratie"):
+                      continue
+                  c = f["geometry"]["coordinates"]
+                  while isinstance(c[0], list):
+                      c = c[0]
+                  i, j = int((c[0] - X0) // 250), int((c[1] - Y0) // 250)
+                  if 0 <= i < 40 and 0 <= j < 40:
+                      grid[j][i] += 1; n += 1
+              url = next((l["href"] for l in page["links"] if l["rel"] == "next"), None)
+          json.dump({"x0": X0, "y0": Y0, "cell": 250, "n": n, "grid": grid}, open("grid.json", "w"))
+          print(n)
+          PY
+          git init -q -b probe-result
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "Building counts"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" probe-result
