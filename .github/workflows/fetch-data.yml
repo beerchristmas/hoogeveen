@@ -1,5 +1,6 @@
 # Download the raw open data (3D BAG, BGT, AHN, aerial photo, OpenStreetMap) on a GitHub runner and park it on the
-# data-raw branch as a split tarball, for build environments that cannot reach PDOK themselves.
+# data-raw branch as a split tarball, for build environments that cannot reach PDOK themselves. A run only fetches
+# what is still missing on that branch, so run it again when a source was down.
 name: Fetch open data
 on:
   workflow_dispatch:
@@ -27,7 +28,7 @@ jobs:
           fi
           # Another area: start over.
           grep -E "^XMIN" scripts/config.py > area.new
-          cmp -s area.new area.txt || rm -rf data/raw
+          [ ! -f area.txt ] || cmp -s area.new area.txt || rm -rf data/raw
           rm -rf prev
       - name: Fetch
         run: |

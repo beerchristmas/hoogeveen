@@ -1,8 +1,18 @@
-# Isometric Helenaveen
+# Isometrisch Hoogeveen
 
-Hi, I'm [@jankeesvw](https://x.com/intent/follow?screen_name=jankeesvw) on X. I rebuilt my village Helenaveen in isometric pixel art, with Claude Code and nothing but open data. See it live at [jankeesvw.github.io/isometric-helenaveen](https://jankeesvw.github.io/isometric-helenaveen/).
+A zoomable isometric pixel-art map of the centre of Hoogeveen, 3 × 3 km around the Hoofdstraat, rendered procedurally from Dutch open data.
 
-A zoomable isometric pixel-art map of Helenaveen, 3.5 × 5.5 km from the A67 north along the Soemeersingel to the Willem III-hoeve, in the spirit of [isometric.nyc](https://cannoneyed.com/projects/isometric-nyc). Where that project painted every tile with a fine-tuned image model, this one is rendered procedurally from Dutch open data, so it is exact, seamless and rebuilds in about two minutes.
+This is a fork of [Isometric Helenaveen](https://github.com/jankeesvw/isometric-helenaveen) by [@jankeesvw](https://x.com/jankeesvw), who rebuilt his village with Claude Code and nothing but open data ([see it live](https://jankeesvw.github.io/isometric-helenaveen/)). The pipeline, the renderer and the viewer are his; this fork points them at Hoogeveen.
+
+## What differs from Helenaveen
+
+- `scripts/config.py` holds the area of Hoogeveen, in RD New (EPSG:28992). Hoogeveen is in the Netherlands, so the data sources are the same.
+- The places, their stories and the guided tour are still empty (`scripts/landmarks.py`, `scripts/build_history.py`); the map opens on the Hoofdstraat, and the dippers in the canal are gone.
+- `.github/workflows/fetch-data.yml` runs `scripts/fetch.py` on a GitHub runner and parks the raw data on the `data-raw` branch as a split tarball, for build machines that cannot reach PDOK, 3D BAG or Overpass themselves. Unpack it with `cat raw.tar.gz.* | tar -xzf - -C data`.
+- `RENDER_GL=swiftshader CHROME=/path/to/chrome ./build.sh` renders on the CPU, for machines without a GPU.
+- A town has many more buildings than a village: the roof atlas is packed about square so it stays within 8192 px, and `scripts/build_ground.py` needs some 10 GB of memory for 3 × 3 km.
+
+The description below is the original README's and still describes how the pipeline works; the places it names are Helenaveen's.
 
 ## Pipeline
 
@@ -27,4 +37,4 @@ Overlays (search, hover outlines, walking routes, the tour, traffic) are JSON fi
 
 ## Data
 
-3D BAG (TU Delft, 3DGI, CC BY 4.0), BGT (CC0), AHN (CC0), BAG addresses and the aerial photo (Beeldmateriaal Nederland, CC BY 4.0), all via [PDOK](https://www.pdok.nl). Points of interest, pitches and graveyards from OpenStreetMap (ODbL). Building descriptions from Monumenten in Nederland: Noord-Brabant (1997).
+3D BAG (© 3DBAG by tudelft3d and 3DGI, CC BY 4.0), BGT (CC0), AHN (CC0), BAG addresses and the aerial photo (Beeldmateriaal Nederland, CC BY 4.0), all via [PDOK](https://www.pdok.nl). Roads, routes, pitches and graveyards from OpenStreetMap (© OpenStreetMap contributors, ODbL). Music: [My Street](https://opengameart.org/content/my-street) by congusbongus (CC0, from OpenGameArt).
