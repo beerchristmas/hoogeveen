@@ -1,0 +1,48 @@
+# Download the raw open data (3D BAG, BGT, AHN, aerial photo, OpenStreetMap) on a GitHub runner and park it on the
+# data-raw branch as a split tarball, for build environments that cannot reach PDOK themselves.
+name: Fetch open data
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [scripts/config.py, scripts/fetch.py, .github/workflows/fetch-data.yml]
+permissions:
+  contents: write
+concurrency:
+  group: fetch-data
+  cancel-in-progress: true
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch
+        run: |
+          cd scripts
+          python3 fetch.py > ../fetch.log 2>&1 || echo "FETCH FAILED: exit $?" >> ../fetch.log
+          tail -30 ../fetch.log
+      - name: Check the centre
+        if: always()
+        run: |
+          for q in "Hoofdstraat Hoogeveen" "Station Hoogeveen" "Raadhuisplein Hoogeveen"; do
+            curl -sG "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free" --data-urlencode "q=$q" --data-urlencode "rows=3" --data-urlencode "fl=weergavenaam,type,centroide_rd" >> fetch.log || true
+            echo >> fetch.log
+          done
+      - name: Publish to data-raw
+        if: always()
+        run: |
+          mkdir pub
+          (cd data/raw && find . -type f | sort | xargs ls -l) > pub/files.txt || true
+          cp fetch.log pub/
+          tar -C data -czf - raw | split -b 90m - pub/raw.tar.gz.
+          cd pub
+          git init -q -b data-raw
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Raw open data for ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" data-raw

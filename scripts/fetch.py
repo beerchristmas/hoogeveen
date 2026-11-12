@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from config import CHUNK, NX, NY, RAW, XMAX, XMIN, YMAX, YMIN
 
-UA = {"User-Agent": "isometric-helenaveen/0.1"}
+UA = {"User-Agent": "isometric-hoogeveen/0.1"}
 RD = "http://www.opengis.net/def/crs/EPSG/0/28992"
 
 BGT_COLLECTIONS = [
@@ -133,24 +133,40 @@ def fetch_ahn(cov, ix, iy, chunk=CHUNK):
 
 
 def fetch_addresses():
-    """Every BAG address in Helenaveen, for the viewer's search box."""
+    """Every BAG address inside the map, for the viewer's search box. The locatieserver serves at most 10,000 results
+    for one query, so the town is asked for by postcode prefix, and a prefix that is still too big is split further."""
     out = RAW / "addresses.json"
     if out.exists():
         return
-    pts, start = [], 0
-    while True:
+    pts = {}
+
+    def page(prefix, start):
         q = urllib.parse.urlencode(
-            {"q": "*", "fq": ["woonplaatsnaam:Helenaveen", "type:adres"], "fl": "weergavenaam,centroide_rd", "rows": 100, "start": start},
+            {"q": "*", "fq": ["woonplaatsnaam:Hoogeveen", "type:adres", f"postcode:{prefix}*"], "fl": "id,weergavenaam,centroide_rd", "rows": 100, "start": start},
             doseq=True,
         )
-        d = get(f"https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?{q}")["response"]
-        for doc in d["docs"]:
-            x, y = (float(v) for v in doc["centroide_rd"][6:-1].split())
-            pts.append((x, y, doc["weergavenaam"]))
-        start += 100
-        if start >= d["numFound"]:
-            break
-    out.write_text(json.dumps(pts))
+        return get(f"https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?{q}")["response"]
+
+    def walk(prefix):
+        d = page(prefix, 0)
+        if d["numFound"] > 9900 and len(prefix) < 6:
+            for c in "0123456789" if len(prefix) < 4 else "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                walk(prefix + c)
+            return
+        start = 0
+        while True:
+            for doc in d["docs"]:
+                x, y = (float(v) for v in doc["centroide_rd"][6:-1].split())
+                if XMIN <= x <= XMAX and YMIN <= y <= YMAX:
+                    pts[doc["id"]] = (x, y, doc["weergavenaam"])
+            start += 100
+            if start >= d["numFound"]:
+                break
+            d = page(prefix, start)
+
+    walk("79")
+    out.write_text(json.dumps(sorted(pts.values(), key=lambda p: p[2])))
+    print(f"addresses: {len(pts)}", file=sys.stderr)
 
 
 def overpass(out, q, what):
