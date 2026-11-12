@@ -7,19 +7,23 @@ from config import BUILD, CHUNK, GROUND_RES, NX, NY, RAW, XMIN, YMAX
 
 
 def load_aerial():
+    """The mosaic as a read-only memory map (uint8, rows north first): a town's photo is over a gigabyte, and most
+    scripts only look at parts of it."""
     cache = BUILD / "aerial.npy"
-    if cache.exists():
-        return np.load(cache)
-    px = int(CHUNK / GROUND_RES)
-    out = np.zeros((NY * px, NX * px, 3), dtype=np.uint8)
-    for ix in range(NX):
-        for iy in range(NY):
-            img = np.array(Image.open(RAW / "aerial" / f"{ix}_{iy}.jpg").convert("RGB"))
-            row = (NY - 1 - iy) * px
-            out[row : row + px, ix * px : ix * px + px] = img
-    BUILD.mkdir(parents=True, exist_ok=True)
-    np.save(cache, out)
-    return out
+    if not cache.exists():
+        px = int(CHUNK / GROUND_RES)
+        BUILD.mkdir(parents=True, exist_ok=True)
+        tmp = cache.with_suffix(".tmp.npy")
+        out = np.lib.format.open_memmap(tmp, mode="w+", dtype=np.uint8, shape=(NY * px, NX * px, 3))
+        for ix in range(NX):
+            for iy in range(NY):
+                img = np.array(Image.open(RAW / "aerial" / f"{ix}_{iy}.jpg").convert("RGB"))
+                row = (NY - 1 - iy) * px
+                out[row : row + px, ix * px : ix * px + px] = img
+        out.flush()
+        del out
+        tmp.rename(cache)
+    return np.load(cache, mmap_mode="r")
 
 
 def world_to_px(xy):

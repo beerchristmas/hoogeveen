@@ -224,55 +224,75 @@ async function makeBuildings() {
   const v = await fetchF32(`${DATA}/buildings.bin`);
   const COLS = 12; // x y z, normal, u v, kind, building, atlas u v (see scripts/build_buildings.py)
   const n = v.length / COLS;
-  const atlasUv = new Float32Array(n * 2);
-  const atlas = await new THREE.TextureLoader().loadAsync(`${DATA}/roof_atlas.png`);
-  atlas.generateMipmaps = false;
-  atlas.minFilter = THREE.LinearFilter;
-  atlas.magFilter = THREE.LinearFilter;
-  const pos = new Float32Array(n * 3), nor = new Float32Array(n * 3), uv = new Float32Array(n * 2);
-  const kind = new Float32Array(n), type = new Float32Array(n), axis = new Float32Array(n), col = new Float32Array(n * 3);
-  const frame = new Float32Array(n * 3);
-  const walls = meta.map(wallColor), roofs = meta.map(roofColor), frames = meta.map(frameColor);
-  for (let i = 0; i < n; i++) {
-    const o = i * COLS;
-    atlasUv.set([v[o + 10], v[o + 11]], i * 2);
-    pos.set([v[o], v[o + 1], v[o + 2]], i * 3);
-    nor.set([v[o + 3], v[o + 4], v[o + 5]], i * 3);
-    uv.set([v[o + 6], v[o + 7]], i * 2);
-    kind[i] = v[o + 8];
-    const b = v[o + 9], m = meta[b];
-    type[i] = TYPES[m.kind] ?? 0;
-    axis[i] = m.kind === 'greenhouse' ? m.axis : (m.param ?? m.axis);
-    frame.set([frames[b].r, frames[b].g, frames[b].b], i * 3);
-    const c = kind[i] === 2 ? roofs[b] : walls[b];
-    col.set([c.r, c.g, c.b], i * 3);
+  // The roof atlas comes in pages (scripts/roof_atlas.py): the page number is the whole part of atlas u. Every page
+  // gets a mesh of its own with that page as its texture; triangles without a roof photo go with the first page.
+  const pageOf = new Uint8Array(n / 3);
+  let pages = 1;
+  for (let t = 0; t < n / 3; t++) {
+    const u = v[t * 3 * COLS + 10];
+    pageOf[t] = u >= 1 ? Math.floor(u) : 0;
+    pages = Math.max(pages, pageOf[t] + 1);
   }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  g.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
-  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
-  g.setAttribute('aUv', new THREE.BufferAttribute(uv, 2));
-  g.setAttribute('aKind', new THREE.BufferAttribute(kind, 1));
-  g.setAttribute('aType', new THREE.BufferAttribute(type, 1));
-  g.setAttribute('aAxis', new THREE.BufferAttribute(axis, 1));
-  g.setAttribute('aFrame', new THREE.BufferAttribute(frame, 3));
-  g.setAttribute('aAtlas', new THREE.BufferAttribute(atlasUv, 2));
-  const mat = new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true, side: THREE.DoubleSide });
-  mat.onBeforeCompile = (sh) => {
-    sh.uniforms.roofAtlas = { value: atlas };
-    sh.vertexShader = buildingVertex + sh.vertexShader.replace(
-      '#include <begin_vertex>',
-      `#include <begin_vertex>
-       vUv2 = aUv; vKind = aKind; vType = aType; vAxis = aAxis; vFrame = aFrame; vAtlas = aAtlas;
-       vWorld = position; vWorldNormal = normal;`,
-    );
-    sh.fragmentShader = buildingFragment + sh.fragmentShader.replace(
-      '#include <color_fragment>',
-      `#include <color_fragment>
-       diffuseColor.rgb = buildingPattern(diffuseColor.rgb);`,
-    );
-  };
-  return new THREE.Mesh(g, mat);
+  const walls = meta.map(wallColor), roofs = meta.map(roofColor), frames = meta.map(frameColor);
+  const group = new THREE.Group();
+  for (let page = 0; page < pages; page++) {
+    let count = 0;
+    for (let t = 0; t < n / 3; t++) if (pageOf[t] === page) count += 3;
+    const atlasUv = new Float32Array(count * 2);
+    const atlas = await new THREE.TextureLoader().loadAsync(`${DATA}/roof_atlas${page ? `_${page}` : ''}.png`);
+    atlas.generateMipmaps = false;
+    atlas.minFilter = THREE.LinearFilter;
+    atlas.magFilter = THREE.LinearFilter;
+    const pos = new Float32Array(count * 3), nor = new Float32Array(count * 3), uv = new Float32Array(count * 2);
+    const kind = new Float32Array(count), type = new Float32Array(count), axis = new Float32Array(count), col = new Float32Array(count * 3);
+    const frame = new Float32Array(count * 3);
+    let i = 0;
+    for (let k = 0; k < n; k++) {
+      if (pageOf[Math.floor(k / 3)] !== page) continue;
+      const o = k * COLS;
+      atlasUv.set([v[o + 10] >= 0 ? v[o + 10] - page : v[o + 10], v[o + 11]], i * 2);
+      pos.set([v[o], v[o + 1], v[o + 2]], i * 3);
+      nor.set([v[o + 3], v[o + 4], v[o + 5]], i * 3);
+      uv.set([v[o + 6], v[o + 7]], i * 2);
+      kind[i] = v[o + 8];
+      const b = v[o + 9], m = meta[b];
+      type[i] = TYPES[m.kind] ?? 0;
+      axis[i] = m.kind === 'greenhouse' ? m.axis : (m.param ?? m.axis);
+      frame.set([frames[b].r, frames[b].g, frames[b].b], i * 3);
+      const c = kind[i] === 2 ? roofs[b] : walls[b];
+      col.set([c.r, c.g, c.b], i * 3);
+      i++;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    g.setAttribute('aUv', new THREE.BufferAttribute(uv, 2));
+    g.setAttribute('aKind', new THREE.BufferAttribute(kind, 1));
+    g.setAttribute('aType', new THREE.BufferAttribute(type, 1));
+    g.setAttribute('aAxis', new THREE.BufferAttribute(axis, 1));
+    g.setAttribute('aFrame', new THREE.BufferAttribute(frame, 3));
+    g.setAttribute('aAtlas', new THREE.BufferAttribute(atlasUv, 2));
+    const mat = new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true, side: THREE.DoubleSide });
+    mat.onBeforeCompile = (sh) => {
+      sh.uniforms.roofAtlas = { value: atlas };
+      sh.vertexShader = buildingVertex + sh.vertexShader.replace(
+        '#include <begin_vertex>',
+        `#include <begin_vertex>
+         vUv2 = aUv; vKind = aKind; vType = aType; vAxis = aAxis; vFrame = aFrame; vAtlas = aAtlas;
+         vWorld = position; vWorldNormal = normal;`,
+      );
+      sh.fragmentShader = buildingFragment + sh.fragmentShader.replace(
+        '#include <color_fragment>',
+        `#include <color_fragment>
+         diffuseColor.rgb = buildingPattern(diffuseColor.rgb);`,
+      );
+    };
+    // One compiled program per page: three.js would otherwise share the first page's program, texture included.
+    mat.customProgramCacheKey = () => `buildings-${page}`;
+    group.add(new THREE.Mesh(g, mat));
+  }
+  return group;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -360,29 +380,63 @@ async function makeTrees() {
 // ---------------------------------------------------------------------------------------------
 // Ground and diorama block
 
+// The ground and road textures are 2000 px a chunk, and a town has hundreds of chunks: far more than fits in memory at
+// once. So every chunk is registered here without its texture; before a tile is drawn the chunks in view get theirs
+// (showChunks), and the ones longest out of view let go of theirs once more than KEEP are loaded.
+const lazyChunks = [];
+const KEEP = 72;
+let chunkClock = 0;
+
+function lazyChunk(renderer, url, corners, objects, materials) {
+  for (const o of objects) o.visible = false;
+  lazyChunks.push({ renderer, url, corners, objects, materials, tex: null, used: 0, box: null });
+}
+
+async function showChunks(x0, y0, x1, y1) {
+  chunkClock++;
+  const loader = new THREE.TextureLoader();
+  const wanted = lazyChunks.filter((c) => c.box[0] < x1 && c.box[2] > x0 && c.box[1] < y1 && c.box[3] > y0);
+  for (const c of wanted) c.used = chunkClock;
+  const loaded = lazyChunks.filter((c) => c.tex && c.used !== chunkClock).sort((a, b) => a.used - b.used);
+  let over = loaded.length + wanted.length - KEEP;
+  for (const c of loaded) {
+    if (over-- <= 0) break;
+    for (const o of c.objects) o.visible = false;
+    for (const m of c.materials) m.map = null;
+    c.tex.dispose();
+    c.tex = null;
+  }
+  for (const c of lazyChunks) for (const o of c.objects) o.visible = !!c.tex && c.used === chunkClock;
+  await Promise.all(wanted.filter((c) => !c.tex).map(async (c) => {
+    const tex = await loader.loadAsync(c.url);
+    tex.anisotropy = c.renderer.capabilities.getMaxAnisotropy();
+    tex.generateMipmaps = true;
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
+    c.tex = tex;
+    for (const m of c.materials) {
+      m.map = tex;
+      m.needsUpdate = true;
+    }
+    for (const o of c.objects) o.visible = true;
+  }));
+}
+
 async function makeGround(renderer, area) {
   const group = new THREE.Group();
-  const loader = new THREE.TextureLoader();
   const size = area.chunk;
-  const jobs = [];
   for (let ix = 0; ix < area.nx; ix++) {
     for (let iy = 0; iy < area.ny; iy++) {
-      jobs.push(
-        loader.loadAsync(`${DATA}/ground/${ix}_${iy}.png`).then((tex) => {
-          tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-          tex.generateMipmaps = true;
-          tex.minFilter = THREE.LinearMipmapLinearFilter;
-          tex.magFilter = THREE.LinearFilter;
-          tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping;
-          const plane = new THREE.Mesh(new THREE.PlaneGeometry(size, size), new THREE.MeshBasicMaterial({ map: tex }));
-          plane.rotation.x = -Math.PI / 2;
-          plane.position.set(-area.hx + size / 2 + ix * size, 0, area.hz - size / 2 - iy * size);
-          group.add(plane);
-        }),
-      );
+      const material = new THREE.MeshBasicMaterial();
+      const plane = new THREE.Mesh(new THREE.PlaneGeometry(size, size), material);
+      plane.rotation.x = -Math.PI / 2;
+      const x0 = -area.hx + ix * size, z1 = area.hz - iy * size;
+      plane.position.set(x0 + size / 2, 0, z1 - size / 2);
+      group.add(plane);
+      lazyChunk(renderer, `${DATA}/ground/${ix}_${iy}.png`, [x0, z1 - size, x0 + size, z1], [plane], [material]);
     }
   }
-  await Promise.all(jobs);
   return group;
 }
 
@@ -428,9 +482,8 @@ async function makeRoads(renderer, area) {
     }
   }
 
-  const loader = new THREE.TextureLoader();
   const group = new THREE.Group();
-  await Promise.all([...chunks.values()].map(async ({ ix, iy, tri, line }) => {
+  for (const { ix, iy, tri, line } of chunks.values()) {
     const cx0 = -area.hx + ix * size, cx1 = cx0 + size;
     const cz1 = area.hz - iy * size, cz0 = cz1 - size; // iy counts from the south edge; z points south
     const geometry = (verts) => {
@@ -439,27 +492,27 @@ async function makeRoads(renderer, area) {
       geo.setAttribute('uv', new THREE.Float32BufferAttribute(verts.flatMap(([x, , z]) => [(x - cx0) / size, (cz1 - z) / size]), 2));
       return geo;
     };
-    const tex = await loader.loadAsync(`${DATA}/roads/${ix}_${iy}.png`);
-    // Filtered like the ground, so the surface stays calm; the edges are sharp because the polygon ends there.
-    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-    tex.generateMipmaps = true;
-    tex.minFilter = THREE.LinearMipmapLinearFilter;
-    tex.magFilter = THREE.LinearFilter;
     const clippingPlanes = [
       new THREE.Plane(new THREE.Vector3(1, 0, 0), -cx0), new THREE.Plane(new THREE.Vector3(-1, 0, 0), cx1),
       new THREE.Plane(new THREE.Vector3(0, 0, 1), -cz0), new THREE.Plane(new THREE.Vector3(0, 0, -1), cz1),
     ];
     // Alpha ROAD_ALPHA (written as is, no blending) marks road pixels for the post pass, which keeps the
-    // painterly filter off them so it can't round their edges.
-    const common = { map: tex, clippingPlanes, blending: THREE.NoBlending, opacity: ROAD_ALPHA };
+    // painterly filter off them so it can't round their edges. The texture, filtered like the ground so the
+    // surface stays calm, comes in when the chunk is in view (showChunks).
+    const common = { clippingPlanes, blending: THREE.NoBlending, opacity: ROAD_ALPHA };
+    const objects = [], materials = [];
     if (tri.length) {
       // Triangulation can come out either way round; the camera only looks down at them, so draw both sides.
-      group.add(new THREE.Mesh(geometry(tri), new THREE.MeshBasicMaterial({ ...common, side: THREE.DoubleSide })));
+      materials.push(new THREE.MeshBasicMaterial({ ...common, side: THREE.DoubleSide }));
+      objects.push(new THREE.Mesh(geometry(tri), materials.at(-1)));
     }
     if (line.length) {
-      group.add(new THREE.LineSegments(geometry(line), new THREE.LineBasicMaterial({ ...common, color: new THREE.Color(KERB, KERB, KERB) })));
+      materials.push(new THREE.LineBasicMaterial({ ...common, color: new THREE.Color(KERB, KERB, KERB) }));
+      objects.push(new THREE.LineSegments(geometry(line), materials.at(-1)));
     }
-  }));
+    group.add(...objects);
+    lazyChunk(renderer, `${DATA}/roads/${ix}_${iy}.png`, [cx0, cz0, cx1, cz1], objects, materials);
+  }
   return group;
 }
 
@@ -606,6 +659,18 @@ async function main() {
   scene.add(ground, roads, buildings, trees, makeSlab(area));
 
   const { cam, width, height } = makeCamera(scale, area, look);
+  // Where each chunk lands in the full image, in pixels: its ground square, and room above for what stands on it is
+  // not needed, since only its ground is textured.
+  cam.updateMatrixWorld();
+  cam.updateProjectionMatrix();
+  for (const c of lazyChunks) {
+    const [x0, z0, x1, z1] = c.corners;
+    const pts = [[x0, z0], [x1, z0], [x0, z1], [x1, z1]].map(([x, z]) => {
+      const p = new THREE.Vector3(x, 0, z).project(cam);
+      return [(p.x + 1) / 2 * width, (1 - p.y) / 2 * height];
+    });
+    c.box = [Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1])), Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))];
+  }
   let target = null;
   const post = new THREE.ShaderMaterial(outlineShader);
   const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), post);
@@ -622,9 +687,10 @@ async function main() {
   }
 
   const crop = document.createElement('canvas');
-  window.renderTile = (tx, ty, tw, th) => {
+  window.renderTile = async (tx, ty, tw, th) => {
     const m = 8; // margin in pixels, cropped off again below
     const x = tx - m, y = ty - m, w = tw + 2 * m, h = th + 2 * m;
+    await showChunks(x - 2, y - 2, x + w + 2, y + h + 2);
     renderer.setSize(w, h, false);
     ensureTarget(w, h);
     cam.setViewOffset(width, height, x, y, w, h);

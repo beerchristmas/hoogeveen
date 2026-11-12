@@ -321,14 +321,14 @@ def texture_roofs(aerial, meta):
         if bi in FOOTPRINT and meta[bi]["kind"] in ATLAS_KINDS
     ]
     fixed = {bi: meta[bi]["roof_fixed"] for bi, _, _ in roofs if meta[bi].get("roof_fixed")}
-    rects, size = roof_atlas.build(aerial, roofs, fixed)
+    rects, size, pages = roof_atlas.build(aerial, roofs, fixed)
     for bi, rect in rects.items():
         for block, _ in ROOF_BLOCKS[bi]:
             u, v = roof_atlas.atlas_uv(np.column_stack([block[:, 0] + CX, CY - block[:, 2]]), rect, size)
             block[:, 10], block[:, 11] = u, v
         meta[bi]["atlas"] = True
     shifts = [np.hypot(*r[0]) for r in rects.values()]
-    print(f"roof atlas {size[0]}x{size[1]} for {len(rects)} buildings, mean photo shift {np.mean(shifts):.2f} m")
+    print(f"roof atlas {pages} x {size[0]}x{size[1]} for {len(rects)} buildings, mean photo shift {np.mean(shifts):.2f} m")
 
 
 def add_extras(verts, meta, footprints, aerial):

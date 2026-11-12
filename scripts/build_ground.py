@@ -155,48 +155,62 @@ def load_polygons():
     return polys
 
 
-def to_px(ring):
+def to_px(ring, ox=0, oy=0, res=GROUND_RES):
     a = np.asarray(ring)[:, :2]
-    return list(zip(((a[:, 0] - XMIN) / GROUND_RES).tolist(), ((YMAX - a[:, 1]) / GROUND_RES).tolist()))
+    return list(zip(((a[:, 0] - XMIN) / res - ox).tolist(), ((YMAX - a[:, 1]) / res - oy).tolist()))
 
 
-def value_noise(shape, cell, seed, octaves=1):
-    """Smooth noise in [0,1] with features of about `cell` pixels, tileable over the whole raster."""
+def value_noise(window, cell, seed, octaves=1):
+    """Smooth noise in [0,1] with features of about `cell` pixels, for the window (r0, r1, c0, c1) of the whole raster.
+    The lattice is drawn for the whole raster and sampled by position, so windows fit together without a seam."""
+    r0, r1, c0, c1 = window
     rng = np.random.default_rng(seed)
-    out = np.zeros(shape, np.float32)
+    out = np.zeros((r1 - r0, c1 - c0), np.float32)
     amp, total = 1.0, 0.0
     for o in range(octaves):
         c = max(1, int(cell / (2**o)))
-        g = rng.random((shape[0] // c + 2, shape[1] // c + 2)).astype(np.float32)
-        z = ndi.zoom(g, c, order=1)[: shape[0], : shape[1]]
+        g = rng.random((NY // c + 2, NX // c + 2)).astype(np.float32)
+        fy, fx = np.arange(r0, r1, dtype=np.float32) / c, np.arange(c0, c1, dtype=np.float32) / c
+        iy, ix = fy.astype(np.int32), fx.astype(np.int32)
+        ty, tx = (fy - iy)[:, None], (fx - ix)[None, :]
+        rows0, rows1 = g[iy], g[iy + 1]
+        z = (rows0[:, ix] * (1 - tx) + rows0[:, ix + 1] * tx) * (1 - ty) + (rows1[:, ix] * (1 - tx) + rows1[:, ix + 1] * tx) * ty
         out += amp * z
         total += amp
         amp *= 0.5
     return out / total
 
 
+# The ground is painted in blocks of this many chunks a side, each with a rim of HALO pixels that is thrown away, so
+# a town's worth of ground never has to be in memory at once and the filters still see past every block edge.
+BLOCK = 3
+HALO = 256
+
+
 def main():
-    aerial = load_aerial()
+    aerial_all = load_aerial()
     polys = load_polygons()
     print(f"{len(polys)} polygons")
 
-    ids = Image.new("I", (NX, NY), 0)
+    # Per polygon: median aerial color, ignoring tree canopy that hides the surface. At 1 m, for the whole map at once.
+    ids = Image.new("I", (NX // 4, NY // 4), 0)
     d = ImageDraw.Draw(ids)
+    boxes = np.zeros((len(polys) + 1, 4), np.float64)  # each polygon's pixel box in the full raster: c0, r0, c1, r1
     for i, (_, _, _, _, rings) in enumerate(polys, start=1):
-        d.polygon(to_px(rings[0]), fill=i)
+        d.polygon(to_px(rings[0], res=GROUND_RES * 4), fill=i)
         for hole in rings[1:]:
-            d.polygon(to_px(hole), fill=0)
-    ids = np.array(ids, dtype=np.int32)
-
-    # Per polygon: median aerial color, ignoring tree canopy that hides the surface.
-    chm = np.load(BUILD / "chm.npy").astype(np.float32)
-    chm_hi = np.repeat(np.repeat(chm, 2, 0), 2, 1)
-    lab = ids[::4, ::4].copy()
-    lab[chm_hi[::4, ::4] > 2.0] = 0
-    small = aerial[::4, ::4].astype(np.float32)
+            d.polygon(to_px(hole, res=GROUND_RES * 4), fill=0)
+        px = np.array(to_px(rings[0]))
+        boxes[i] = (*px.min(0), *px.max(0))
+    lab = np.array(ids, dtype=np.int32)
+    del ids, d
+    chm = np.load(BUILD / "chm.npy", mmap_mode="r")
+    lab[np.asarray(chm[::2, ::2])[: lab.shape[0], : lab.shape[1]] > 2.0] = 0
+    small = np.asarray(aerial_all[::4, ::4]).astype(np.float32)
     idx = np.arange(1, len(polys) + 1)
     med = np.stack([ndi.median(small[..., c], lab, idx) for c in range(3)], -1)
     med = np.nan_to_num(med, nan=128.0)
+    del lab, small
 
     cats = np.zeros(len(polys) + 1, np.int32)
     roads = np.zeros(len(polys) + 1, bool)
@@ -240,6 +254,50 @@ def main():
         stripes_dir[i] = math.atan2(v[1, -1], v[0, -1])
     base[0] = STYLES["gap"]
 
+
+    # Baked shadows from buildings and trees, plus a contact shadow along every wall: for the whole map at 0.5 m.
+    shadow_all, contact_all = compute_shadows()
+
+    px = int(CHUNK / GROUND_RES)
+    preview = np.zeros((NY // 8, NX // 8, 3), np.uint8)
+    for out in (BUILD / "ground", BUILD / "roads"):
+        out.mkdir(exist_ok=True)
+        for f in out.glob("*.png"):
+            f.unlink()
+    for bx in range(0, CHUNKS_X, BLOCK):
+        for by in range(0, CHUNKS_Y, BLOCK):
+            # The block's own pixels (c0..c1, r0..r1, row 0 north) and the window around them that is painted.
+            c0, c1 = bx * px, min(bx + BLOCK, CHUNKS_X) * px
+            r0, r1 = by * px, min(by + BLOCK, CHUNKS_Y) * px
+            wc0, wc1, wr0, wr1 = max(c0 - HALO, 0), min(c1 + HALO, NX), max(r0 - HALO, 0), min(r1 + HALO, NY)
+            ground, road_img, before_fill = paint_window((wr0, wr1, wc0, wc1), polys, boxes, cats, roads, base, stripes_dir, aerial_all,
+                                            shadow_all, contact_all)
+            inner = (slice(r0 - wr0, r1 - wr0), slice(c0 - wc0, c1 - wc0))
+            preview[r0 // 8 : r1 // 8, c0 // 8 : c1 // 8] = before_fill[inner][::8, ::8]
+            save_chunks(ground[inner], BUILD / "ground", bx, by)
+            save_chunks(road_img[inner], BUILD / "roads", bx, by)
+            del ground, road_img, before_fill
+            print(f"block {bx // BLOCK + 1},{by // BLOCK + 1} of {-(-CHUNKS_X // BLOCK)},{-(-CHUNKS_Y // BLOCK)}", flush=True)
+    Image.fromarray(preview).save(BUILD / "ground_preview.png")
+    save_road_polygons(polys, roads, cats)
+    print("ground done")
+
+
+def paint_window(window, polys, boxes, cats, roads, base, stripes_dir, aerial_all, shadow_all, contact_all):
+    """The ground and road layers for the window (r0, r1, c0, c1) of the full raster, plus the ground before the
+    roads were filled in, for the preview."""
+    wr0, wr1, wc0, wc1 = window
+    ids = Image.new("I", (wc1 - wc0, wr1 - wr0), 0)
+    d = ImageDraw.Draw(ids)
+    hit = (boxes[:, 2] >= wc0) & (boxes[:, 0] <= wc1) & (boxes[:, 3] >= wr0) & (boxes[:, 1] <= wr1)
+    for i in np.flatnonzero(hit[1:]) + 1:
+        rings = polys[i - 1][4]
+        d.polygon(to_px(rings[0], wc0, wr0), fill=int(i))
+        for hole in rings[1:]:
+            d.polygon(to_px(hole, wc0, wr0), fill=0)
+    ids = np.array(ids, dtype=np.int32)
+    aerial = np.asarray(aerial_all[wr0:wr1, wc0:wc1])
+
     cat = cats[ids]
     img = base[ids]  # (N, N, 3) float32
     road = roads[ids]
@@ -247,7 +305,7 @@ def main():
     # and its detail there turns a straight road edge into a blotchy one.
     road_rim = road & ~ndi.binary_erosion(road, iterations=4)
 
-    yy, xx = np.ogrid[0:NY, 0:NX]
+    yy, xx = np.ogrid[wr0:wr1, wc0:wc1]
     yy, xx = yy.astype(np.float32), xx.astype(np.float32)
     # Field furrows along the long axis of each parcel.
     ang = stripes_dir[ids]
@@ -263,8 +321,8 @@ def main():
     img[orch & rows] *= 0.72
     del rows
 
-    n1 = value_noise((NY, NX), 20, 1, octaves=2)
-    n2 = value_noise((NY, NX), 40, 2, octaves=2)
+    n1 = value_noise(window, 20, 1, octaves=2)
+    n2 = value_noise(window, 40, 2, octaves=2)
     soft = np.isin(cat, list(SOFT))
     img[soft] *= (0.96 + 0.08 * n1[soft])[:, None]
     grassy = np.isin(cat, [CAT[k] for k in ("grass", "meadow", "berm", "bank", "orchard")])
@@ -338,7 +396,7 @@ def main():
     img[edge] *= 0.8
     del ripple, far, bank, edge, xx, yy
 
-    paint_osm(img, cat)
+    paint_osm(img, cat, wc0, wr0)
 
     # Darken edges between unlike surfaces so plots read as crisp shapes. Roads get their edge from their polygon.
     hard = ~np.isin(cat, list(SOFT)) & ~road
@@ -347,13 +405,16 @@ def main():
     del hard, border, road_rim
 
     # Baked shadows from buildings and trees, plus a contact shadow along every wall.
-    shadow, contact = compute_shadows()
+    up = lambda m: np.repeat(np.repeat(m[wr0 // 2 : -(-wr1 // 2), wc0 // 2 : -(-wc1 // 2)], 2, 0), 2, 1)[
+        wr0 % 2 : wr0 % 2 + wr1 - wr0, wc0 % 2 : wc0 % 2 + wc1 - wc0
+    ]
+    shadow, contact = up(shadow_all), up(contact_all)
     img *= np.where(shadow[..., None], np.array((0.62, 0.66, 0.8), np.float32), 1.0)
     img[contact] *= 0.8
     del shadow, contact
 
     img = np.clip(img, 0, 255).astype(np.uint8)
-    full_preview = img[::8, ::8].copy()
+    before_fill = img
     # Two layers. The roads are drawn as polygons with hard edges and sample their own layer, in which each road
     # colour runs on outward, so a pixel on the edge never picks up the verge. The ground layer has the roads
     # filled in with the colours around them, so its soft texture doesn't smear grey past those hard edges.
@@ -363,24 +424,16 @@ def main():
     gi = ndi.distance_transform_edt(road, return_distances=False, return_indices=True)
     img = img[gi[0], gi[1]]
     del gi
-    save_chunks(img, BUILD / "ground")
-    save_chunks(road_img, BUILD / "roads")
-    del road_img
-    Image.fromarray(full_preview).save(BUILD / "ground_preview.png")
-    save_road_polygons(polys, roads, cats)
-    print("ground done")
+    return img, road_img, before_fill
 
 
-def save_chunks(img, out):
-    if out.exists():
-        for f in out.glob("*.png"):
-            f.unlink()
-    out.mkdir(exist_ok=True)
+def save_chunks(img, out, bx, by):
+    """Write a block (rows north first, starting at chunk column bx and chunk row by from the north) as its chunks."""
     px = int(CHUNK / GROUND_RES)
-    for ix in range(CHUNKS_X):
-        for iy in range(CHUNKS_Y):
-            row = (CHUNKS_Y - 1 - iy) * px
-            Image.fromarray(img[row : row + px, ix * px : ix * px + px]).save(out / f"{ix}_{iy}.png", optimize=False, compress_level=1)
+    for j in range(img.shape[0] // px):
+        for i in range(img.shape[1] // px):
+            iy = CHUNKS_Y - 1 - (by + j)
+            Image.fromarray(img[j * px : (j + 1) * px, i * px : (i + 1) * px]).save(out / f"{bx + i}_{iy}.png", optimize=False, compress_level=1)
 
 
 def save_road_polygons(polys, roads, cats):
@@ -434,8 +487,9 @@ def save_road_polygons(polys, roads, cats):
     print(f"{len(out)} road polygons, {len(edges)} kerb lines")
 
 
-def paint_osm(img, cat):
-    """Sports pitches, riding arenas and graveyards from OpenStreetMap, drawn onto the ground."""
+def paint_osm(img, cat, ox=0, oy=0):
+    """Sports pitches, riding arenas and graveyards from OpenStreetMap, drawn onto the ground: img is the window of the
+    full raster that starts at pixel (ox, oy)."""
     path = RAW / "osm_landmarks.json"
     if not path.exists():
         return
@@ -447,12 +501,13 @@ def paint_osm(img, cat):
         if el["type"] != "way" or not g:
             continue
         rd = np.array([wgs_to_rd(p["lat"], p["lon"]) for p in g])
-        px = [((x - XMIN) / GROUND_RES, (YMAX - y) / GROUND_RES) for x, y in rd]
+        px = [((x - XMIN) / GROUND_RES - ox, (YMAX - y) / GROUND_RES - oy) for x, y in rd]
         x0, y0 = np.floor(np.min(px, 0)).astype(int) - 4
         x1, y1 = np.ceil(np.max(px, 0)).astype(int) + 4
-        if x1 < 0 or y1 < 0 or x0 >= NX or y0 >= NY:
+        H, W = img.shape[:2]
+        if x1 < 0 or y1 < 0 or x0 >= W or y0 >= H:
             continue
-        x0, y0, x1, y1 = max(x0, 0), max(y0, 0), min(x1, NX), min(y1, NY)
+        x0, y0, x1, y1 = max(x0, 0), max(y0, 0), min(x1, W), min(y1, H)
         w, h = x1 - x0, y1 - y0
         area = Image.new("L", (w, h), 0)
         ImageDraw.Draw(area).polygon([(a - x0, b - y0) for a, b in px], fill=1)
@@ -510,7 +565,7 @@ def paint_osm(img, cat):
 
 
 def compute_shadows(res=0.5):
-    """Hard shadows at 0.5 m from building roofs and tree crowns, upsampled to the ground raster."""
+    """Hard shadows at 0.5 m from building roofs and tree crowns; main() upsamples them to the ground raster."""
     nx, ny = int((XMAX - XMIN) / res), int((YMAX - YMIN) / res)
     top = np.zeros((ny, nx), np.float32)
     bot = np.full((ny, nx), np.inf, np.float32)
@@ -574,8 +629,7 @@ def compute_shadows(res=0.5):
     occupied = top > 0.3
     shadow &= ~occupied
     contact = ndi.binary_dilation(occupied & (bot < 0.5) & (top > 1.5), iterations=1) & ~occupied
-    up = lambda m: np.repeat(np.repeat(m, 2, 0), 2, 1)
-    return up(shadow), up(contact)
+    return shadow, contact
 
 
 def shift(a, ox, oy, fill):
