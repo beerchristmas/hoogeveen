@@ -20,6 +20,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Start from the data already on data-raw
+        run: |
+          if git clone -q --depth 1 -b data-raw "https://github.com/${{ github.repository }}" prev; then
+            mkdir -p data && cat prev/raw.tar.gz.* | tar -xzf - -C data && cp prev/area.txt area.txt || true
+          fi
+          # Another area: start over.
+          grep -E "^XMIN" scripts/config.py > area.new
+          cmp -s area.new area.txt || rm -rf data/raw
+          rm -rf prev
       - name: Fetch
         run: |
           cd scripts
@@ -38,6 +47,7 @@ jobs:
           mkdir pub
           (cd data/raw && find . -type f | sort | xargs ls -l) > pub/files.txt || true
           cp fetch.log pub/
+          cp area.new pub/area.txt
           tar -C data -czf - raw | split -b 90m - pub/raw.tar.gz.
           cd pub
           git init -q -b data-raw

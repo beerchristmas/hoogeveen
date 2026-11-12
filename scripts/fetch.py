@@ -170,15 +170,20 @@ def fetch_addresses():
 
 
 def overpass(out, q, what):
-    """Run an Overpass query into out (Overpass is often busy, so try a few servers)."""
-    for host in ("overpass-api.de/api/interpreter", "overpass.private.coffee/api/interpreter", "maps.mail.ru/osm/tools/overpass/api/interpreter"):
-        try:
-            req = urllib.request.Request(f"https://{host}", data=urllib.parse.urlencode({"data": q}).encode(), headers=UA)
-            with urllib.request.urlopen(req, timeout=180) as r:
-                out.write_bytes(r.read())
-            return
-        except Exception as e:  # noqa: BLE001
-            print(f"overpass {host}: {e}", file=sys.stderr)
+    """Run an Overpass query into out (Overpass is often busy, so try a few servers, a few times)."""
+    hosts = ("overpass-api.de/api/interpreter", "overpass.private.coffee/api/interpreter", "maps.mail.ru/osm/tools/overpass/api/interpreter")
+    for attempt in range(4):
+        for host in hosts:
+            try:
+                req = urllib.request.Request(f"https://{host}", data=urllib.parse.urlencode({"data": q}).encode(), headers=UA)
+                with urllib.request.urlopen(req, timeout=180) as r:
+                    data = r.read()
+                json.loads(data)
+                out.write_bytes(data)
+                return
+            except Exception as e:  # noqa: BLE001
+                print(f"overpass {host}: {e}", file=sys.stderr)
+        time.sleep(30 * (attempt + 1))
     print(f"OpenStreetMap unavailable; {what} are skipped", file=sys.stderr)
 
 
@@ -230,7 +235,9 @@ out geom;"""
 
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
-    jobs = [fetch_3dbag, fetch_addresses, fetch_osm, fetch_routes, fetch_roads, *(lambda c=c: fetch_bgt(c) for c in BGT_COLLECTIONS)]
+    # The three OpenStreetMap queries run one after another: together they trip Overpass's rate limit.
+    osm = lambda: [f() for f in (fetch_osm, fetch_routes, fetch_roads)]
+    jobs = [fetch_3dbag, fetch_addresses, osm, *(lambda c=c: fetch_bgt(c) for c in BGT_COLLECTIONS)]
     jobs += [lambda c=c, i=i, j=j: fetch_ahn(c, i, j) for c in ("dsm_05m", "dtm_05m") for i in range(NX) for j in range(NY)]
     jobs += [lambda i=i, j=j: fetch_aerial(i, j) for i in range(NX) for j in range(NY)]
     with ThreadPoolExecutor(8) as pool:
