@@ -7,9 +7,9 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 BUILD = ROOT / "data" / "build"
 
-# The centre of Hoogeveen, 3 x 3 km around the Hoofdstraat, on the 500 m grid of the chunks. The whole town would be
-# 6.5 x 4.5 km: XMIN, YMIN, XMAX, YMAX = 225600, 524400, 232100, 528900 (the box around the built-up area).
-XMIN, YMIN, XMAX, YMAX = 227100, 525400, 230100, 528400
+# The town of Hoogeveen, 6.5 x 4.5 km: the box around the built-up area, read off a count of BGT buildings per 250 m
+# cell, on the 500 m grid of the chunks. The villages around the town stay outside.
+XMIN, YMIN, XMAX, YMAX = 225600, 524400, 232100, 528900
 CX, CY = (XMIN + XMAX) / 2, (YMIN + YMAX) / 2
 
 # Downloads and ground textures come in square chunks of this many meters.

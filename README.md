@@ -1,6 +1,6 @@
 # Isometrisch Hoogeveen
 
-A zoomable isometric pixel-art map of the centre of Hoogeveen, 3 × 3 km around the Hoofdstraat, rendered procedurally from Dutch open data.
+A zoomable isometric pixel-art map of the town of Hoogeveen, 6.5 × 4.5 km, rendered procedurally from Dutch open data.
 
 This is a fork of [Isometric Helenaveen](https://github.com/jankeesvw/isometric-helenaveen) by [@jankeesvw](https://x.com/jankeesvw), who rebuilt his village with Claude Code and nothing but open data ([see it live](https://jankeesvw.github.io/isometric-helenaveen/)). The pipeline, the renderer and the viewer are his; this fork points them at Hoogeveen.
 
@@ -10,8 +10,8 @@ This is a fork of [Isometric Helenaveen](https://github.com/jankeesvw/isometric-
 - The places, their stories and the guided tour are still empty (`scripts/landmarks.py`, `scripts/build_history.py`); the map opens on the Hoofdstraat, and the dippers in the canal are gone.
 - `.github/workflows/fetch-data.yml` runs `scripts/fetch.py` on a GitHub runner and parks the raw data on the `data-raw` branch as a split tarball, for build machines that cannot reach PDOK, 3D BAG or Overpass themselves. Unpack it with `cat raw.tar.gz.* | tar -xzf - -C data`.
 - `RENDER_GL=swiftshader CHROME=/path/to/chrome ./build.sh` renders on the CPU, for machines without a GPU.
-- The pipeline is ready for a map of the whole town (the area is noted in `scripts/config.py`), which is many times the size of a village, so nothing may need the whole map in memory at once: `scripts/build_ground.py` and `scripts/build_trees.py` work in blocks of chunks with a rim around them, the aerial photo is memory-mapped, the roof atlas comes in pages of 8192 px (the page is the whole part of atlas u), and `render/scene.js` loads the ground and road textures only for the chunks a tile shows.
-- The search box suggests the best matches for what is typed, not every address.
+- A town is many times the size of a village, so nothing may need the whole map in memory at once: `scripts/build_ground.py` and `scripts/build_trees.py` work in blocks of chunks with a rim around them, the aerial photo is memory-mapped, the roof atlas comes in pages of 8192 px (the page is the whole part of atlas u), and `render/scene.js` loads the ground and road textures only for the chunks a tile shows. The whole build fits in about 6 GB.
+- The search box suggests the best matches for what is typed, not all 30,000 addresses.
 
 The description below is the original README's and still describes how the pipeline works; the places it names are Helenaveen's.
 
