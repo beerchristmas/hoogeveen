@@ -135,7 +135,9 @@ def build(aerial, roofs, fixed=None):
 
     # Shelf packing, tallest first.
     crops.sort(key=lambda c: -c[3].shape[0])
-    width = 4096
+    # About square, so a town's worth of roofs still fits in a texture that every GPU takes (8192 on the smaller ones).
+    area = sum((c[3].shape[0] + PAD) * (c[3].shape[1] + PAD) for c in crops)
+    width = max(4096, int(2 ** np.ceil(np.log2(np.sqrt(area * 1.1)))))
     x = y = shelf = 0
     placed = []
     for key, shift, origin, img in crops:
