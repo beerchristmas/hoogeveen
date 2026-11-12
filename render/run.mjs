@@ -34,9 +34,15 @@ function serve() {
 
 async function openScene(scale, kuwahara, pass, look) {
   const server = await serve();
+  // RENDER_GL=swiftshader renders on the CPU, for machines without a GPU; CHROME points at a browser to use instead
+  // of the Chromium that Playwright downloads.
+  const software = process.env.RENDER_GL === 'swiftshader';
   const browser = await chromium.launch({
     headless: true,
-    args: ['--use-angle=vulkan', '--ignore-gpu-blocklist', '--enable-gpu-rasterization'],
+    executablePath: process.env.CHROME || undefined,
+    args: software
+      ? ['--use-angle=swiftshader', '--use-gl=angle', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist']
+      : ['--use-angle=vulkan', '--ignore-gpu-blocklist', '--enable-gpu-rasterization'],
   });
   const page = await browser.newPage();
   page.on('console', (m) => m.type() === 'error' && console.error('page:', m.text()));

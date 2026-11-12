@@ -1,4 +1,4 @@
-// Isometric scene of Helenaveen, rendered tile by tile by render/run.mjs.
+// Isometric scene of Hoogeveen, rendered tile by tile by render/run.mjs.
 // World units are meters: x east, y up, z south, origin at the center of the 3 x 3 km area.
 import * as THREE from 'three';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
@@ -464,7 +464,7 @@ async function makeRoads(renderer, area) {
 }
 
 function makeSlab(area) {
-  // Peat over sand: the soil Helenaveen was dug out of.
+  // Peat over sand: the soil Hoogeveen was dug out of.
   const c = document.createElement('canvas');
   c.width = 4;
   c.height = 280;
