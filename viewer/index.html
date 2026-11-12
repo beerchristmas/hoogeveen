@@ -209,7 +209,9 @@
     pointer-events: none;
   }
   /* OpenSeadragon sets display inline on its overlays, so hiding them needs !important. */
-  body:not(.show-routes) .routes, body:not(.show-routes) .knooppunt { display: none !important; }
+  body:not(.show-routes) .routes:not(.cascade), body:not(.show-routes) .knooppunt { display: none !important; }
+  body:not(.show-cascade) .routes.cascade { display: none !important; }
+  .routes .run { stroke: #ff7a1a; stroke-width: 4; }
   #legend { display: none; gap: 12px; font-size: 11px; color: var(--muted); align-items: center; flex-wrap: wrap; }
   body.show-routes #legend { display: flex; }
   #legend i { display: inline-block; width: 18px; height: 0; border-top: 3px dashed #e2574c; vertical-align: middle; margin-right: 4px; }
@@ -386,6 +388,7 @@
   <button type="button" id="turn" aria-label="Kaart een kwartslag draaien" title="Draaien" data-en-label="Turn the map a quarter" data-en-title="Turn" hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.2" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".45"/><g id="needle"><path d="M9 2.6l2.3 6.4H6.7z" fill="currentColor"/><path d="M9 15.4l2.3-6.4H6.7z" fill="currentColor" opacity=".35"/></g></svg></button>
   <button type="button" id="music" aria-label="Muziek aan of uit" data-en-label="Music on or off" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M6.6 13.2V4.3l8-1.8v9.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><ellipse cx="4.6" cy="13.3" rx="2.1" ry="1.7" fill="currentColor"/><ellipse cx="12.6" cy="11.8" rx="2.1" ry="1.7" fill="currentColor"/></svg></button>
   <button type="button" id="evening" aria-label="Avond aan of uit" data-en-label="Evening on or off" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><mask id="moon-cut"><rect width="18" height="18" fill="#fff"/><circle cx="12.4" cy="6" r="5.2" fill="#000"/></mask><circle cx="8.6" cy="9.6" r="6.2" fill="currentColor" mask="url(#moon-cut)"/><circle cx="14.2" cy="12.4" r=".9" fill="currentColor" opacity=".7"/></svg></button>
+  <button type="button" id="cascade-toggle" aria-pressed="false" aria-label="Route van de Cascaderun, 5 mijl" title="Cascaderun 5 mijl" data-en-label="Course of the Cascaderun, 5 miles" data-en-title="Cascaderun 5 miles"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="11.2" cy="3.2" r="1.7" fill="currentColor"/><path d="M4.2 8.2l2.6-2.4 3.2.6 1.6 2.6 2.6.6M10 6.4l-1.6 4 2.6 2.2.4 3.6M8.4 10.4l-1.6 2.6-3.6.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   <button type="button" id="data-toggle" aria-expanded="false" aria-controls="data" aria-label="Bronnen van de data" title="Data" data-en-label="Data sources" data-en-title="Data"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="5.6" r="1" fill="currentColor"/><path d="M9 8.2v4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
 </div>
 
@@ -750,6 +753,7 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
     viewer.addHandler('animation-finish', () => pinAt && writePin());
     fetch('hotspots.json', { cache: 'no-store' }).then((r) => r.json()).then(addHotspots);
     fetch('routes.json', { cache: 'no-store' }).then((r) => r.json()).then(addRoutes);
+    addCascade();
     fetch('history.json', { cache: 'no-store' }).then((r) => r.json()).then(addTour);
     fetch('traffic.json', { cache: 'no-store' }).then((r) => r.json()).then(addTraffic).catch(() => {});
   });
@@ -1056,6 +1060,40 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
     }
   }
 
+  // The 5 mile course of the Hoogeveense Cascaderun (RD coordinates, from the organisers' route map on
+  // cascaderun.nl/parcoursen), shown with the runner button in the toolbar.
+  const CASCADE = [[228539,527075],[228507,527056],[228498,527046],[228482,527041],[228464,527038],[228281,527027],[228027,527022],[228021,527010],[228008,527006],[228001,527009],[227996,527014],[227984,527015],[227388,527004],[227332,527001],[227284,526989],[227023,526837],[226987,526825],[226940,526824],[226934,526741],[226957,526644],[226962,526516],[226969,526499],[226988,526478],[226990,526389],[227007,526318],[227026,526211],[227022,526201],[226978,526192],[226952,526178],[226907,526131],[226889,526112],[226867,526097],[226787,526072],[226665,526052],[226425,525944],[226446,525899],[226486,525852],[226496,525839],[226502,525818],[226511,525752],[226527,525726],[226557,525705],[226603,525688],[226642,525680],[226693,525680],[226692,525665],[226684,525654],[226683,525627],[226695,525601],[226692,525539],[226687,525472],[226683,525433],[226676,525357],[226670,525283],[226668,525266],[226729,525261],[226729,525273],[226858,525261],[226921,525255],[226952,525254],[226982,525253],[227009,525258],[227039,525268],[227083,525296],[227118,525343],[227127,525365],[227133,525390],[227137,525423],[227147,525542],[227154,525566],[227164,525576],[227153,525604],[227172,525808],[227166,525845],[227145,525889],[227165,525900],[227183,525907],[227280,525899],[227284,525931],[227293,525932],[227357,525927],[227393,525929],[227429,525931],[227433,525908],[227432,525883],[227429,525819],[227431,525802],[227425,525703],[227419,525684],[227413,525543],[227470,525536],[227496,525526],[227519,525512],[227566,525502],[227628,525489],[227660,525491],[227716,525496],[227768,525507],[227797,525506],[228012,525487],[228035,525490],[228052,525502],[228087,525563],[228122,525634],[228159,525727],[228178,525756],[228192,525772],[228211,525784],[228237,525768],[228349,525732],[228607,525704],[228638,525718],[228685,526441],[228692,526454],[228695,526468],[228696,526543],[228691,526674],[228676,526916]];
+  let fitCascade = () => {};
+  function addCascade() {
+    const svg = document.createElementNS(SVG, 'svg');
+    svg.setAttribute('class', 'routes cascade');
+    svg.setAttribute('viewBox', `0 0 ${M.width} ${M.height}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    const px = () => CASCADE.map(([X, Y]) => { const { x, z } = rdToLocal(X, Y); return groundToImage(x, z); });
+    const els = ['casing', 'run'].map((cls) => {
+      const el = document.createElementNS(SVG, 'polyline');
+      el.setAttribute('class', cls);
+      svg.appendChild(el);
+      return el;
+    });
+    const place = () => { const pts = px().map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' '); for (const el of els) el.setAttribute('points', pts); };
+    place();
+    onView.push(place);
+    viewer.addOverlay({ element: svg, location: new OpenSeadragon.Rect(0, 0, 1, M.height / M.width) });
+    fitCascade = () => {
+      const p = px(), xs = p.map((q) => q.x), ys = p.map((q) => q.y), pad = 300;
+      const x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad;
+      viewer.viewport.fitBounds(viewer.viewport.imageToViewportRectangle(x0, y0, Math.max(...xs) + pad - x0, Math.max(...ys) + pad - y0));
+    };
+  }
+  const cascadeBtn = document.getElementById('cascade-toggle');
+  cascadeBtn.addEventListener('click', () => {
+    const on = !document.body.classList.contains('show-cascade');
+    document.body.classList.toggle('show-cascade', on);
+    cascadeBtn.setAttribute('aria-pressed', String(on));
+    if (on) fitCascade();
+  });
+
   const routesBtn = document.getElementById('routes-toggle');
   routesBtn.addEventListener('click', () => {
     const on = !document.body.classList.contains('show-routes');
@@ -1268,7 +1306,7 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
     });
     lanes.forEach((l, i) => {
       for (const mode of [CAR, BIKE, WALK]) {
-        for (let n = Math.floor((l.len / 1000) * (l[DENSITY[mode]] || 0) + Math.random()); n > 0; n--) movers.push(newMover(i, Math.random() * l.len, mode));
+        for (let n = Math.floor((l.len / 1000) * (l[DENSITY[mode]] || 0) * (mode === WALK ? 3 : 1) + Math.random()); n > 0; n--) movers.push(newMover(i, Math.random() * l.len, mode));
       }
     });
     for (let i = 0; i < 3; i++) spawnFlock(0.2 + Math.random() * 0.6);
