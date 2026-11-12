@@ -7,9 +7,8 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "raw"
 BUILD = ROOT / "data" / "build"
 
-# The town of Hoogeveen, 6.5 x 4.5 km: from Erflanden in the west to De Weide and De Wieken in the east, and from the
-# Hoogeveensche Vaart in the south to the industrial estates in the north (where the BGT has buildings, counted per
-# 250 m cell). The villages around it (Stuifzand, Noordscheschut, Hollandscheveld) stay outside.
+# The town of Hoogeveen, 6.5 x 4.5 km: the box around the built-up area, read off a count of BGT buildings per 250 m
+# cell, on the 500 m grid of the chunks. The villages around the town stay outside.
 XMIN, YMIN, XMAX, YMAX = 225600, 524400, 232100, 528900
 CX, CY = (XMIN + XMAX) / 2, (YMIN + YMAX) / 2
 

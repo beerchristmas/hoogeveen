@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Isometrisch Hoogeveen</title>
-<meta name="description" content="Het centrum van Hoogeveen in miniatuur, nagebouwd uit openbare kaarten, hoogtemetingen en een luchtfoto.">
+<meta name="description" content="Hoogeveen in miniatuur, nagebouwd uit openbare kaarten, hoogtemetingen en een luchtfoto.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://beerchristmas.github.io/hoogeveen/">
 <meta property="og:title" content="Isometrisch Hoogeveen">
-<meta property="og:description" content="Het centrum van Hoogeveen in miniatuur, nagebouwd uit openbare kaarten, hoogtemetingen en een luchtfoto.">
+<meta property="og:description" content="Hoogeveen in miniatuur, nagebouwd uit openbare kaarten, hoogtemetingen en een luchtfoto.">
 <meta property="og:image" content="https://beerchristmas.github.io/hoogeveen/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -357,7 +357,7 @@
     <button type="button" id="intro-toggle" aria-expanded="true" aria-controls="intro-body" aria-label="Menu in- of uitklappen" data-en-label="Show or hide the menu"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
   <div id="intro-body">
-  <p data-en="The centre of Hoogeveen in miniature, three by three kilometres around the Hoofdstraat.">Het centrum van Hoogeveen in miniatuur, drie bij drie kilometer rond de Hoofdstraat.</p>
+  <p data-en="The whole town of Hoogeveen in miniature, 6.5 by 4.5 kilometres.">Heel Hoogeveen in miniatuur, 6,5 bij 4,5 kilometer.</p>
   <p class="long" data-en="Every house and every tree stands in its real place, rebuilt from public maps, height measurements and an aerial photo. Scroll or pinch to zoom, or look up an address below.">Elk huis en elke boom staat op zijn echte plek, nagebouwd uit openbare kaarten, hoogtemetingen en een luchtfoto. Scroll of knijp om te zoomen, of zoek hieronder een adres.</p>
   <form id="search" role="search">
     <input id="goto" list="place-list" placeholder="Ga naar een adres of plek…" autocomplete="off" aria-label="Ga naar een adres of plek" data-en-placeholder="Go to an address or place…" data-en-label="Go to an address or place">
@@ -1093,27 +1093,32 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
 
   // Search: named places and every address on the map (places.json, built by scripts/build_places.py).
   let places = [];
+  // Case, hyphens and spaces don't matter, so "#Sint-Willibrorduskerk" and "sint willibrordus" both work.
+  const norm = (t) => t.trim().toLowerCase().replace(/[-\s]+/g, ' ');
   const goto = document.getElementById('goto');
   const found = document.getElementById('found');
   fetch('places.json', { cache: 'no-store' }).then((r) => r.json()).then((list) => {
     places = list;
-    const dl = document.getElementById('place-list');
-    for (const p of list) {
-      const o = document.createElement('option');
-      o.value = p.name;
-      dl.appendChild(o);
-    }
+    for (const p of places) p.key = norm(p.name);
+    suggest();
     openFromHash();
   });
+  // A town has tens of thousands of addresses: the list under the search box only holds the best matches for what
+  // has been typed so far, names that start with it first.
+  function suggest() {
+    const s = norm(goto.value), dl = document.getElementById('place-list'), out = [];
+    if (s) {
+      for (const p of places) if (p.key.startsWith(s) && out.push(p) >= 40) break;
+      if (out.length < 40) for (const p of places) if (!p.key.startsWith(s) && p.key.includes(s) && out.push(p) >= 40) break;
+    }
+    dl.replaceChildren(...out.map((p) => Object.assign(document.createElement('option'), { value: p.name })));
+  }
+  goto.addEventListener('input', suggest);
 
-  // Case, hyphens and spaces don't matter, so "#Sint-Willibrorduskerk" and "sint willibrordus" both work.
-  const norm = (t) => t.trim().toLowerCase().replace(/[-\s]+/g, ' ');
   function findPlace(q) {
     const s = norm(q);
     if (!s) return null;
-    return places.find((p) => norm(p.name) === s)
-      || places.find((p) => norm(p.name).startsWith(s))
-      || places.find((p) => norm(p.name).includes(s));
+    return places.find((p) => p.key === s) || places.find((p) => p.key.startsWith(s)) || places.find((p) => p.key.includes(s));
   }
 
   function goPlace(p) {
