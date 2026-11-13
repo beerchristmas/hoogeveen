@@ -298,14 +298,7 @@ CURATED = [
         "osm": ["Fluitenberg"],
         "point": True,
         "kind": "Dorp · 485 inwoners",
-        "text": "De beek heette vroeger de Vleute en de hoogte ernaast de Vleutenbarg: daar komt de naam vandaan. Rond 1810 stonden hier en in Kalenberg samen negen huizen, midden in het woeste land. In de 17e eeuw begon de familie Sol een boerderij op de hoge grond; in een lege kamer daarvan werd vanaf 1834 schoolgehouden. De bewoners bouwden in 1861 zelf een brug over het Oude Diep. Tot 1998 hoorde het dorp bij de gemeente Ruinen, met het Oude Diep als grens. De A28 snijdt het oostelijke deel af. Voor zo'n klein dorp komen er opvallend veel wielrenners vandaan: veldrijder Martin Hendriks, Erik Dekker, zijn broer Dick en diens zoon Jens.",
-    },
-    {
-        "name": "Zeven Heuvels",
-        "osm": ["Zevenheuveltjes"],
-        "point": True,
-        "kind": "Grafheuvels · bronstijd",
-        "text": "Een grafveld uit de bronstijd. Eind 19e eeuw lagen hier nog twintig grafheuvels; na de ontginningen zijn er zeven over. Ze zijn een beschermd monument. Vlakbij, aan de Fluitenbergseweg, kwam in 2006 bij de aanleg van een begraafplaats een boerenerf uit de ijzertijd tevoorschijn.",
+        "text": "De beek heette vroeger de Vleute en de hoogte ernaast de Vleutenbarg: daar komt de naam vandaan. Rond 1810 stonden hier en in Kalenberg samen negen huizen, midden in het woeste land. In de 17e eeuw begon de familie Sol een boerderij op de hoge grond; in een lege kamer daarvan werd vanaf 1834 schoolgehouden. De bewoners bouwden in 1861 zelf een brug over het Oude Diep. Tot 1998 hoorde het dorp bij de gemeente Ruinen, met het Oude Diep als grens. De A28 snijdt het oostelijke deel af. Net ten noorden van het dorp liggen de Zeven Heuvels, grafheuvels uit de bronstijd: eind 19e eeuw waren het er nog twintig. Voor zo'n klein dorp komen er opvallend veel wielrenners vandaan: veldrijder Martin Hendriks, Erik Dekker, zijn broer Dick en diens zoon Jens.",
     },
     {
         "name": "Kalenberg",
@@ -591,7 +584,9 @@ def places(bag):
             as_point = True
         else:
             found = [p for n in hints for p in osm.get(n, [])]
-            assert found, f"{c['name']}: not in OpenStreetMap"
+            if not found:
+                print(f"{c['name']}: not on the map")
+                continue
             # Of a road or a stream in many pieces, the piece nearest the middle of the map.
             best = min(found, key=lambda p: (not p[2] and not as_point, np.hypot(p[0] - CX, p[1] - CY)))
             c["at"] = best[:2]

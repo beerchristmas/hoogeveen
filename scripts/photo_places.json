@@ -677,11 +677,65 @@
 {
 "name": "Kinholt",
 "latlon": [
-52.72288,
-6.44119
+52.7249,
+6.44424
 ],
 "wikidata": null,
 "kind": "Oerbos"
+},
+{
+"name": "Fluitenberg",
+"latlon": [
+52.7347,
+6.46546
+],
+"wikidata": "Q3015492",
+"kind": "Dorp · 485 inwoners"
+},
+{
+"name": "Kalenberg",
+"latlon": [
+52.73802,
+6.44044
+],
+"wikidata": null,
+"kind": "Buurtschap"
+},
+{
+"name": "Stadterij",
+"latlon": [
+52.73987,
+6.49061
+],
+"wikidata": null,
+"kind": "Buurtschap"
+},
+{
+"name": "Toldijk",
+"latlon": [
+52.73759,
+6.4742
+],
+"wikidata": null,
+"kind": "Buurtschap"
+},
+{
+"name": "De wijken",
+"latlon": [
+52.70776,
+6.48149
+],
+"wikidata": null,
+"kind": "Veenkanaaltjes"
+},
+{
+"name": "Oude Hoogeveensche Vaart",
+"latlon": [
+52.71702,
+6.44684
+],
+"wikidata": null,
+"kind": "Oude loop van de vaart"
 },
 {
 "name": "DOC Kaas Alteveerstraat",
