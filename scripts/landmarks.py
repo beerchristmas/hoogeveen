@@ -369,40 +369,6 @@ INFO = ("note", "kind", "text", "address", "web", "more", "photo", "stop")
 
 EXTRA = RAW.parent / "extra"
 
-# Named OpenStreetMap things that get a card of their own when they stand in a building: (tag, value) to what the
-# card calls them. Their story is short: what it is, when the building was built and how tall it is.
-AUTO_KINDS = [
-    (("building", "mosque"), "Moskee"),
-    (("amenity", "place_of_worship"), "Kerk"),
-    (("building", "church"), "Kerk"),
-    (("amenity", "school"), "School"),
-    (("amenity", "college"), "School"),
-    (("amenity", "kindergarten"), "Kinderopvang"),
-    (("amenity", "theatre"), "Theater"),
-    (("amenity", "cinema"), "Bioscoop"),
-    (("amenity", "library"), "Bibliotheek"),
-    (("amenity", "archive"), "Archief"),
-    (("amenity", "community_centre"), "Buurthuis"),
-    (("amenity", "police"), "Politiebureau"),
-    (("amenity", "fire_station"), "Brandweerkazerne"),
-    (("amenity", "social_facility"), "Zorg"),
-    (("tourism", "museum"), "Museum"),
-    (("tourism", "hotel"), "Hotel"),
-    (("leisure", "sports_centre"), "Sportaccommodatie"),
-    (("leisure", "sports_hall"), "Sporthal"),
-    (("leisure", "swimming_pool"), "Zwembad"),
-    (("leisure", "bowling_alley"), "Bowlingbaan"),
-    (("club", "sport"), "Sportclub"),
-    (("man_made", "works"), "Fabriek"),
-    (("building", "apartments"), "Flat"),
-    (("building", "industrial"), "Bedrijf"),
-    (("building", "commercial"), "Kantoor"),
-    (("building", "office"), "Kantoor"),
-    (("building", "nursing"), "Zorg"),
-    (("building", "school"), "School"),
-    (("building", "retail"), "Winkels"),
-    (("building", "yes"), "Gebouw"),
-]
 SKIP_NAMES = {"Vliegveld Hoogeveen", "1", "2", "Hoogeveen"}
 
 # What is known about a neighbourhood beyond the years its houses were built.
@@ -498,6 +464,42 @@ def fill(entry, facts):
         entry["text"] = f"{entry.get('text', '')} {rank_text(facts['rank'])}".strip()
 
 
+SPORTS = {"soccer": "voetbal", "tennis": "tennis", "padel": "padel", "cycling": "wielrennen", "billiards": "biljart", "shooting": "schietsport",
+          "swimming": "zwemmen", "hockey": "hockey", "korfball": "korfbal", "athletics": "atletiek", "parachuting": "parachutespringen"}
+CHURCHES = {"baptist": "Baptistenkerk", "roman_catholic": "Rooms-katholieke kerk", "jehovahs_witness": "Koninkrijkszaal van Jehovah's Getuigen",
+            "reformed": "Gereformeerde kerk", "evangelical": "Evangelische kerk"}
+
+
+def describe(t):
+    """What OpenStreetMap says a named place is, as (kind, sentence), or None when it says too little to tell."""
+    if t.get("amenity") in ("school", "college"):
+        what = t.get("official_name") or t.get("description")
+        if not what:
+            return None
+        level = {"0;1": "Basisschool", "2": "Middelbare school", "2;3": "Middelbare school", "3": "Mbo-school"}.get(t.get("isced:level"), "School")
+        said = f"{what[0].upper()}{what[1:]}" if what else level
+        if t.get("official_name") and t.get("description"):
+            said += f": {t['description']}"
+        if t.get("operator"):
+            said += f", van {t['operator']}"
+        if t.get("old_name"):
+            said += f". Heette eerder {' en '.join(t['old_name'].split(';'))}"
+        return "School", said + "."
+    if t.get("amenity") == "place_of_worship" and (t.get("denomination") in CHURCHES or t.get("operator")):
+        said = "Moskee" if t.get("religion") == "muslim" else CHURCHES.get(t.get("denomination"), "Kerk")
+        if t.get("operator"):
+            said += f" van de {' en de '.join(t['operator'].split(';'))}"
+        return ("Moskee" if t.get("religion") == "muslim" else "Kerk"), said + "."
+    sports = [SPORTS[s] for s in t.get("sport", "").split(";") if s in SPORTS]
+    if sports and (t.get("club") or t.get("community_centre") == "club_home"):
+        return "Sportclub", f"Clubgebouw voor {' en '.join(sports)}."
+    if t.get("social_facility") == "nursing_home" and t.get("operator"):
+        return "Verpleeghuis", f"Verpleeghuis van {t['operator']}."
+    if t.get("social_facility") == "assisted_living" and t.get("operator"):
+        return "Woonzorg", f"Woonzorgcomplex van {t['operator']}."
+    return None
+
+
 def places(bag):
     """BUILDINGS and POINTS: the curated places, then the named buildings and the neighbourhoods of OpenStreetMap,
     each with the few facts the data gives. A place without a story is not on the map."""
@@ -539,23 +541,19 @@ def places(bag):
             assert not any("{" in c.get(k, "") for k in ("kind", "text")), f"{c['name']}: no building to take its facts from"
             points.append(c)
 
-    # Named buildings.
+    # Named buildings that OpenStreetMap says enough about to tell what they are.
     for name, found in sorted(osm.items()):
         if name in names or name in SKIP_NAMES:
             continue
         for x, y, is_building, t in found:
-            label = next((label for (k, v), label in AUTO_KINDS if t.get(k) == v), None)
-            i = bag.at(x, y, reach=0) if label else None
+            said = describe(t)
+            i = bag.at(x, y, reach=0) if said else None
             if i is None or bag.year[i] < 1000:
                 continue
+            kind, text = said
             f = bag.facts(i)
-            if "zwembad" in name.lower():
-                label = "Zwembad"
-            if label == "Gebouw" and f["year"] >= 1940 and not re.search(r"vereniging|club", name, re.I):
-                continue  # a shop or an office that happens to have its name on the building
-            text = f"{label} uit {f['year']}" if label in ("Kerk", "Moskee", "Flat", "Gebouw") else f"{label}. Het gebouw is uit {f['year']}"
-            text += f", {f['h']} meter hoog." if f["h"] >= 15 else "."
-            entry = {"name": name, "at": (x, y), "kind": f"{label} · {f['year']}", "text": text, "wikidata": t.get("wikidata")}
+            entry = {"name": t.get("official_name", name) if kind == "School" else name, "at": (x, y), "kind": kind,
+                     "text": f"{text} Het gebouw is uit {f['year']}.", "wikidata": t.get("wikidata")}
             street, number = t.get("addr:street"), t.get("addr:housenumber")
             if street and number:
                 entry["address"] = f"{street} {number}"
@@ -566,20 +564,26 @@ def places(bag):
                 names.add(name)
                 break
 
-    # Neighbourhoods: when their houses were built.
-    for name, found in sorted(osm.items()):
-        x, y, _, t = found[0]
-        if t.get("place") not in ("neighbourhood", "quarter", "suburb") or name in names:
+    # The tallest buildings that are not on the map yet.
+    for rank, i in enumerate(bag.tallest, 1):
+        if i in used:
             continue
+        f = bag.facts(i)
+        d = np.hypot(ADDRESS_XY[:, 0] - bag.mid[i, 0], ADDRESS_XY[:, 1] - bag.mid[i, 1])
+        street = re.sub(r"\s+\d.*$", "", ADDRESS_LABELS[int(d.argmin())])
+        add_building({"name": f"Hoogbouw {street}" if street not in names else f"Hoogbouw {street} ({rank})", "at": tuple(bag.mid[i]), "kind": f"Hoogbouw · {f['year']}",
+                      "text": f"Gebouw uit {f['year']}, {f['h']} meter hoog."}, i)
+        names.add(street)
+
+    # Neighbourhoods there is something to tell about.
+    for name, text in WIJKEN.items():
+        if name not in osm:
+            continue
+        x, y, _, t = osm[name][0]
         near = (np.hypot(bag.mid[:, 0] - x, bag.mid[:, 1] - y) < 350) & (bag.year > 1000) & (bag.area > 30)
-        if near.sum() < 30:
-            continue
         lo, hi = np.percentile(bag.year[near], [25, 75]).astype(int)
-        text = f"De helft van de {near.sum()} gebouwen binnen 350 meter is gebouwd tussen {lo} en {hi}."
-        if name in WIJKEN:
-            text = f"{WIJKEN[name]} {text}"
-        points.append({"name": name, "at": (x, y), "kind": "Wijk" if t["place"] != "quarter" else "Buurt", "text": text})
-        names.add(name)
+        points.append({"name": name, "at": (x, y), "kind": "Wijk" if t.get("place") != "quarter" else "Buurt",
+                       "text": f"{text} De helft van de gebouwen binnen 350 meter is gebouwd tussen {lo} en {hi}."})
     return buildings, points
 
 
@@ -591,6 +595,9 @@ def point_in_ring(x, y, ring):
     return inside
 
 
+_A = json.loads((RAW / "addresses.json").read_text())
+ADDRESS_XY = np.array([(x, y) for x, y, _ in _A])
+ADDRESS_LABELS = [label.split(", ")[0] for _, _, label in _A]
 ADDRESSES = None
 
 
