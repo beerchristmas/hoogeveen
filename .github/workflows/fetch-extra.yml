@@ -1,0 +1,35 @@
+# Fetch the extra OpenStreetMap data for the named places and put it on the data-extra branch, for build environments
+# that cannot reach Overpass themselves.
+name: Fetch extra data
+on:
+  push:
+    branches: [main]
+    paths: [scripts/fetch_extra.py, .github/workflows/fetch-extra.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch
+        run: |
+          pip -q install numpy
+          cd scripts
+          python fetch_extra.py > ../fetch.log 2>&1 || echo "FETCH FAILED: exit $?" >> ../fetch.log
+          cat ../fetch.log
+      - name: Publish to data-extra
+        if: always()
+        run: |
+          mkdir -p data/extra && cp fetch.log data/extra/ || true
+          cd data/extra
+          git init -q -b data-extra
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Extra OpenStreetMap data for ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" data-extra
