@@ -174,6 +174,19 @@
   .hotspots polygon { fill: transparent; stroke: transparent; stroke-width: 2; vector-effect: non-scaling-stroke; transition: fill 0.12s; }
   .hotspots polygon.on, .hotspots polygon.picked { fill: #d2b47a33; stroke: var(--peat); }
   .hotspots polygon.in-series:not(.on):not(.picked) { stroke: #d2b47a99; }
+  /* A dot on every place that has a story. */
+  .dot {
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: #f1e3c2;
+    border: 2px solid #4a3523;
+    box-shadow: 0 1px 4px #000a;
+    cursor: pointer;
+  }
+  .dot:hover { background: #fff; }
+  body.tour .dot { display: none !important; }
   #tip {
     position: fixed;
     z-index: 6;
@@ -787,6 +800,19 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
     placeSpots();
     onView.push(placeSpots);
     viewer.addOverlay({ element: svg, location: new OpenSeadragon.Rect(0, 0, 1, M.height / M.width) });
+    // Places with a story get a dot in the middle of their outline; a click opens the story.
+    const middle = (h) => viewer.viewport.imageToViewportCoordinates(
+      new OpenSeadragon.Point(h.pts.reduce((a, p) => a + p[0], 0) / h.pts.length, h.pts.reduce((a, p) => a + p[1], 0) / h.pts.length));
+    const pins = hotspots.filter((h) => h.text).map((h) => {
+      const el = document.createElement('div');
+      el.className = 'dot';
+      el.title = T(h.name);
+      viewer.addOverlay({ element: el, location: middle(h) });
+      // OpenSeadragon swallows clicks on overlays unless they get their own tracker.
+      new OpenSeadragon.MouseTracker({ element: el, clickHandler: () => openInfo(h) });
+      return [el, h];
+    });
+    onView.push(() => { for (const [el, h] of pins) viewer.updateOverlay(el, middle(h)); });
     categories = data.categories || [];
     const row = document.getElementById('series');
     for (const c of categories) {
