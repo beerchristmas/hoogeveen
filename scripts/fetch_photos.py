@@ -70,22 +70,28 @@ def candidates(place):
         data = get("https://www.wikidata.org/w/api.php", {"action": "wbgetclaims", "format": "json", "entity": place["wikidata"], "property": "P18"})
         for claim in (json.loads(data).get("claims", {}).get("P18", []) if data else []):
             found += query(titles="File:" + claim["mainsnak"]["datavalue"]["value"])
+    # The searches first: what a place is called says more than what happens to stand within 80 m of it.
+    for words in place.get("search") or [f'"{place["name"]}" Hoogeveen']:
+        found += query(generator="search", gsrsearch=words, gsrnamespace=6, gsrlimit=5)
     lat, lon = place["latlon"]
     found += query(generator="geosearch", ggscoord=f"{lat}|{lon}", ggsradius=80, ggsnamespace=6, ggslimit=6)
-    found += query(generator="search", gsrsearch=f'"{place["name"]}" Hoogeveen', gsrnamespace=6, gsrlimit=4)
     seen, out = set(), []
     for c in found:
         if c["file"] not in seen and FREE.match(c["licence"]):
             seen.add(c["file"])
             out.append(c)
-    return out[:6]
+    return out[:8]
 
 
 def main():
     (OUT / "c").mkdir(parents=True, exist_ok=True)
     (OUT / "chosen").mkdir(parents=True, exist_ok=True)
     result = {}
-    for n, place in enumerate(json.loads((HERE / "photo_places.json").read_text())):
+    queries = json.loads((HERE / "photo_queries.json").read_text()) if (HERE / "photo_queries.json").exists() else {}
+    chosen_path = HERE / "photo_chosen.json"
+    chosen = json.loads(chosen_path.read_text()) if chosen_path.exists() else {}
+    todo = [{**p, "search": queries.get(p["name"])} for p in json.loads((HERE / "photo_places.json").read_text()) if p["name"] not in chosen]
+    for n, place in enumerate(todo):
         try:
             cands = candidates(place)
         except Exception as e:  # noqa: BLE001
@@ -100,8 +106,6 @@ def main():
         print(f"{place['name']}: {len(cands)}", file=sys.stderr)
     (OUT / "candidates.json").write_text(json.dumps(result, ensure_ascii=False, indent=1))
 
-    chosen_path = HERE / "photo_chosen.json"
-    chosen = json.loads(chosen_path.read_text()) if chosen_path.exists() else {}
     meta = {}
     for name, file in chosen.items():
         got = query(titles="File:" + file, iiurlwidth=960)

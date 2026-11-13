@@ -270,85 +270,31 @@
 "kind": "Kerkelijk centrum"
 },
 {
-"name": "'t Kienholt",
+"name": "Openbare Dalton Basisschool 't Kienholt",
 "latlon": [
 52.72201,
 6.45392
 ],
 "wikidata": null,
-"kind": "School · 1979"
+"kind": "School"
 },
 {
-"name": "'t Kofschip",
+"name": "Protestants Christelijke Basisschool 't Kofschip",
 "latlon": [
 52.70981,
 6.44716
 ],
 "wikidata": null,
-"kind": "School · 2006"
+"kind": "School"
 },
 {
-"name": "'t Rastholt",
+"name": "Openbare Basisschool 't Rastholt",
 "latlon": [
 52.72082,
 6.4423
 ],
 "wikidata": null,
-"kind": "School · 1988"
-},
-{
-"name": "Aan de Toldijk",
-"latlon": [
-52.74157,
-6.47323
-],
-"wikidata": null,
-"kind": "Gebouw · 1937"
-},
-{
-"name": "Activum",
-"latlon": [
-52.72335,
-6.49418
-],
-"wikidata": null,
-"kind": "Sportaccommodatie · 2016"
-},
-{
-"name": "Alfa-college",
-"latlon": [
-52.73874,
-6.47165
-],
-"wikidata": null,
-"kind": "School · 2002"
-},
-{
-"name": "Apostolisch Genootschap",
-"latlon": [
-52.7233,
-6.47159
-],
-"wikidata": null,
-"kind": "Kerk · 1975"
-},
-{
-"name": "Azor Bike",
-"latlon": [
-52.73424,
-6.49118
-],
-"wikidata": null,
-"kind": "Fabriek · 1976"
-},
-{
-"name": "Bakkerij Faber",
-"latlon": [
-52.72076,
-6.48231
-],
-"wikidata": null,
-"kind": "Fabriek · 1978"
+"kind": "School"
 },
 {
 "name": "Baptistengemeente Beth-El",
@@ -357,25 +303,7 @@
 6.49188
 ],
 "wikidata": null,
-"kind": "Kerk · 1978"
-},
-{
-"name": "Basisschool Prof. Titus Brandsma",
-"latlon": [
-52.7287,
-6.47599
-],
-"wikidata": null,
-"kind": "School · 1956"
-},
-{
-"name": "Betech Mass Turning",
-"latlon": [
-52.73576,
-6.51582
-],
-"wikidata": null,
-"kind": "Fabriek · 1998"
+"kind": "Kerk"
 },
 {
 "name": "Bilderdijk",
@@ -384,97 +312,7 @@
 6.47491
 ],
 "wikidata": null,
-"kind": "Zorg · 2014"
-},
-{
-"name": "Blikfabriek Hoogeveen Museum",
-"latlon": [
-52.72785,
-6.48413
-],
-"wikidata": null,
-"kind": "Museum · 1951"
-},
-{
-"name": "Brandweerkazerne Hoogeveen",
-"latlon": [
-52.73173,
-6.47774
-],
-"wikidata": null,
-"kind": "Brandweerkazerne · 1972"
-},
-{
-"name": "Brinkstaete",
-"latlon": [
-52.73219,
-6.47689
-],
-"wikidata": null,
-"kind": "Flat · 2022"
-},
-{
-"name": "Brugklasgebouw Groene Driehoek",
-"latlon": [
-52.71934,
-6.49392
-],
-"wikidata": null,
-"kind": "School · 1994"
-},
-{
-"name": "Cafe de Schout",
-"latlon": [
-52.72694,
-6.47711
-],
-"wikidata": null,
-"kind": "Gebouw · 1903"
-},
-{
-"name": "Casquette",
-"latlon": [
-52.72492,
-6.47853
-],
-"wikidata": null,
-"kind": "Flat · 2019"
-},
-{
-"name": "Catalpa",
-"latlon": [
-52.71525,
-6.49966
-],
-"wikidata": null,
-"kind": "Kinderopvang · 1970"
-},
-{
-"name": "Christelijke Gereformeerde Kerk - Centrumkerk",
-"latlon": [
-52.72491,
-6.48274
-],
-"wikidata": null,
-"kind": "Kerk · 1963"
-},
-{
-"name": "Clubgebouw de Kaketoe",
-"latlon": [
-52.73562,
-6.48528
-],
-"wikidata": null,
-"kind": "Gebouw · 1989"
-},
-{
-"name": "DES Gebouw Tuindorp",
-"latlon": [
-52.7172,
-6.48869
-],
-"wikidata": null,
-"kind": "Buurthuis · 1979"
+"kind": "Woonzorg"
 },
 {
 "name": "De Atlas",
@@ -483,88 +321,34 @@
 6.48009
 ],
 "wikidata": null,
-"kind": "School · 2016"
+"kind": "School"
 },
 {
-"name": "De Buizerd",
-"latlon": [
-52.71519,
-6.49776
-],
-"wikidata": null,
-"kind": "Flat · 1966"
-},
-{
-"name": "De Fontein",
+"name": "Evangelische Basisschool De Fontein",
 "latlon": [
 52.71623,
 6.48852
 ],
 "wikidata": null,
-"kind": "School · 1966"
+"kind": "School"
 },
 {
-"name": "De Goudvink",
+"name": "Openbare Basisschool De Goudvink",
 "latlon": [
 52.71773,
 6.49719
 ],
 "wikidata": null,
-"kind": "School · 2020"
+"kind": "School"
 },
 {
-"name": "De Kajuit",
+"name": "Christelijke Basisschool De Morgenster",
 "latlon": [
-52.71806,
-6.47568
+52.72449,
+6.51033
 ],
 "wikidata": null,
-"kind": "Buurthuis · 2011"
-},
-{
-"name": "De Laser Freezer",
-"latlon": [
-52.7332,
-6.50346
-],
-"wikidata": null,
-"kind": "Fabriek · 1978"
-},
-{
-"name": "De Leyenhove",
-"latlon": [
-52.71458,
-6.47632
-],
-"wikidata": null,
-"kind": "Flat · 1979"
-},
-{
-"name": "De Magneet",
-"latlon": [
-52.7244,
-6.50918
-],
-"wikidata": null,
-"kind": "Buurthuis · 2009"
-},
-{
-"name": "De Meander",
-"latlon": [
-52.71956,
-6.49216
-],
-"wikidata": null,
-"kind": "School · 2008"
-},
-{
-"name": "De Meteoor",
-"latlon": [
-52.72516,
-6.50357
-],
-"wikidata": null,
-"kind": "Flat · 2006"
+"kind": "School"
 },
 {
 "name": "De Opgang",
@@ -573,259 +357,52 @@
 6.4779
 ],
 "wikidata": null,
-"kind": "Kerk · 2003"
+"kind": "Kerk"
 },
 {
-"name": "De Oude Bibliotheek",
-"latlon": [
-52.72419,
-6.48244
-],
-"wikidata": null,
-"kind": "Gebouw · 1937"
-},
-{
-"name": "De Pelikaan",
-"latlon": [
-52.71517,
-6.47789
-],
-"wikidata": null,
-"kind": "Buurthuis · 1964"
-},
-{
-"name": "De Pompe",
-"latlon": [
-52.72798,
-6.48368
-],
-"wikidata": null,
-"kind": "Buurthuis · 1975"
-},
-{
-"name": "De Regenboog",
+"name": "Protestants Christelijke Basisschool De Regenboog",
 "latlon": [
 52.72016,
 6.44297
 ],
 "wikidata": null,
-"kind": "School · 1988"
+"kind": "School"
 },
 {
-"name": "De Robaard",
-"latlon": [
-52.71704,
-6.48968
-],
-"wikidata": null,
-"kind": "Flat · 2002"
-},
-{
-"name": "De Schildhoeve",
-"latlon": [
-52.735,
-6.44677
-],
-"wikidata": null,
-"kind": "Winkels · 1983"
-},
-{
-"name": "De Schuthoek",
+"name": "Openbare Basisschool De Schuthoek",
 "latlon": [
 52.71519,
 6.44901
 ],
 "wikidata": null,
-"kind": "School · 1982"
+"kind": "School"
 },
 {
-"name": "De Sprong",
+"name": "Christelijke Basisschool De Sprong",
 "latlon": [
 52.7152,
 6.48157
 ],
 "wikidata": null,
-"kind": "School · 2006"
+"kind": "School"
 },
 {
-"name": "De Wasbeer",
-"latlon": [
-52.71068,
-6.51839
-],
-"wikidata": null,
-"kind": "Bedrijf · 2013"
-},
-{
-"name": "De Weideblik",
-"latlon": [
-52.72019,
-6.4512
-],
-"wikidata": null,
-"kind": "Buurthuis · 1997"
-},
-{
-"name": "De Weidebloem",
+"name": "Christelijke Basisschool De Weidebloem",
 "latlon": [
 52.72192,
 6.46015
 ],
 "wikidata": null,
-"kind": "School · 1976"
+"kind": "School"
 },
 {
-"name": "Dikkenberg",
-"latlon": [
-52.71974,
-6.49118
-],
-"wikidata": null,
-"kind": "School · 1978"
-},
-{
-"name": "Dorado",
-"latlon": [
-52.72029,
-6.51596
-],
-"wikidata": null,
-"kind": "Flat · 1973"
-},
-{
-"name": "Dorpshuis \"Het Overschotje\"",
-"latlon": [
-52.7359,
-6.45302
-],
-"wikidata": null,
-"kind": "Buurthuis · 1991"
-},
-{
-"name": "Duikvereniging Aqua Nostra",
-"latlon": [
-52.72541,
-6.49353
-],
-"wikidata": null,
-"kind": "Gebouw · 1966"
-},
-{
-"name": "Elders Bouwchemie",
-"latlon": [
-52.72948,
-6.50234
-],
-"wikidata": null,
-"kind": "Fabriek · 1974"
-},
-{
-"name": "Enexis Vakschool Hoogeveen",
-"latlon": [
-52.73494,
-6.48557
-],
-"wikidata": null,
-"kind": "School · 1981"
-},
-{
-"name": "Goede Herderkerk",
-"latlon": [
-52.71365,
-6.48403
-],
-"wikidata": null,
-"kind": "Kerk · 2008"
-},
-{
-"name": "Grainplastics B.V.",
-"latlon": [
-52.73227,
-6.49692
-],
-"wikidata": null,
-"kind": "Fabriek · 1970"
-},
-{
-"name": "Gym4all",
-"latlon": [
-52.72403,
-6.46945
-],
-"wikidata": null,
-"kind": "Sportaccommodatie · 2003"
-},
-{
-"name": "H2O Evangelische Gemeenschap",
-"latlon": [
-52.73005,
-6.4769
-],
-"wikidata": null,
-"kind": "Kerk · 1900"
-},
-{
-"name": "Harm Smeenge",
-"latlon": [
-52.7203,
-6.49146
-],
-"wikidata": null,
-"kind": "School · 1984"
-},
-{
-"name": "Het Knooppunt",
-"latlon": [
-52.72375,
-6.48223
-],
-"wikidata": null,
-"kind": "Buurthuis · 1990"
-},
-{
-"name": "Het Koraal",
+"name": "Kindcentrum Het Koraal",
 "latlon": [
 52.71707,
 6.47964
 ],
 "wikidata": null,
-"kind": "School · 1964"
-},
-{
-"name": "Het Oor",
-"latlon": [
-52.72196,
-6.46881
-],
-"wikidata": null,
-"kind": "Buurthuis · 2001"
-},
-{
-"name": "Het Palet",
-"latlon": [
-52.72187,
-6.46943
-],
-"wikidata": null,
-"kind": "School · 1968"
-},
-{
-"name": "Het Podium",
-"latlon": [
-52.72003,
-6.4755
-],
-"wikidata": null,
-"kind": "Theater · 1989"
-},
-{
-"name": "Hicret Moskee",
-"latlon": [
-52.71377,
-6.49267
-],
-"wikidata": null,
-"kind": "Moskee · 2017"
+"kind": "School"
 },
 {
 "name": "Hoogeveense Biljartclub",
@@ -834,88 +411,7 @@
 6.50096
 ],
 "wikidata": null,
-"kind": "Sportclub · 2001"
-},
-{
-"name": "Hoogeveense Hockeyclub",
-"latlon": [
-52.72521,
-6.4948
-],
-"wikidata": null,
-"kind": "Gebouw · 1988"
-},
-{
-"name": "Hotel Hoogeveen",
-"latlon": [
-52.71958,
-6.46196
-],
-"wikidata": null,
-"kind": "Hotel · 1988"
-},
-{
-"name": "IG Design Group",
-"latlon": [
-52.7315,
-6.48776
-],
-"wikidata": null,
-"kind": "Fabriek · 1990"
-},
-{
-"name": "IJsvereniging Hoogeveen",
-"latlon": [
-52.72735,
-6.50171
-],
-"wikidata": null,
-"kind": "Gebouw · 1970"
-},
-{
-"name": "IVN Hoogeveen",
-"latlon": [
-52.71995,
-6.44625
-],
-"wikidata": null,
-"kind": "Buurthuis · 1984"
-},
-{
-"name": "Ichthuskerk",
-"latlon": [
-52.7137,
-6.49101
-],
-"wikidata": null,
-"kind": "Kerk · 1978"
-},
-{
-"name": "Jannes van der Sleedenhuis - Wolfsbos",
-"latlon": [
-52.71947,
-6.49528
-],
-"wikidata": null,
-"kind": "Flat · 2013"
-},
-{
-"name": "Kinderbelevingscentrum Bzzzonder Hoogeveen",
-"latlon": [
-52.71331,
-6.46038
-],
-"wikidata": null,
-"kind": "Kinderopvang · 2011"
-},
-{
-"name": "Kiri Bowling",
-"latlon": [
-52.72634,
-6.48055
-],
-"wikidata": null,
-"kind": "Bowlingbaan · 1975"
+"kind": "Sportclub"
 },
 {
 "name": "Koninkrijkszaal van Jehovah's Getuigen",
@@ -924,61 +420,7 @@
 6.47373
 ],
 "wikidata": null,
-"kind": "Kerk · 1990"
-},
-{
-"name": "Korfbalvereniging Thrianta",
-"latlon": [
-52.72727,
-6.49986
-],
-"wikidata": null,
-"kind": "Gebouw · 1997"
-},
-{
-"name": "Luxor",
-"latlon": [
-52.72545,
-6.47966
-],
-"wikidata": "Q38240179",
-"kind": "Bioscoop · 1964"
-},
-{
-"name": "Mulderheem",
-"latlon": [
-52.72118,
-6.48203
-],
-"wikidata": null,
-"kind": "Flat · 1995"
-},
-{
-"name": "Nieuw-Apostolische Kerk",
-"latlon": [
-52.71954,
-6.45113
-],
-"wikidata": null,
-"kind": "Kerk · 1999"
-},
-{
-"name": "Phoenix",
-"latlon": [
-52.72095,
-6.51575
-],
-"wikidata": null,
-"kind": "Flat · 1974"
-},
-{
-"name": "Politiebureau Hoogeveen",
-"latlon": [
-52.7239,
-6.4685
-],
-"wikidata": null,
-"kind": "Politiebureau · 2004"
+"kind": "Kerk"
 },
 {
 "name": "RC de Weide",
@@ -987,124 +429,7 @@
 6.46078
 ],
 "wikidata": null,
-"kind": "Buurthuis · 1996"
-},
-{
-"name": "Robijn",
-"latlon": [
-52.71936,
-6.50579
-],
-"wikidata": null,
-"kind": "Flat · 1966"
-},
-{
-"name": "Roelof van Echten College",
-"latlon": [
-52.72152,
-6.49177
-],
-"wikidata": null,
-"kind": "School · 2014"
-},
-{
-"name": "SIT Controls",
-"latlon": [
-52.73185,
-6.48995
-],
-"wikidata": null,
-"kind": "Fabriek · 2001"
-},
-{
-"name": "Salawaku",
-"latlon": [
-52.7183,
-6.46333
-],
-"wikidata": null,
-"kind": "Buurthuis · 1983"
-},
-{
-"name": "Scorpio",
-"latlon": [
-52.72085,
-6.5168
-],
-"wikidata": null,
-"kind": "Flat · 1973"
-},
-{
-"name": "Smaragd",
-"latlon": [
-52.71914,
-6.505
-],
-"wikidata": null,
-"kind": "Flat · 1966"
-},
-{
-"name": "Spoorzicht",
-"latlon": [
-52.73169,
-6.47327
-],
-"wikidata": null,
-"kind": "Flat · 1973"
-},
-{
-"name": "Sporthal Trasselt",
-"latlon": [
-52.71987,
-6.44196
-],
-"wikidata": null,
-"kind": "Sporthal · 1989"
-},
-{
-"name": "Sporthal Valkenlaan",
-"latlon": [
-52.71884,
-6.49299
-],
-"wikidata": null,
-"kind": "Sportaccommodatie · 1976"
-},
-{
-"name": "Sporthal de Booyenverlaat",
-"latlon": [
-52.71566,
-6.44973
-],
-"wikidata": null,
-"kind": "Sporthal · 1982"
-},
-{
-"name": "Stichting Vrienden van Weidesteyn",
-"latlon": [
-52.72661,
-6.46221
-],
-"wikidata": null,
-"kind": "Zorg · 1999"
-},
-{
-"name": "Taekwondo vereniging Sidokwan",
-"latlon": [
-52.71784,
-6.47523
-],
-"wikidata": null,
-"kind": "Sportclub · 1955"
-},
-{
-"name": "Thrianta Korfbal vereniging",
-"latlon": [
-52.727,
-6.49988
-],
-"wikidata": null,
-"kind": "Gebouw · 1982"
+"kind": "Sportclub"
 },
 {
 "name": "VV de Weide",
@@ -1113,43 +438,16 @@
 6.46065
 ],
 "wikidata": "Q2189706",
-"kind": "Buurthuis · 2006"
+"kind": "Sportclub"
 },
 {
-"name": "Villa Kakelbont",
+"name": "Openbare Basisschool Villa Kakelbont",
 "latlon": [
 52.724,
 6.47995
 ],
 "wikidata": null,
-"kind": "School · 1982"
-},
-{
-"name": "Vloertechniek Hoogeveen",
-"latlon": [
-52.73295,
-6.52569
-],
-"wikidata": null,
-"kind": "Fabriek · 2000"
-},
-{
-"name": "Vredehorst",
-"latlon": [
-52.71885,
-6.45414
-],
-"wikidata": null,
-"kind": "Kerk · 1980"
-},
-{
-"name": "Vrije baptistengemeente de Brug",
-"latlon": [
-52.7164,
-6.47077
-],
-"wikidata": null,
-"kind": "Kerk · 1972"
+"kind": "School"
 },
 {
 "name": "WSV De Peddelaars",
@@ -1158,34 +456,52 @@
 6.50079
 ],
 "wikidata": null,
-"kind": "Sportclub · 1980"
+"kind": "Sportclub"
 },
 {
-"name": "Willem de Boer Huis",
+"name": "Hoogbouw Trompstraat",
 "latlon": [
-52.72449,
-6.45263
+52.71732,
+6.47576
 ],
 "wikidata": null,
-"kind": "Zorg · 2006"
+"kind": "Hoogbouw · 1961"
 },
 {
-"name": "d'Olde Bieb",
+"name": "Hoogbouw Helios",
 "latlon": [
-52.71714,
-6.49875
+52.72087,
+6.51583
 ],
 "wikidata": null,
-"kind": "Buurthuis · 1982"
+"kind": "Hoogbouw · 1974"
 },
 {
-"name": "zwembad De Dolfijn",
+"name": "Hoogbouw Helios (8)",
 "latlon": [
-52.72367,
-6.49307
+52.72034,
+6.5161
 ],
 "wikidata": null,
-"kind": "Zwembad · 1969"
+"kind": "Hoogbouw · 1973"
+},
+{
+"name": "Hoogbouw Helios (9)",
+"latlon": [
+52.72089,
+6.51672
+],
+"wikidata": null,
+"kind": "Hoogbouw · 1973"
+},
+{
+"name": "Hoogbouw Het Haagje",
+"latlon": [
+52.72114,
+6.48079
+],
+"wikidata": null,
+"kind": "Hoogbouw · 2017"
 },
 {
 "name": "Trommelslager",
@@ -1377,154 +693,10 @@
 "kind": "Voetbalclub · 1929"
 },
 {
-"name": "Aardenburg",
-"latlon": [
-52.71935,
-6.48465
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Bloemenbuurt",
-"latlon": [
-52.71409,
-6.49003
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Centrum",
-"latlon": [
-52.72469,
-6.47879
-],
-"wikidata": null,
-"kind": "Wijk"
-},
-{
-"name": "Erflanden",
-"latlon": [
-52.71016,
-6.44434
-],
-"wikidata": null,
-"kind": "Wijk"
-},
-{
-"name": "Grittenhof",
-"latlon": [
-52.72607,
-6.45578
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Kattouw",
-"latlon": [
-52.71484,
-6.44329
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Kinholt",
-"latlon": [
-52.72288,
-6.44119
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Krakeel",
-"latlon": [
-52.72425,
-6.51118
-],
-"wikidata": null,
-"kind": "Wijk"
-},
-{
-"name": "Oost",
-"latlon": [
-52.72507,
-6.48574
-],
-"wikidata": null,
-"kind": "Wijk"
-},
-{
 "name": "Oranjebuurt",
 "latlon": [
 52.72892,
 6.48215
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Schildersbuurt",
-"latlon": [
-52.72377,
-6.47204
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Schoonvelde West",
-"latlon": [
-52.7217,
-6.45685
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Schoonvelde-Oost",
-"latlon": [
-52.7214,
-6.46087
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Schutlanden Oost",
-"latlon": [
-52.71589,
-6.45707
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Schutlanden West",
-"latlon": [
-52.71492,
-6.45091
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Steenbergerweiden",
-"latlon": [
-52.72179,
-6.44912
-],
-"wikidata": null,
-"kind": "Buurt"
-},
-{
-"name": "Trasselt",
-"latlon": [
-52.71867,
-6.43921
 ],
 "wikidata": null,
 "kind": "Buurt"
@@ -1539,13 +711,13 @@
 "kind": "Wijk"
 },
 {
-"name": "Verzetsbuurt",
+"name": "Erflanden",
 "latlon": [
-52.72302,
-6.48577
+52.71016,
+6.44434
 ],
 "wikidata": null,
-"kind": "Buurt"
+"kind": "Wijk"
 },
 {
 "name": "Wolfsbos",
@@ -1555,15 +727,6 @@
 ],
 "wikidata": null,
 "kind": "Wijk"
-},
-{
-"name": "Zeeheldenbuurt",
-"latlon": [
-52.71816,
-6.47335
-],
-"wikidata": null,
-"kind": "Buurt"
 },
 {
 "name": "Zuid",
