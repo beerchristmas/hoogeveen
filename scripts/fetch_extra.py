@@ -34,4 +34,6 @@ out center tags;""", "neighbourhoods and infrastructure")
   nwr["landuse"="forest"]["name"]({bbox}); nwr["historic"]({bbox}); nwr["heritage"]({bbox}); nwr["building"="farm"]["name"]({bbox}); );
 out center tags;""", "villages and nature")
 
+
+if __name__ == "__main__":
     main()
