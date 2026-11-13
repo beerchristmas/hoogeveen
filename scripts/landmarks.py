@@ -139,7 +139,7 @@ CURATED = [
         "kind": "Voormalig klooster · ca. 1905",
         "address": "Brinkstraat 5",
         "osm": ["Het Klooster"],
-        "text": "De paters karmelieten uit Zenderen lieten dit neogotische gebouw ontwerpen door architect Croonen uit Almelo. Het kwam rond 1905 in gebruik. Vanuit Hoogeveen bedienden ze de katholieken die verspreid over de streek woonden. In 1957 vertrokken ze.",
+        "text": "De paters karmelieten uit Zenderen lieten dit neogotische gebouw ontwerpen door architect K.L. Croonen uit Almelo. Het kwam rond 1905 in gebruik. Vanuit Hoogeveen bedienden ze de katholieken die verspreid over de streek woonden. In 1957 vertrokken ze.",
     },
     {
         "name": "Dubbel woonhuis Brinkstraat",
@@ -201,11 +201,11 @@ CURATED = [
         "text": "Het ziekenhuis is {h} meter hoog. Rond het gebouw staan vijf beelden: De Haan van Frank Letterie (1970), De Belhamel van Adri de Waard (1988), De Bron van Meri Matacin (1989), De Turenden van Sjer Jacobs (2002) en Piet van de Velde van Daphné Du Barry (2010).",
     },
     {
-        "name": "De Beurs",
-        "addr": "Grote Kerkstraat 28",
-        "kind": "Voormalig postkantoor",
-        "address": "Grote Kerkstraat 28",
-        "text": "Eetcafé op de plek van het oude postkantoor. Op 17 februari 1944 overviel het verzet het postkantoor van Hoogeveen en nam zo'n 13.000 bonkaarten mee, voor onderduikers. Loketbeambte Henk Raak is later opgepakt en in de duinen bij Overveen gefusilleerd.",
+        "name": "Voormalig postkantoor",
+        "addr": "Hoofdstraat 167",
+        "kind": "Postkantoor · 1912",
+        "address": "Hoofdstraat 167",
+        "text": "Het postkantoor uit 1912, ontworpen door rijksbouwmeester C.H. Peters. Op 17 februari 1944 overviel het verzet het postkantoor van Hoogeveen en nam zo'n 13.000 bonkaarten mee, voor onderduikers. Loketbeambte Henk Raak, die had meegeholpen, is later opgepakt en in de duinen bij Overveen gefusilleerd.",
     },
     {
         "name": "Bibliotheek Hoogeveen",
@@ -291,7 +291,7 @@ CURATED = [
         "osm": ["DOC Kaas locatie Alteveerstraat"],
         "point": True,
         "kind": "Zuivelfabriek",
-        "text": "De oude zuivelfabriek van Hoogeveen. Voor deze fabriek begon Drenthina in 1925 blikken te maken, en zo kreeg Hoogeveen ook een blikfabriek.",
+        "text": "De oude zuivelfabriek van Hoogeveen. De fabriekspijp is een provinciaal monument. Voor deze fabriek begon Drenthina in 1925 blikken te maken, en zo kreeg Hoogeveen ook een blikfabriek.",
     },
     {
         "name": "Trivium Packaging",
@@ -347,8 +347,8 @@ CURATED = [
     },
     {"name": "Flat Jennerstraat", "addr": "Jennerstraat 130", "kind": "Flat · {year}", "address": "Jennerstraat", "text": "Flat uit {year}, {h} meter hoog."},
     {"name": "Flat Hoofdstraat 159", "addr": "Hoofdstraat 159-63", "kind": "Flat · {year}", "address": "Hoofdstraat 159", "text": "Flat uit {year}, {h} meter hoog."},
-    {"name": "Hoofdstraat 9", "addr": "Hoofdstraat 9", "kind": "Pand · {year}", "address": "Hoofdstraat 9", "text": "Volgens de BAG uit {year}. Alleen het Schippershuus en de Grote Kerk staan er met een ouder bouwjaar in."},
-    {"name": "Schutstraat 8a", "addr": "Schutstraat 8a", "kind": "Pand · {year}", "address": "Schutstraat 8a", "text": "Volgens de BAG uit {year}, een van de oudste panden van Hoogeveen."},
+    {"name": "Huize Venendal", "addr": "Hoofdstraat 9", "kind": "Herenhuis · {year}", "address": "Hoofdstraat 9", "text": "Huize Venendal staat in de BAG met bouwjaar {year}; alleen het Schippershuus en de Grote Kerk zijn daar ouder. Tot 2015 zat hier Museum De 5000 Morgen, het museum over de veenmaatschappij waar Hoogeveen mee begon."},
+    {"name": "Schutstraat 8", "addr": "Schutstraat 8a", "kind": f"{RM} · {{year}}", "address": "Schutstraat 8", "text": "Winkelwoning met een gevelsteen uit {year}, bij Het Kruis. Het was lang een drogisterij."},
     {"name": "Het Haagje 38 en 40", "addr": "Het Haagje 38", "kind": "Pand · {year}", "address": "Het Haagje 38 en 40", "text": "Twee panden die volgens de BAG uit {year} zijn, aan de vaart die van Het Kruis naar het Groote Meer liep."},
     {
         "name": "Herman Bavinckhuis",
@@ -613,6 +613,14 @@ def main():
     bag = Bag()
     out = {"buildings": {}, "places": [], "masts": [], "hotspots": [], "categories": []}
     buildings, points = places(bag)
+    # Photos from Wikimedia Commons, chosen by eye from what scripts/fetch_photos.py found: photo_chosen.json says
+    # which file goes with which place, photo_credits.json who made it and under which licence.
+    here = ROOT / "scripts"
+    chosen = json.loads((here / "photo_chosen.json").read_text()) if (here / "photo_chosen.json").exists() else {}
+    credits = json.loads((here / "photo_credits.json").read_text()) if (here / "photo_credits.json").exists() else {}
+    for e in buildings + points:
+        if e["name"] in chosen and chosen[e["name"]] in credits:
+            e["photo"] = (chosen[e["name"]], credits[chosen[e["name"]]])
     for b in buildings:
         x, y = b["at"]
         pid = b["pid"]
@@ -638,7 +646,7 @@ def main():
     (BUILD / "landmarks.json").write_text(json.dumps(out, indent=1))
     # The places to look for photos of (scripts/fetch_photos.py), in the repository because that runs on GitHub.
     wanted = [{"name": e["name"], "latlon": [round(v, 5) for v in rd_to_wgs(*e["at"])], "wikidata": e.get("wikidata"), "kind": e.get("kind")}
-              for e in buildings + points if "photo" not in e]
+              for e in buildings + points]
     (ROOT / "scripts" / "photo_places.json").write_text(json.dumps(wanted, ensure_ascii=False, indent=0))
     print(f"{len(buildings)} buildings and {len(points)} points with a story")
 

@@ -135,13 +135,13 @@
 "kind": "Ziekenhuis"
 },
 {
-"name": "De Beurs",
+"name": "Voormalig postkantoor",
 "latlon": [
-52.72609,
-6.47922
+52.723,
+6.47802
 ],
 "wikidata": null,
-"kind": "Voormalig postkantoor"
+"kind": "Postkantoor · 1912"
 },
 {
 "name": "Bibliotheek Hoogeveen",
@@ -234,22 +234,22 @@
 "kind": "Flat · 1979"
 },
 {
-"name": "Hoofdstraat 9",
+"name": "Huize Venendal",
 "latlon": [
 52.72795,
 6.47775
 ],
 "wikidata": null,
-"kind": "Pand · 1653"
+"kind": "Herenhuis · 1653"
 },
 {
-"name": "Schutstraat 8a",
+"name": "Schutstraat 8",
 "latlon": [
 52.72059,
 6.47719
 ],
 "wikidata": null,
-"kind": "Pand · 1703"
+"kind": "Rijksmonument · 1703"
 },
 {
 "name": "Het Haagje 38 en 40",
