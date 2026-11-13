@@ -1,0 +1,66 @@
+overpass overpass-api.de/api/interpreter: HTTP Error 502: Bad Gateway
+overpass overpass.private.coffee/api/interpreter: The read operation timed out
+done
+{
+  "response":{
+    "numFound":55450,
+    "start":0,
+    "maxScore":11.923935,
+    "numFoundExact":true,
+    "docs":[{
+      "type":"weg",
+      "weergavenaam":"Hoofdstraat, Hoogeveen",
+      "centroide_rd":"POINT(228675.868 526946.006)"
+    },{
+      "type":"gemeente",
+      "weergavenaam":"Gemeente Hoogeveen",
+      "centroide_rd":"POINT(231098.336 526783.91)"
+    },{
+      "type":"woonplaats",
+      "weergavenaam":"Hoogeveen, Hoogeveen, Drenthe",
+      "centroide_rd":"POINT(228437.978 526202.716)"
+    }]
+  }
+}
+{
+  "response":{
+    "numFound":33806,
+    "start":0,
+    "maxScore":11.902948,
+    "numFoundExact":true,
+    "docs":[{
+      "type":"weg",
+      "weergavenaam":"Station, Vlodrop",
+      "centroide_rd":"POINT(208932.082 351773.781)"
+    },{
+      "type":"weg",
+      "weergavenaam":"Achter het Station, Leeuwarden",
+      "centroide_rd":"POINT(182097.377 578834.982)"
+    },{
+      "type":"weg",
+      "weergavenaam":"Brug Marktstr Station, Musselkanaal",
+      "centroide_rd":"POINT(264257.503 550576.58)"
+    }]
+  }
+}
+{
+  "response":{
+    "numFound":37891,
+    "start":0,
+    "maxScore":13.275301,
+    "numFoundExact":true,
+    "docs":[{
+      "type":"weg",
+      "weergavenaam":"Raadhuisplein, Hoogeveen",
+      "centroide_rd":"POINT(228488.86 527100.243)"
+    },{
+      "type":"postcode",
+      "weergavenaam":"Raadhuisplein, 7901BP Hoogeveen",
+      "centroide_rd":"POINT(228476 527069.5)"
+    },{
+      "type":"postcode",
+      "weergavenaam":"Raadhuisplein, 7901BW Hoogeveen",
+      "centroide_rd":"POINT(228493.25 527137.5)"
+    }]
+  }
+}
