@@ -8,7 +8,7 @@ Two sources. CURATED holds the places with a story, found by their BAG address o
 the Rijksmonumentenregister (RCE), archimon.nl, standbeelden.vanderkrogt.net, visitdrenthe.com (city walk
 Trommelslager), binnenstadhoogeveen.nl, hoogeveen2000.com (Albert Metselaar), vangoghhuis.nl, cascaderun.nl,
 artatsite.com and landschaplopen.com. The rest comes from OpenStreetMap (data/raw/osm_landmarks.json): churches,
-artworks, memorials, museums, graveyards and the like, with their name and kind and no story.
+only for the position of some of them. A place without a story is not on the map.
 
 An entry may also carry style overrides for the render ("style", "wall", "roof", "tower", ...); none do yet.
 
@@ -268,37 +268,101 @@ def osm_places():
 
 
 def places():
-    """BUILDINGS and POINTS: the curated places, then what is left of OpenStreetMap."""
+    """BUILDINGS and POINTS from CURATED. Only places with a story are on the map; OpenStreetMap is where some of
+    them get their position from."""
     osm = osm_places()
-    buildings, points, used = [], [], set()
+    for name, x, y, kind, is_building, t in osm_pois():
+        osm.setdefault(name, []).append((x, y, kind, is_building, t))
+    buildings, points = [], []
     for c in CURATED:
         c = dict(c)
         names = c.pop("osm", [])
-        used.update(names)
         if "addr" in c:
             c["at"] = address_xy(c.pop("addr"))
             buildings.append(c)
             continue
-        if "latlon" not in c:
+        if "latlon" in c:
+            c["at"] = wgs_to_rd(*c.pop("latlon"))
+        elif "at" not in c:
             found = [p for n in names for p in osm.get(n, [])]
             assert found, f"{c['name']}: not in OpenStreetMap"
             c["at"] = found[0][:2]
-            for i, p in enumerate(found[1:], 2):  # the same work in several places
-                points.append({**c, "name": f"{c['name']} ({i})", "at": p[:2]})
+            if found[0][3] and c.pop("building", True):
+                buildings.append(c)
+                continue
         points.append(c)
-    for name, found in sorted(osm.items()):
-        if name in used:
-            continue
-        kept = []
-        for x, y, kind, is_building, t in found:
-            if any(np.hypot(x - kx, y - ky) < 150 for kx, ky in kept):
-                continue  # one sports field of several, or a way and a node for the same thing
-            kept.append((x, y))
-            entry = {"name": name if len(kept) == 1 else f"{name} ({len(kept)})", "at": (x, y), "kind": kind}
-            if t.get("website"):
-                entry["web"] = t["website"]
-            (buildings if is_building else points).append(entry)
     return buildings, points
+
+
+# Dutch labels for OpenStreetMap values; a value that is not here gets the label of its key, and None leaves it out.
+POI_LABELS = {
+    "amenity": {
+        "school": "School", "kindergarten": "Kinderopvang", "childcare": "Kinderopvang", "college": "School", "university": "Hogeschool",
+        "restaurant": "Restaurant", "cafe": "Café", "pub": "Café", "bar": "Café", "fast_food": "Snackbar", "ice_cream": "IJssalon",
+        "bank": "Bank", "pharmacy": "Apotheek", "doctors": "Huisarts", "dentist": "Tandarts", "clinic": "Kliniek", "hospital": "Ziekenhuis",
+        "veterinary": "Dierenarts", "police": "Politie", "fire_station": "Brandweer", "townhall": "Gemeentehuis", "library": "Bibliotheek",
+        "theatre": "Theater", "cinema": "Bioscoop", "community_centre": "Buurthuis", "social_facility": "Zorg", "nursing_home": "Zorg",
+        "fuel": "Tankstation", "car_wash": "Autowasstraat", "post_office": "Postkantoor", "courthouse": "Rechtbank", "arts_centre": "Kunstencentrum",
+        "music_school": "Muziekschool", "driving_school": "Rijschool", "car_rental": "Autoverhuur", "marketplace": "Markt", "events_venue": "Zaal",
+        "nightclub": "Discotheek", "place_of_worship": "Kerk", "crematorium": "Crematorium", "funeral_hall": "Uitvaartcentrum",
+        "animal_shelter": "Dierenasiel", "bus_station": "Busstation", "prison": "Gevangenis", "social_centre": "Verenigingsgebouw",
+        **dict.fromkeys(("parking", "bicycle_parking", "bench", "recycling", "waste_basket", "post_box", "vending_machine", "atm", "shelter", "toilets",
+                         "charging_station", "parking_entrance", "telephone", "drinking_water", "parking_space", "bicycle_repair_station",
+                         "waste_disposal", "taxi", "parcel_locker", "motorcycle_parking", "clock", "fountain", "grit_bin", "letter_box"), None),
+    },
+    "shop": {
+        "supermarket": "Supermarkt", "bakery": "Bakker", "butcher": "Slager", "hairdresser": "Kapper", "clothes": "Kledingwinkel", "shoes": "Schoenenwinkel",
+        "bicycle": "Fietsenwinkel", "car": "Autobedrijf", "car_repair": "Garage", "doityourself": "Bouwmarkt", "garden_centre": "Tuincentrum",
+        "furniture": "Meubelzaak", "florist": "Bloemist", "chemist": "Drogist", "optician": "Opticien", "books": "Boekhandel", "jewelry": "Juwelier",
+        "electronics": "Elektronicazaak", "kitchen": "Keukenzaak", "pet": "Dierenwinkel", "toys": "Speelgoedwinkel", "alcohol": "Slijter",
+        "department_store": "Warenhuis", "mall": "Winkelcentrum", "beauty": "Schoonheidssalon", "greengrocer": "Groenteboer", "seafood": "Viswinkel",
+        "cheese": "Kaaswinkel", "sports": "Sportwinkel", "second_hand": "Kringloopwinkel", "charity": "Kringloopwinkel", "tyres": "Bandenservice",
+        "mobile_phone": "Telefoonwinkel", "travel_agency": "Reisbureau", "funeral_directors": "Uitvaartverzorger", "laundry": "Wasserette",
+        "bed": "Beddenzaak", "variety_store": "Winkel", "convenience": "Winkel", "kiosk": "Kiosk", "tobacco": "Tabakszaak", "vacant": None,
+    },
+    "leisure": {
+        "sports_centre": "Sporthal", "sports_hall": "Sporthal", "swimming_pool": "Zwembad", "fitness_centre": "Sportschool", "stadium": "Stadion",
+        "park": "Park", "playground": "Speeltuin", "garden": "Tuin", "dog_park": "Hondenveld", "ice_rink": "IJsbaan", "track": "Baan",
+        "golf_course": "Golfbaan", "marina": "Haven", "nature_reserve": "Natuurgebied", "bowling_alley": "Bowlingbaan", "horse_riding": "Manege",
+        "dance": "Dansschool", "amusement_arcade": "Speelhal", "indoor_play": "Speelparadijs", "pitch": "Sportveld", "sauna": "Sauna",
+        "picnic_table": None, "slipway": None, "fitness_station": None,
+    },
+    "healthcare": {"physiotherapist": "Fysiotherapeut", "doctor": "Huisarts", "dentist": "Tandarts", "pharmacy": "Apotheek", "hospital": "Ziekenhuis"},
+    "office": {"government": "Overheid", "lawyer": "Advocaat", "notary": "Notaris", "estate_agent": "Makelaar", "insurance": "Verzekeraar", "accountant": "Accountant"},
+    "man_made": {"water_tower": "Watertoren", "windmill": "Molen", "tower": "Toren", "chimney": "Schoorsteen", "bridge": "Brug", "works": "Fabriek",
+                 "wastewater_plant": "Rioolwaterzuivering", "surveillance": None, "street_cabinet": None, "pipeline": None, "utility_pole": None},
+    "railway": {"station": "Station"},
+    "building": {"school": "School", "church": "Kerk", "industrial": "Bedrijf", "retail": "Winkel", "office": "Kantoor", "warehouse": "Bedrijf",
+                 "apartments": "Appartementen", "residential": "Appartementen", "hospital": "Ziekenhuis", "sports_hall": "Sporthal", "train_station": "Station"},
+}
+POI_KEYS = {"amenity": "Voorziening", "shop": "Winkel", "leisure": "Recreatie", "healthcare": "Zorg", "office": "Kantoor", "craft": "Bedrijf",
+            "club": "Vereniging", "industrial": "Bedrijf", "man_made": "Bouwwerk", "railway": None, "emergency": None, "public_transport": None,
+            "building": "Gebouw", "sport": "Sport"}
+
+
+def osm_pois():
+    """Named places in data/raw/osm_pois.json inside the map: (name, x, y, kind, is_building, tags)."""
+    path = RAW / "osm_pois.json"
+    out = []
+    if not path.exists():
+        return out
+    for e in json.loads(path.read_text())["elements"]:
+        t = e.get("tags", {})
+        c = e if "lat" in e else e.get("center")
+        if "name" not in t or not c or t.get("highway") or t.get("disused") == "yes":
+            continue
+        kind = None
+        for key, fallback in POI_KEYS.items():
+            if key in t:
+                kind = POI_LABELS.get(key, {}).get(t[key], fallback)
+                if kind or key != "building":
+                    break
+        if not kind:
+            continue
+        x, y = wgs_to_rd(c["lat"], c["lon"])
+        if XMIN < x < XMAX and YMIN < y < YMAX:
+            out.append((t["name"], float(x), float(y), kind, e["type"] != "node" and "building" in t, t))
+    return out
 
 
 # Series in the viewer's panel: a walk past these places, starting with the one nearest the village.
