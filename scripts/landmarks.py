@@ -270,13 +270,77 @@ CURATED = [
         "osm": ["Oude Diep"],
         "point": True,
         "kind": "Beek",
-        "text": "Een beekje dat bij Mantinge ontspringt en voorbij Hoogeveen in de Hoogeveensche Vaart uitkomt. De beek was rechtgetrokken; de laatste decennia heeft hij zijn bochten teruggekregen en in 2009 is er een rietveld van 7 hectare aangelegd dat het water zuivert. Bij onderzoek in het beekdal zijn resten uit de bronstijd gevonden.",
+        "text": "Voordat Hoogeveen bestond heette deze beek de Vleute. Een beekje dat bij Mantinge ontspringt en voorbij Hoogeveen in de Hoogeveensche Vaart uitkomt. De beek was rechtgetrokken; de laatste decennia heeft hij zijn bochten teruggekregen en in 2009 is er een rietveld van 7 hectare aangelegd dat het water zuivert. Bij onderzoek in het beekdal zijn resten uit de bronstijd gevonden.",
     },
     {
         "name": "Monument voor Albert Albino",
         "latlon": (52.73332, 6.47305),
         "kind": "Oorlogsmonument",
         "text": "Een propellerblad van een Lockheed P-38 Lightning. Op de middag van 29 november 1943 begeleidde tweede luitenant Albert A. Albino, 24 jaar, bommenwerpers naar Bremen. Op de terugweg schoot een Duitse jager hem neer. Het toestel sloeg naast het stationsgebouw in het spoor en verdween in de grond. Pas in maart 1978, bij de aanleg van de voetgangerstunnel, kwamen een propeller en de piloot zelf boven. Hij is begraven in Portland, Oregon, waar hij vandaan kwam.",
+    },
+    {
+        "name": "Oude Kene",
+        "osm": ["Oude Kene"],
+        "point": True,
+        "kind": "Natuurgebied · 40 hectare",
+        "text": "Natuurgebied van zo'n 40 hectare tegen de rand van Hoogeveen, ingericht in 2008 op wat boerenland was, tussen het spoor en de A28 en met een hoogspanningslijn eroverheen. Het Oude Diep kronkelt er weer doorheen. Het gebied bergt water en een rietveld zuivert er rioolwater uit de stad. In het voorjaar hoor je de roerdomp. Ook de waterral, de blauwborst, de ijsvogel en de zomertaling zitten er, en de otter wordt geregeld gezien. Er loopt een wandelroute van 4 kilometer, met paarse paaltjes.",
+    },
+    {
+        "name": "Kinholt",
+        "osm": ["Kinholtsbos"],
+        "point": True,
+        "kind": "Oerbos",
+        "text": "Wat hier nog aan bosjes staat, is de rest van het Zuiderwoud, dat rond 1600 tot aan Zuidwolde reikte. In 1511 mocht pastoor Goert Mulert van Ruinen er twee varkens in drijven als de eikels rijp waren. In 1634 mocht er hout worden gekapt voor de huizen van het nieuwe Hoogeveen, en voor het spoor ging in 1869 nog een strook weg. In 1930 begon boer Leistra hier tien hectare te ontginnen en vond hij een halve meter onder de zode boomstammen van soms twintig meter lang, bijna allemaal met de wortels naar het westen. De verhalen over druïden, een heilig bos en een Hunnenaltaar zijn verzonnen: het altaar komt uit een 19e-eeuws verhaal van Albert Steenbergen.",
+    },
+    # Villages and hamlets on the map.
+    {
+        "name": "Fluitenberg",
+        "osm": ["Fluitenberg"],
+        "point": True,
+        "kind": "Dorp · 485 inwoners",
+        "text": "De beek heette vroeger de Vleute en de hoogte ernaast de Vleutenbarg: daar komt de naam vandaan. Rond 1810 stonden hier en in Kalenberg samen negen huizen, midden in het woeste land. In de 17e eeuw begon de familie Sol een boerderij op de hoge grond; in een lege kamer daarvan werd vanaf 1834 schoolgehouden. De bewoners bouwden in 1861 zelf een brug over het Oude Diep. Tot 1998 hoorde het dorp bij de gemeente Ruinen, met het Oude Diep als grens. De A28 snijdt het oostelijke deel af. Voor zo'n klein dorp komen er opvallend veel wielrenners vandaan: veldrijder Martin Hendriks, Erik Dekker, zijn broer Dick en diens zoon Jens.",
+    },
+    {
+        "name": "Zeven Heuvels",
+        "osm": ["Zevenheuveltjes"],
+        "point": True,
+        "kind": "Grafheuvels · bronstijd",
+        "text": "Een grafveld uit de bronstijd. Eind 19e eeuw lagen hier nog twintig grafheuvels; na de ontginningen zijn er zeven over. Ze zijn een beschermd monument. Vlakbij, aan de Fluitenbergseweg, kwam in 2006 bij de aanleg van een begraafplaats een boerenerf uit de ijzertijd tevoorschijn.",
+    },
+    {
+        "name": "Kalenberg",
+        "osm": ["Kalenberg"],
+        "point": True,
+        "kind": "Buurtschap",
+        "text": "Het buurtschap naast Fluitenberg. Rond 1810 telden de twee samen negen huizen.",
+    },
+    {
+        "name": "Stadterij",
+        "osm": ["Stadterij"],
+        "point": True,
+        "kind": "Buurtschap",
+        "text": "Genoemd naar het geslacht Stadt, dat hier woonde.",
+    },
+    {
+        "name": "Toldijk",
+        "osm": ["Toldijk"],
+        "point": True,
+        "kind": "Buurtschap",
+        "text": "De weg naar Pesse heette de Toldijk. Ook de Pesserstraat droeg die naam toen Vincent van Gogh er in 1883 logeerde.",
+    },
+    {
+        "name": "De wijken",
+        "osm": ["Koekoekswijk"],
+        "point": True,
+        "kind": "Veenkanaaltjes",
+        "text": "Een wijk is in Hoogeveen van oudsher geen buurt maar een zijkanaal: om de 160 meter werd er een het veen in gegraven om de turf af te voeren. De meeste zijn gedempt. In deze hoek liggen ze er nog, met namen als Koekoekswijk, Jan Triepswijk, Kolkjeswijk, Holtjeswijk, Roodhuizigerwijk en Lomanwijk. Aan de oostkant van de stad zijn ze genummerd: de 10e, 11e, 13e, 18e en 24e wijk.",
+    },
+    {
+        "name": "Oude Hoogeveensche Vaart",
+        "osm": ["Oude Hoogeveenschevaart"],
+        "point": True,
+        "kind": "Oude loop van de vaart",
+        "text": "Dit water heet nog de Oude Hoogeveensche Vaart: de loop van voordat de vaart tussen 1964 en 1988 om de stad heen werd gelegd.",
     },
     # Companies.
     {
@@ -385,7 +449,7 @@ WIJKEN = {
 def osm_index():
     """Named OpenStreetMap things inside the map, from the three downloads: {name: [(x, y, is_building, tags)]}."""
     out, seen = {}, set()
-    files = [RAW / "osm_landmarks.json", EXTRA / "osm_pois.json", EXTRA / "osm_named.json"]
+    files = [RAW / "osm_landmarks.json", EXTRA / "osm_pois.json", EXTRA / "osm_named.json", EXTRA / "osm_villages.json"]
     if not files[1].exists():
         files[1] = RAW / "osm_pois.json"
     for path in files:

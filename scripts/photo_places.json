@@ -666,6 +666,24 @@
 "kind": "Oorlogsmonument"
 },
 {
+"name": "Oude Kene",
+"latlon": [
+52.72936,
+6.45239
+],
+"wikidata": null,
+"kind": "Natuurgebied · 40 hectare"
+},
+{
+"name": "Kinholt",
+"latlon": [
+52.72288,
+6.44119
+],
+"wikidata": null,
+"kind": "Oerbos"
+},
+{
 "name": "DOC Kaas Alteveerstraat",
 "latlon": [
 52.71705,
