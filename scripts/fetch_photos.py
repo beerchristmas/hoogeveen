@@ -42,7 +42,7 @@ def get(url, params=None, tries=5):
 
 
 def text(html):
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html or "")).strip()
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", str(html or ""))).strip()
 
 
 def info(pages):
@@ -86,7 +86,11 @@ def main():
     (OUT / "chosen").mkdir(parents=True, exist_ok=True)
     result = {}
     for n, place in enumerate(json.loads((HERE / "photo_places.json").read_text())):
-        cands = candidates(place)
+        try:
+            cands = candidates(place)
+        except Exception as e:  # noqa: BLE001
+            print(f"{place['name']}: {e}", file=sys.stderr)
+            cands = []
         for k, c in enumerate(cands):
             data = get(c.pop("thumb"))
             if data:
