@@ -1,0 +1,4409 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-13T11:57:27Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 47241925,
+  "lat": 52.7038117,
+  "lon": 6.4547626,
+  "tags": {
+    "destination": "Emmen",
+    "highway": "motorway_junction",
+    "name": "Knooppunt Hoogeveen",
+    "source": "AND"
+  }
+},
+{
+  "type": "node",
+  "id": 47249868,
+  "lat": 52.7069293,
+  "lon": 6.4449788,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Knooppunt Hoogeveen",
+    "noref": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 47253008,
+  "lat": 52.7084005,
+  "lon": 6.4655409,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Knooppunt Hoogeveen"
+  }
+},
+{
+  "type": "node",
+  "id": 47258811,
+  "lat": 52.7115718,
+  "lon": 6.4613514,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Knooppunt Hoogeveen",
+    "noref": "yes",
+    "source": "AND"
+  }
+},
+{
+  "type": "node",
+  "id": 47270141,
+  "lat": 52.7153707,
+  "lon": 6.5102446,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Hoogeveen-Oost",
+    "ref": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 47271961,
+  "lat": 52.7162893,
+  "lon": 6.5160915,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Hoogeveen-Oost",
+    "ref": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 47281102,
+  "lat": 52.7206964,
+  "lon": 6.4647093,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Hoogeveen",
+    "ref": "26"
+  }
+},
+{
+  "type": "node",
+  "id": 47293284,
+  "lat": 52.7246839,
+  "lon": 6.4641858,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Hoogeveen",
+    "ref": "26"
+  }
+},
+{
+  "type": "node",
+  "id": 47321191,
+  "lat": 52.7346952,
+  "lon": 6.4654552,
+  "tags": {
+    "highway": "motorway_junction",
+    "name": "Fluitenberg",
+    "ref": "27",
+    "source": "AND"
+  }
+},
+{
+  "type": "node",
+  "id": 2061801941,
+  "lat": 52.7131860,
+  "lon": 6.4379473,
+  "tags": {
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 2061801942,
+  "lat": 52.7132415,
+  "lon": 6.4369167,
+  "tags": {
+    "name": "Nieuwebrugsluis",
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 6788741602,
+  "lat": 52.7101632,
+  "lon": 6.4443417,
+  "tags": {
+    "name": "Erflanden",
+    "place": "neighbourhood"
+  }
+},
+{
+  "type": "node",
+  "id": 7578588798,
+  "lat": 52.7139239,
+  "lon": 6.4364812,
+  "tags": {
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7578588799,
+  "lat": 52.7139530,
+  "lon": 6.4364921,
+  "tags": {
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7578588832,
+  "lat": 52.7132017,
+  "lon": 6.4376566,
+  "tags": {
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 8862635767,
+  "lat": 52.7250678,
+  "lon": 6.4857362,
+  "tags": {
+    "name": "Oost",
+    "nlcbs:bu_code": "BU01185008",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 8862635783,
+  "lat": 52.7246921,
+  "lon": 6.4787936,
+  "tags": {
+    "name": "Centrum",
+    "nlcbs:bu_code": "BU01185000",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 8862699994,
+  "lat": 52.7242525,
+  "lon": 6.5111842,
+  "tags": {
+    "name": "Krakeel",
+    "nlcbs:bu_code": "BU01185003",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020",
+    "wikidata": "Q13136699"
+  }
+},
+{
+  "type": "node",
+  "id": 8862699995,
+  "lat": 52.7247621,
+  "lon": 6.4961262,
+  "tags": {
+    "name": "Bentinckspark",
+    "nlcbs:bu_code": "BU01185002",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 8906930248,
+  "lat": 52.7152468,
+  "lon": 6.4711971,
+  "tags": {
+    "name": "Venesluis",
+    "nlcbs:bu_code": "BU01185006",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 8906930260,
+  "lat": 52.7154255,
+  "lon": 6.4845426,
+  "tags": {
+    "name": "Zuid",
+    "nlcbs:bu_code": "BU01185005",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 8906930274,
+  "lat": 52.7177667,
+  "lon": 6.5012129,
+  "tags": {
+    "name": "Wolfsbos",
+    "nlcbs:bu_code": "BU01185004",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020"
+  }
+},
+{
+  "type": "node",
+  "id": 9931682476,
+  "lat": 52.7149149,
+  "lon": 6.4376743,
+  "tags": {
+    "name": "Kattouw Sluis",
+    "seamark:type": "gate",
+    "waterway": "lock_gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10103670672,
+  "lat": 52.7320494,
+  "lon": 6.5203354,
+  "tags": {
+    "aeroway": "parking_position"
+  }
+},
+{
+  "type": "node",
+  "id": 10103670677,
+  "lat": 52.7321112,
+  "lon": 6.5183226,
+  "tags": {
+    "aeroway": "parking_position"
+  }
+},
+{
+  "type": "node",
+  "id": 13443071270,
+  "lat": 52.7295296,
+  "lon": 6.4741630,
+  "tags": {
+    "name": "Centrum West",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443076062,
+  "lat": 52.7140947,
+  "lon": 6.4900337,
+  "tags": {
+    "name": "Bloemenbuurt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443096238,
+  "lat": 52.7237652,
+  "lon": 6.4720401,
+  "tags": {
+    "name": "Schildersbuurt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443098588,
+  "lat": 52.7289184,
+  "lon": 6.4821499,
+  "tags": {
+    "name": "Oranjebuurt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443103703,
+  "lat": 52.7193520,
+  "lon": 6.4846530,
+  "tags": {
+    "name": "Aardenburg",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443108807,
+  "lat": 52.7230244,
+  "lon": 6.4857689,
+  "tags": {
+    "name": "Verzetsbuurt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443117647,
+  "lat": 52.7149184,
+  "lon": 6.4509085,
+  "tags": {
+    "name": "Schutlanden West",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443117648,
+  "lat": 52.7158865,
+  "lon": 6.4570716,
+  "tags": {
+    "name": "Schutlanden Oost",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443117649,
+  "lat": 52.7148402,
+  "lon": 6.4432869,
+  "tags": {
+    "name": "Kattouw",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443725746,
+  "lat": 52.7260711,
+  "lon": 6.4557816,
+  "tags": {
+    "name": "Grittenhof",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443727045,
+  "lat": 52.7216971,
+  "lon": 6.4568543,
+  "tags": {
+    "name": "Schoonvelde West",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443727046,
+  "lat": 52.7214005,
+  "lon": 6.4608672,
+  "tags": {
+    "name": "Schoonvelde-Oost",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443727121,
+  "lat": 52.7228830,
+  "lon": 6.4411861,
+  "tags": {
+    "name": "Kinholt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443738979,
+  "lat": 52.7217912,
+  "lon": 6.4491176,
+  "tags": {
+    "name": "Steenbergerweiden",
+    "place": "quarter"
+  }
+},
+{
+  "type": "node",
+  "id": 13443738980,
+  "lat": 52.7186695,
+  "lon": 6.4392079,
+  "tags": {
+    "geological": "pingo",
+    "name": "Trasselt",
+    "place": "quarter",
+    "ruins": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13447031701,
+  "lat": 52.7181569,
+  "lon": 6.4733516,
+  "tags": {
+    "name": "Zeeheldenbuurt",
+    "place": "quarter"
+  }
+},
+{
+  "type": "way",
+  "id": 6300863,
+  "center": {
+    "lat": 52.7406721,
+    "lon": 6.4799266
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325AL_20.1",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 6431972,
+  "center": {
+    "lat": 52.7158715,
+    "lon": 6.5216991
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6432516,
+  "center": {
+    "lat": 52.7273897,
+    "lon": 6.5210282
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "movable",
+    "foot": "no",
+    "highway": "primary",
+    "layer": "1",
+    "maxspeed": "50",
+    "mofa": "no",
+    "moped": "no",
+    "name": "Weg om de Oost",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "way",
+  "id": 6432585,
+  "center": {
+    "lat": 52.7280614,
+    "lon": 6.5035849
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "movable",
+    "foot": "no",
+    "highway": "secondary",
+    "layer": "1",
+    "maxspeed": "50",
+    "mofa": "no",
+    "name": "Edisonsbrug",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 6432594,
+  "center": {
+    "lat": 52.7192858,
+    "lon": 6.5163226
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "secondary",
+    "lanes": "1",
+    "layer": "1",
+    "maxspeed": "50",
+    "mofa": "no",
+    "moped": "no",
+    "name": "Meester Cramerweg",
+    "official_name": "Mr Cramerweg",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6432608,
+  "center": {
+    "lat": 52.7160050,
+    "lon": 6.5174907
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "bridge": "yes",
+    "carriageway_ref": "Re",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6432610,
+  "center": {
+    "lat": 52.7162936,
+    "lon": 6.5175231
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "bridge": "yes",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6432669,
+  "center": {
+    "lat": 52.7115318,
+    "lon": 6.4875409
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6433125,
+  "center": {
+    "lat": 52.7286126,
+    "lon": 6.4902841
+  },
+  "tags": {
+    "bicycle": "use_sidepath",
+    "bridge": "yes",
+    "foot": "use_sidepath",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "50",
+    "name": "Kanaalweg",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6433126,
+  "center": {
+    "lat": 52.7286178,
+    "lon": 6.4901559
+  },
+  "tags": {
+    "bicycle": "use_sidepath",
+    "bridge": "yes",
+    "foot": "use_sidepath",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "50",
+    "name": "Kanaalweg",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434068,
+  "center": {
+    "lat": 52.7108190,
+    "lon": 6.4763531
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "tertiary",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "60",
+    "name": "Alteveer",
+    "smoothness": "good",
+    "source:maxspeed": "NL:zone60",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 6434119,
+  "center": {
+    "lat": 52.7191744,
+    "lon": 6.4648041
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour:lanes": "white;blue;blue|white;blue;blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434120,
+  "center": {
+    "lat": 52.7191497,
+    "lon": 6.4645246
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Ommen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 6434121,
+  "center": {
+    "lat": 52.7225374,
+    "lon": 6.4643165
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Zwolle;Utrecht;Ommen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434123,
+  "center": {
+    "lat": 52.7223586,
+    "lon": 6.4646103
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen",
+    "destination:ref": "A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434124,
+  "center": {
+    "lat": 52.7198618,
+    "lon": 6.4644796
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Ommen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 6434126,
+  "center": {
+    "lat": 52.7197224,
+    "lon": 6.4647694
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour:lanes": "white;blue;blue|white;blue;blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:type": "sign",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6434376,
+  "center": {
+    "lat": 52.7256695,
+    "lon": 6.4642671
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "viaduct",
+    "foot": "no",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "50",
+    "maxweight:signed": "no",
+    "name": "Rembrandtstraat",
+    "name:etymology:wikidata": "Q5598",
+    "oneway": "yes",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "way",
+  "id": 6434409,
+  "center": {
+    "lat": 52.7256189,
+    "lon": 6.4642685
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "viaduct",
+    "foot": "no",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "50",
+    "maxweight:signed": "no",
+    "name": "Rembrandtstraat",
+    "name:etymology:wikidata": "Q5598",
+    "oneway": "yes",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "way",
+  "id": 6434416,
+  "center": {
+    "lat": 52.7367374,
+    "lon": 6.4653776
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Assen;Groningen",
+    "destination:ref": "A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434417,
+  "center": {
+    "lat": 52.7344285,
+    "lon": 6.4651308
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 6434419,
+  "center": {
+    "lat": 52.7391687,
+    "lon": 6.4637886
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434420,
+  "center": {
+    "lat": 52.7297974,
+    "lon": 6.4647792
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "cutting": "yes",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434421,
+  "center": {
+    "lat": 52.7296597,
+    "lon": 6.4644736
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "cutting": "yes",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434435,
+  "center": {
+    "lat": 52.7340674,
+    "lon": 6.4650840
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 6434436,
+  "center": {
+    "lat": 52.7341224,
+    "lon": 6.4653820
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434438,
+  "center": {
+    "lat": 52.7344504,
+    "lon": 6.4654246
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434532,
+  "center": {
+    "lat": 52.7297392,
+    "lon": 6.4524214
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "unclassified",
+    "layer": "1",
+    "maxspeed": "60",
+    "name": "Kinholtweg",
+    "not:name": "Kinholtsweg",
+    "note": "Het Hoge Holt until railway is KinholtSweg, after the railway until Vijfhoek is Kinholtweg."
+  }
+},
+{
+  "type": "way",
+  "id": 6434884,
+  "center": {
+    "lat": 52.7181986,
+    "lon": 6.4645525
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Ommen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 6434885,
+  "center": {
+    "lat": 52.7118012,
+    "lon": 6.4618551
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434889,
+  "center": {
+    "lat": 52.7118151,
+    "lon": 6.4615713
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Li",
+    "destination:colour": "blue",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "E 233|E 232",
+    "destination:lanes": "Emmen;Zuidwolde;Ommen|Meppel;Zwolle;Utrecht",
+    "destination:ref:lanes": "N48;A37|A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434890,
+  "center": {
+    "lat": 52.7102711,
+    "lon": 6.4604845
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 232",
+    "destination:ref": "A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6434891,
+  "center": {
+    "lat": 52.7155164,
+    "lon": 6.4634673
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour:lanes": "white;blue;blue|white;blue;blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434892,
+  "center": {
+    "lat": 52.7075930,
+    "lon": 6.4529127
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "destination": "Meppel;Zwolle;Utrecht",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 232",
+    "destination:ref": "A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6434922,
+  "center": {
+    "lat": 52.7090230,
+    "lon": 6.4761023
+  },
+  "tags": {
+    "bridge": "yes",
+    "cycleway:both": "shared_lane",
+    "cycleway:both:lane": "advisory",
+    "foot": "yes",
+    "highway": "tertiary",
+    "lane_markings": "no",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "60",
+    "maxweight:signed": "no",
+    "name": "Alteveer",
+    "sidewalk": "no",
+    "smoothness": "good",
+    "source:maxspeed": "NL:zone60",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 6434935,
+  "center": {
+    "lat": 52.7086380,
+    "lon": 6.4590217
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination:colour:lanes": "blue|blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|E 232",
+    "destination:lanes": "Groningen;Assen;Hoogeveen|Groningen;Assen;Hoogeveen|Zwolle;Meppel",
+    "destination:ref:lanes": "A28|A28|A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "yes",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434936,
+  "center": {
+    "lat": 52.7082304,
+    "lon": 6.4628573
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "destination": "Meppel;Zwolle;Utrecht;Ommen",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 232",
+    "destination:ref": "A28;N48",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6434946,
+  "center": {
+    "lat": 52.7078772,
+    "lon": 6.4583445
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Re",
+    "destination:colour:lanes": "blue|blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|E 232",
+    "destination:lanes": "Groningen;Assen;Hoogeveen|Groningen;Assen;Hoogeveen|Zwolle;Meppel",
+    "destination:ref:lanes": "A28|A28|A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434949,
+  "center": {
+    "lat": 52.7081926,
+    "lon": 6.4583700
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "|E 233",
+    "destination:lanes": "Zuidwolde;Ommen|Emmen",
+    "destination:ref:lanes": "N48|A37",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "middle_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434960,
+  "center": {
+    "lat": 52.7070141,
+    "lon": 6.4573139
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "|E 233",
+    "destination:lanes": "Zuidwolde;Ommen|Emmen",
+    "destination:ref:lanes": "N48|A37",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "middle_of:1",
+    "ref": "N48",
+    "surface": "asphalt",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 6434965,
+  "center": {
+    "lat": 52.7018530,
+    "lon": 6.4527367
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "100",
+    "motorroad": "yes",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "N48",
+    "surface": "asphalt",
+    "turn:lanes": "|merge_to_left",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6434967,
+  "center": {
+    "lat": 52.7059390,
+    "lon": 6.4563487
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Zuidwolde;Ommen",
+    "destination:colour": "blue",
+    "destination:ref": "N48",
+    "highway": "motorway",
+    "lanes": "1",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "N48",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 6434969,
+  "center": {
+    "lat": 52.7044546,
+    "lon": 6.4553214
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen;Zwolle;Meppel",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 232",
+    "destination:ref": "A28",
+    "highway": "trunk",
+    "lanes": "1",
+    "maxspeed": "100",
+    "motorroad": "yes",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "N48",
+    "surface": "asphalt",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 6435876,
+  "center": {
+    "lat": 52.7398660,
+    "lon": 6.4793557
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "primary",
+    "lanes": "2",
+    "layer": "1",
+    "maxspeed": "70",
+    "mofa": "no",
+    "moped": "no",
+    "name": "Middenveldweg",
+    "surface": "asphalt",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "way",
+  "id": 6435907,
+  "center": {
+    "lat": 52.7411216,
+    "lon": 6.4640274
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Ruinen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 6437967,
+  "center": {
+    "lat": 52.7234786,
+    "lon": 6.4396842
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "residential",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Dotterbloem"
+  }
+},
+{
+  "type": "way",
+  "id": 6438060,
+  "center": {
+    "lat": 52.7220486,
+    "lon": 6.4418523
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "tertiary",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Meester Harm Smeengelaan",
+    "name:etymology:wikidata": "Q2444685",
+    "official_name": "Mr Harm Smeengelaan",
+    "zone:traffic": "NL:urban"
+  }
+},
+{
+  "type": "way",
+  "id": 6438184,
+  "center": {
+    "lat": 52.7132475,
+    "lon": 6.4367613
+  },
+  "tags": {
+    "bicycle": "use_sidepath",
+    "bridge": "yes",
+    "foot": "use_sidepath",
+    "highway": "secondary",
+    "layer": "1",
+    "maxspeed": "50",
+    "mofa": "use_sidepath",
+    "name": "Zuidwoldigerweg",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 6438244,
+  "center": {
+    "lat": 52.7067538,
+    "lon": 6.4395426
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 28054495,
+  "center": {
+    "lat": 52.7315495,
+    "lon": 6.5180479
+  },
+  "tags": {
+    "aeroway": "aerodrome",
+    "ele": "12",
+    "icao": "EHHO",
+    "name": "Vliegveld Hoogeveen",
+    "name:en": "Hoogeveen Airfield",
+    "website": "http://www.vliegveldhoogeveen.nl",
+    "wikidata": "Q1433650",
+    "wikipedia": "nl:Vliegveld Hoogeveen"
+  }
+},
+{
+  "type": "way",
+  "id": 39431526,
+  "center": {
+    "lat": 52.7376944,
+    "lon": 6.4744616
+  },
+  "tags": {
+    "bridge": "yes",
+    "foot": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "lit": "yes",
+    "mofa": "designated",
+    "moped": "designated",
+    "name": "Toldijk",
+    "oneway": "yes",
+    "segregated": "yes",
+    "sidewalk": "right",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "traffic_sign": "NL:G12a"
+  }
+},
+{
+  "type": "way",
+  "id": 46137937,
+  "center": {
+    "lat": 52.7406318,
+    "lon": 6.4802566
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "unclassified",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Prilleweg"
+  }
+},
+{
+  "type": "way",
+  "id": 72893371,
+  "center": {
+    "lat": 52.7122459,
+    "lon": 6.4548267
+  },
+  "tags": {
+    "bicycle": "use_sidepath",
+    "bridge": "movable",
+    "foot": "use_sidepath",
+    "highway": "unclassified",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Tweelandenbrug",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 72893373,
+  "center": {
+    "lat": 52.7132474,
+    "lon": 6.4368468
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "mofa": "designated",
+    "moped": "no",
+    "name": "Zuidwoldigerweg",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 87553820,
+  "center": {
+    "lat": 52.7126015,
+    "lon": 6.4481127
+  },
+  "tags": {
+    "bridge": "movable",
+    "highway": "cycleway",
+    "layer": "1",
+    "name": "Vlinderbrug",
+    "oneway": "yes",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 87788588,
+  "center": {
+    "lat": 52.7193229,
+    "lon": 6.5163879
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "moped": "designated",
+    "name": "Meester Cramerweg",
+    "official_name": "Mr Cramerweg"
+  }
+},
+{
+  "type": "way",
+  "id": 89743244,
+  "center": {
+    "lat": 52.7400467,
+    "lon": 6.4779895
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Oude Diep",
+    "tunnel": "culvert",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 108041355,
+  "center": {
+    "lat": 52.7099064,
+    "lon": 6.4598829
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Emmen;Zuidwolde;Ommen",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 233",
+    "destination:ref": "N48;A37",
+    "highway": "motorway",
+    "lanes": "1",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 119866549,
+  "center": {
+    "lat": 52.7280651,
+    "lon": 6.5034817
+  },
+  "tags": {
+    "bridge": "movable",
+    "highway": "cycleway",
+    "layer": "1",
+    "mofa": "designated",
+    "name": "Edisonstraat",
+    "oneway": "yes",
+    "surface": "paving_stones",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 119911680,
+  "center": {
+    "lat": 52.7272284,
+    "lon": 6.5265148
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "mofa": "yes",
+    "moped": "no",
+    "name": "Noord",
+    "segregated": "no",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 141074578,
+  "center": {
+    "lat": 52.7173496,
+    "lon": 6.4459750
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "lit": "yes",
+    "mofa": "no",
+    "moped": "no",
+    "name": "Het Kruis",
+    "sidewalk": "no",
+    "smoothness": "intermediate",
+    "surface": "paving_stones",
+    "traffic_sign": "NL:G13"
+  }
+},
+{
+  "type": "way",
+  "id": 141691713,
+  "center": {
+    "lat": 52.7118324,
+    "lon": 6.4915903
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Meppen;Emmen;Hoogeveen-Oost",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 148319944,
+  "center": {
+    "lat": 52.7307965,
+    "lon": 6.5173548
+  },
+  "tags": {
+    "aeroway": "runway",
+    "ref": "09-27",
+    "surface": "grass"
+  }
+},
+{
+  "type": "way",
+  "id": 149113708,
+  "center": {
+    "lat": 52.7375885,
+    "lon": 6.4741987
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "lit": "yes",
+    "mofa": "designated",
+    "moped": "designated",
+    "name": "Toldijk",
+    "oneway": "yes",
+    "segregated": "no",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "traffic_sign": "NL:G12a"
+  }
+},
+{
+  "type": "way",
+  "id": 149598661,
+  "center": {
+    "lat": 52.7286093,
+    "lon": 6.4903617
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "name": "Kanaalweg",
+    "oneway": "yes",
+    "sidewalk": "right"
+  }
+},
+{
+  "type": "way",
+  "id": 179297154,
+  "center": {
+    "lat": 52.7213044,
+    "lon": 6.4348513
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "residential",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Zwanebloem"
+  }
+},
+{
+  "type": "way",
+  "id": 203575108,
+  "center": {
+    "lat": 52.7267992,
+    "lon": 6.5274196
+  },
+  "tags": {
+    "CEMT": "I",
+    "alt_name": "Verlengde Hoogeveense Vaart",
+    "boat": "yes",
+    "name": "Verlengde Hoogeveensche Vaart",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 203587904,
+  "center": {
+    "lat": 52.7132138,
+    "lon": 6.4374320
+  },
+  "tags": {
+    "CEMT": "II",
+    "boat": "yes",
+    "contact:vhf": "18;84",
+    "lock": "yes",
+    "lock_name": "Nieuwebrugsluis",
+    "maxwidth": "7.5",
+    "name": "Hoogeveensche Vaart",
+    "seamark:type": "lock_basin",
+    "waterway": "canal",
+    "width": "7.5"
+  }
+},
+{
+  "type": "way",
+  "id": 203587905,
+  "center": {
+    "lat": 52.6965065,
+    "lon": 6.3893845
+  },
+  "tags": {
+    "CEMT": "II",
+    "alt_name": "Hoogeveense Vaart",
+    "boat": "yes",
+    "intermittent": "no",
+    "name": "Hoogeveensche Vaart",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 208169968,
+  "center": {
+    "lat": 52.7286208,
+    "lon": 6.4900823
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "name": "Kanaalweg",
+    "oneway": "yes",
+    "sidewalk": "right"
+  }
+},
+{
+  "type": "way",
+  "id": 227673670,
+  "center": {
+    "lat": 52.7406622,
+    "lon": 6.4799809
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 271740618,
+  "center": {
+    "lat": 52.7065538,
+    "lon": 6.4391729
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "overtaking:hgv:conditional": "no @ (Mo-Fr 06:00-19:00)",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 271740619,
+  "center": {
+    "lat": 52.7059237,
+    "lon": 6.4314687
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 276843070,
+  "center": {
+    "lat": 52.7189023,
+    "lon": 6.4786408
+  },
+  "tags": {
+    "CEMT": "II",
+    "alt_name": "Hoogeveense Vaart",
+    "boat": "yes",
+    "intermittent": "no",
+    "name": "Hoogeveensche Vaart",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 288930593,
+  "center": {
+    "lat": 52.7042847,
+    "lon": 6.4548712
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "highway": "trunk",
+    "lanes": "1",
+    "maxspeed": "100",
+    "motorroad": "yes",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "N48",
+    "surface": "asphalt",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 288930598,
+  "center": {
+    "lat": 52.7063444,
+    "lon": 6.4569869
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen;Zwolle;Meppel",
+    "destination:colour": "blue",
+    "destination:int_ref": "E 232",
+    "destination:ref": "A28",
+    "highway": "motorway",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "N48",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 310388951,
+  "center": {
+    "lat": 52.7294049,
+    "lon": 6.4518590
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 310388952,
+  "center": {
+    "lat": 52.7286044,
+    "lon": 6.4491205
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 310388953,
+  "center": {
+    "lat": 52.7527978,
+    "lon": 6.4878916
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 320119327,
+  "center": {
+    "lat": 52.7332205,
+    "lon": 6.4652554
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 320119329,
+  "center": {
+    "lat": 52.7256483,
+    "lon": 6.4641579
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 320119332,
+  "center": {
+    "lat": 52.7136060,
+    "lon": 6.4628868
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination:colour": "blue",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "E 233|E 232",
+    "destination:lanes": "Emmen;Zuidwolde;Ommen|Meppel;Zwolle;Utrecht",
+    "destination:ref:lanes": "N48;A37|A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 320119336,
+  "center": {
+    "lat": 52.7162920,
+    "lon": 6.4642723
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Ommen",
+    "destination:colour": "blue",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "E 233|E 232",
+    "destination:lanes": "Emmen;Zuidwolde;Ommen|Meppel;Zwolle;Utrecht",
+    "destination:ref:lanes": "N48;A37|A28",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 335707089,
+  "center": {
+    "lat": 52.7192224,
+    "lon": 6.5162159
+  },
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "secondary",
+    "lanes": "2",
+    "lanes:bus": "1",
+    "layer": "1",
+    "maxspeed": "50",
+    "mofa": "no",
+    "moped": "no",
+    "name": "Meester Cramerweg",
+    "official_name": "Mr Cramerweg",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 365281252,
+  "center": {
+    "lat": 52.7280376,
+    "lon": 6.5048742
+  },
+  "tags": {
+    "CEMT": "II",
+    "boat": "yes",
+    "name": "Industriehaven",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 382748050,
+  "center": {
+    "lat": 52.7145755,
+    "lon": 6.5593062
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxheight:signed": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838111,
+  "center": {
+    "lat": 52.7162623,
+    "lon": 6.5188353
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838113,
+  "center": {
+    "lat": 52.7156663,
+    "lon": 6.5277235
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838117,
+  "center": {
+    "lat": 52.7085301,
+    "lon": 6.4675440
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "destination:colour:lanes": "blue|blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|E 232",
+    "destination:lanes": "Meppel;Zwolle;Utrecht|Ommen;Meppel;Zwolle;Utrecht|Hoogeveen;Assen",
+    "destination:ref:lanes": "A28|A28;N48|A28",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838127,
+  "center": {
+    "lat": 52.7150573,
+    "lon": 6.5089245
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838129,
+  "center": {
+    "lat": 52.7149608,
+    "lon": 6.5075109
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838131,
+  "center": {
+    "lat": 52.7159035,
+    "lon": 6.5127894
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 384838132,
+  "center": {
+    "lat": 52.7156914,
+    "lon": 6.5136544
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 385635428,
+  "center": {
+    "lat": 52.7079855,
+    "lon": 6.4590740
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "destination": "Meppel;Zwolle;Utrecht;Ommen",
+    "destination:colour": "blue",
+    "destination:colour:lanes": "blue|blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "Meppel;Zwolle;Utrecht|Meppel;Zwolle;Utrecht|Ommen",
+    "destination:ref": "A28;N48",
+    "destination:ref:lanes": "A28|A28|N48",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxheight:signed": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 397173099,
+  "center": {
+    "lat": 52.7026560,
+    "lon": 6.4537334
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "E 232|E 233",
+    "destination:lanes": "Groningen;Assen;Hoogeveen;Zwolle;Meppel|Emmen;Hoogeveen-Oost",
+    "destination:ref:lanes": "A28|A37",
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "100",
+    "motorroad": "yes",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "middle_of:1",
+    "ref": "N48",
+    "surface": "asphalt",
+    "turn:lanes": "none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 403630208,
+  "center": {
+    "lat": 52.7313575,
+    "lon": 6.4690996
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403867287,
+  "center": {
+    "lat": 52.7151032,
+    "lon": 6.3808902
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_303BV_8.5",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403876880,
+  "center": {
+    "lat": 52.7246539,
+    "lon": 6.4400770
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Oude Diep",
+    "tunnel": "culvert",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 403876881,
+  "center": {
+    "lat": 52.7146928,
+    "lon": 6.4219502
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 403881822,
+  "center": {
+    "lat": 52.7264235,
+    "lon": 6.4489648
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_303BV_8.5",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403881823,
+  "center": {
+    "lat": 52.7275642,
+    "lon": 6.4546114
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403881824,
+  "center": {
+    "lat": 52.7162632,
+    "lon": 6.3855418
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403884801,
+  "center": {
+    "lat": 52.7335216,
+    "lon": 6.4727439
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403884804,
+  "center": {
+    "lat": 52.7314424,
+    "lon": 6.4693262
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 403887198,
+  "center": {
+    "lat": 52.7333912,
+    "lon": 6.4724019
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 404706763,
+  "center": {
+    "lat": 52.7552101,
+    "lon": 6.4851682
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 404706767,
+  "center": {
+    "lat": 52.7556358,
+    "lon": 6.4853808
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 465253859,
+  "center": {
+    "lat": 52.7162944,
+    "lon": 6.5165970
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 493642926,
+  "center": {
+    "lat": 52.7068468,
+    "lon": 6.4437099
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination:colour:lanes": "blue|blue|blue",
+    "destination:country:lanes": "D;;|D;;|",
+    "destination:int_ref:lanes": "E 233|E 233|E 232",
+    "destination:lanes": "Meppen;Emmen;Hoogeveen-Oost|Meppen;Emmen;Hoogeveen-Oost|Groningen;Assen;Hoogeveen;Ommen",
+    "destination:ref:lanes": "A37|A37|A28;N48",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "overtaking:hgv:conditional": "no @ (Mo-Fr 06:00-19:00)",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 494427488,
+  "center": {
+    "lat": 52.7270452,
+    "lon": 6.4476971
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "unclassified",
+    "layer": "1",
+    "maxspeed": "30",
+    "name": "Kinholtweg",
+    "not:name": "Kinholtsweg",
+    "note": "Het Hoge Holt until railway is KinholtSweg, after the railway until Vijfhoek is Kinholtweg."
+  }
+},
+{
+  "type": "way",
+  "id": 496448524,
+  "center": {
+    "lat": 52.7078587,
+    "lon": 6.4580716
+  },
+  "tags": {
+    "bridge": "yes",
+    "carriageway_ref": "Li",
+    "destination:colour:lanes": "blue|blue",
+    "destination:int_ref:lanes": "|E 233",
+    "destination:lanes": "Zuidwolde;Ommen|Emmen",
+    "destination:ref:lanes": "N48|A37",
+    "highway": "motorway",
+    "lanes": "2",
+    "layer": "1",
+    "lit": "yes",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "middle_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 498691813,
+  "center": {
+    "lat": 52.7065087,
+    "lon": 6.4356769
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "bridge": "viaduct",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 498691814,
+  "center": {
+    "lat": 52.7063277,
+    "lon": 6.4356620
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "bridge": "viaduct",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "layer": "1",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "overtaking:hgv:conditional": "no @ (Mo-Fr 06:00-19:00)",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 498691819,
+  "center": {
+    "lat": 52.7063207,
+    "lon": 6.4356588
+  },
+  "tags": {
+    "bridge": "viaduct",
+    "layer": "1",
+    "man_made": "bridge",
+    "name": "Ten Arlo"
+  }
+},
+{
+  "type": "way",
+  "id": 498691820,
+  "center": {
+    "lat": 52.7065243,
+    "lon": 6.4356794
+  },
+  "tags": {
+    "bridge": "viaduct",
+    "layer": "1",
+    "man_made": "bridge",
+    "name": "Ten Arlo"
+  }
+},
+{
+  "type": "way",
+  "id": 499318506,
+  "center": {
+    "lat": 52.7286905,
+    "lon": 6.4883357
+  },
+  "tags": {
+    "CEMT": "II",
+    "boat": "no",
+    "name": "Industriehaven",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 508353079,
+  "center": {
+    "lat": 52.7225649,
+    "lon": 6.4777900
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353080,
+  "center": {
+    "lat": 52.7227309,
+    "lon": 6.4777443
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353081,
+  "center": {
+    "lat": 52.7229092,
+    "lon": 6.4777332
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353082,
+  "center": {
+    "lat": 52.7230885,
+    "lon": 6.4777219
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353083,
+  "center": {
+    "lat": 52.7232666,
+    "lon": 6.4777116
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353084,
+  "center": {
+    "lat": 52.7236317,
+    "lon": 6.4776910
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353085,
+  "center": {
+    "lat": 52.7238067,
+    "lon": 6.4776800
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353086,
+  "center": {
+    "lat": 52.7239837,
+    "lon": 6.4776689
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353087,
+  "center": {
+    "lat": 52.7241679,
+    "lon": 6.4776581
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 508353088,
+  "center": {
+    "lat": 52.7243453,
+    "lon": 6.4776474
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 509220597,
+  "center": {
+    "lat": 52.7255987,
+    "lon": 6.4902779
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "name": "Kanaalweg"
+  }
+},
+{
+  "type": "way",
+  "id": 511835578,
+  "center": {
+    "lat": 52.7114952,
+    "lon": 6.4615798
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour:lanes": "white;blue;blue|white;blue;blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 731554822,
+  "center": {
+    "lat": 52.7369902,
+    "lon": 6.5217778
+  },
+  "tags": {
+    "bridge": "yes",
+    "highway": "cycleway",
+    "layer": "1",
+    "lit": "yes",
+    "mofa": "yes",
+    "moped": "designated",
+    "name": "Europaweg",
+    "oneway": "no",
+    "segregated": "no",
+    "smoothness": "good",
+    "traffic_sign": "NL:G12a"
+  }
+},
+{
+  "type": "way",
+  "id": 784570881,
+  "center": {
+    "lat": 52.7074336,
+    "lon": 6.4526346
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Meppen;Emmen;Hoogeveen-Oost",
+    "destination:colour": "blue",
+    "destination:country": "D;;",
+    "destination:int_ref": "E 233",
+    "destination:ref": "A37",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "lit": "no",
+    "maxheight:signed": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 788653910,
+  "center": {
+    "lat": 52.7338653,
+    "lon": 6.4640409
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Oude Diep",
+    "tunnel": "culvert",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 788653911,
+  "center": {
+    "lat": 52.7311761,
+    "lon": 6.4570899
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 810559687,
+  "center": {
+    "lat": 52.7215115,
+    "lon": 6.5185741
+  },
+  "tags": {
+    "bridge": "movable",
+    "bridge:name": "Fietsbrug Krakeel",
+    "highway": "cycleway",
+    "layer": "1",
+    "lit": "yes",
+    "mofa": "yes",
+    "moped": "no",
+    "name": "Fietsbrug Krakeel",
+    "segregated": "no",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 824833995,
+  "center": {
+    "lat": 52.7280576,
+    "lon": 6.5036895
+  },
+  "tags": {
+    "bridge": "movable",
+    "highway": "cycleway",
+    "layer": "1",
+    "mofa": "yes",
+    "moped": "no",
+    "name": "Edisonstraat",
+    "oneway": "yes",
+    "segregated": "yes",
+    "sidewalk": "right",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 824833996,
+  "center": {
+    "lat": 52.7280615,
+    "lon": 6.5035816
+  },
+  "tags": {
+    "bridge": "movable",
+    "layer": "1",
+    "man_made": "bridge",
+    "name": "Edisonbrug"
+  }
+},
+{
+  "type": "way",
+  "id": 888272642,
+  "center": {
+    "lat": 52.7258258,
+    "lon": 6.4452122
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 903160495,
+  "center": {
+    "lat": 52.7399291,
+    "lon": 6.5210027
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 903179968,
+  "center": {
+    "lat": 52.7380170,
+    "lon": 6.4860886
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 1012501664,
+  "center": {
+    "lat": 52.7087657,
+    "lon": 6.4731765
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Meppen;Emmen;Hoogeveen-Oost",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "3",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1012501665,
+  "center": {
+    "lat": 52.7082742,
+    "lon": 6.4655335
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Meppen;Emmen;Hoogeveen-Oost",
+    "highway": "motorway",
+    "int_ref": "E 233",
+    "lanes": "2",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A37",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1094472031,
+  "center": {
+    "lat": 52.7256724,
+    "lon": 6.4644566
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 1094472243,
+  "center": {
+    "lat": 52.7329450,
+    "lon": 6.4649277
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 1094489345,
+  "center": {
+    "lat": 52.7070756,
+    "lon": 6.4446660
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "none|none|merge_to_left",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1094489346,
+  "center": {
+    "lat": 52.7072224,
+    "lon": 6.4470088
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Li",
+    "change:lanes": "yes|not_right|no",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1094489665,
+  "center": {
+    "lat": 52.7060269,
+    "lon": 6.4328495
+  },
+  "tags": {
+    "asphalt:type": "porous",
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:conditional": "130 @ (19:00-06:00)",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "overtaking:hgv:conditional": "no @ (Mo-Fr 06:00-19:00)",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1097473469,
+  "center": {
+    "lat": 52.7422509,
+    "lon": 6.4883064
+  },
+  "tags": {
+    "waterway": "weir"
+  }
+},
+{
+  "type": "way",
+  "id": 1130671778,
+  "center": {
+    "lat": 52.7270700,
+    "lon": 6.4641546
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1130671779,
+  "center": {
+    "lat": 52.7318614,
+    "lon": 6.4647774
+  },
+  "tags": {
+    "carriageway_ref": "Li",
+    "destination": "Utrecht;Zwolle;Hoogeveen",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1130671780,
+  "center": {
+    "lat": 52.7320003,
+    "lon": 6.4650855
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1130671781,
+  "center": {
+    "lat": 52.7276601,
+    "lon": 6.4644868
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "destination": "Groningen;Assen;Fluitenberg",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "2",
+    "maxspeed": "100",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1131101310,
+  "center": {
+    "lat": 52.7289587,
+    "lon": 6.4614133
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1131101311,
+  "center": {
+    "lat": 52.7289196,
+    "lon": 6.4614161
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1131101312,
+  "center": {
+    "lat": 52.7377402,
+    "lon": 6.4776019
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1131101313,
+  "center": {
+    "lat": 52.7377770,
+    "lon": 6.4775506
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274837,
+  "center": {
+    "lat": 52.7404891,
+    "lon": 6.4799184
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274838,
+  "center": {
+    "lat": 52.7405058,
+    "lon": 6.4798656
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274839,
+  "center": {
+    "lat": 52.7303914,
+    "lon": 6.4667555
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274840,
+  "center": {
+    "lat": 52.7295630,
+    "lon": 6.4644588
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274841,
+  "center": {
+    "lat": 52.7303012,
+    "lon": 6.4666673
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1184274842,
+  "center": {
+    "lat": 52.7295193,
+    "lon": 6.4644481
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1266239705,
+  "center": {
+    "lat": 52.7203918,
+    "lon": 6.4647274
+  },
+  "tags": {
+    "carriageway_ref": "Re",
+    "change:lanes": "yes|not_right|no",
+    "destination": "Groningen;Assen;Hoogeveen",
+    "destination:colour:lanes": "white;blue;blue|white;blue;blue|blue",
+    "destination:int_ref:lanes": "E 232|E 232|",
+    "destination:lanes": "De Wieken;Assen;Groningen|De Wieken;Assen;Groningen|Hoogeveen",
+    "destination:ref:lanes": "A28|A28|",
+    "destination:symbol:lanes": "industrial;none;none|industrial;none;none|none",
+    "highway": "motorway",
+    "int_ref": "E 232",
+    "lanes": "3",
+    "lit": "no",
+    "maxspeed": "100",
+    "maxspeed:type": "sign",
+    "oneway": "yes",
+    "operator": "Rijkswaterstaat",
+    "placement": "right_of:1",
+    "ref": "A28",
+    "surface": "asphalt",
+    "toll:hgv": "yes",
+    "turn:lanes": "||slight_right",
+    "zone:traffic": "NL:rural"
+  }
+},
+{
+  "type": "way",
+  "id": 1302095338,
+  "center": {
+    "lat": 52.7272829,
+    "lon": 6.5232425
+  },
+  "tags": {
+    "bridge": "movable",
+    "bridge:movable": "swing",
+    "highway": "cycleway",
+    "layer": "1",
+    "mofa": "yes",
+    "moped": "no",
+    "name": "Het Schoolvonder",
+    "segregated": "no",
+    "smoothness": "good",
+    "surface": "wood",
+    "traffic_sign": "NL:G11"
+  }
+},
+{
+  "type": "way",
+  "id": 1325491107,
+  "center": {
+    "lat": 52.7296044,
+    "lon": 6.4646203
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1325491108,
+  "center": {
+    "lat": 52.7296396,
+    "lon": 6.4647549
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1325491109,
+  "center": {
+    "lat": 52.7295971,
+    "lon": 6.4647552
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "bridge": "yes",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "1",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1325491110,
+  "center": {
+    "lat": 52.7295620,
+    "lon": 6.4646165
+  },
+  "tags": {
+    "axle_load": "22.5",
+    "description": "Meppel - Assen",
+    "electrified": "contact_line",
+    "frequency": "0",
+    "gauge": "1435",
+    "loading_gauge": "TSI_GB",
+    "maxspeed": "140",
+    "operator": "ProRail",
+    "passenger_lines": "2",
+    "railway": "rail",
+    "railway:atb": "yes",
+    "railway:maximum_current": "4000",
+    "railway:track_class": "D4",
+    "railway:traffic_mode": "mixed",
+    "ref": "012",
+    "ref:ProRailSpoortak": "012_325BV_20.2",
+    "source": "ProRail",
+    "source:date": "2014-01-03",
+    "usage": "main",
+    "voltage": "1500"
+  }
+},
+{
+  "type": "way",
+  "id": 1416144383,
+  "center": {
+    "lat": 52.7376410,
+    "lon": 6.4743276
+  },
+  "tags": {
+    "layer": "-1",
+    "name": "Oude Diep",
+    "tunnel": "culvert",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 1416144384,
+  "center": {
+    "lat": 52.7387409,
+    "lon": 6.4760980
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "way",
+  "id": 1431363768,
+  "center": {
+    "lat": 52.7339071,
+    "lon": 6.4642887
+  },
+  "tags": {
+    "name": "Oude Diep",
+    "waterway": "stream"
+  }
+},
+{
+  "type": "relation",
+  "id": 377206,
+  "center": {
+    "lat": 52.7384735,
+    "lon": 6.4455459
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Fluitenberg",
+    "ref:woonplaatscode": "1812",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q3015492",
+    "wikipedia": "nl:Fluitenberg"
+  }
+},
+{
+  "type": "relation",
+  "id": 377207,
+  "center": {
+    "lat": 52.7192289,
+    "lon": 6.4697679
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Hoogeveen",
+    "name:uk": "Гоґевен",
+    "ref:woonplaatscode": "1814",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q18691547",
+    "wikipedia": "nl:Hoogeveen (plaats)"
+  }
+},
+{
+  "type": "relation",
+  "id": 377208,
+  "center": {
+    "lat": 52.7538141,
+    "lon": 6.5030715
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Stuifzand",
+    "ref:woonplaatscode": "1819",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q2472474",
+    "wikipedia": "nl:Stuifzand (dorp)"
+  }
+},
+{
+  "type": "relation",
+  "id": 377209,
+  "center": {
+    "lat": 52.7483541,
+    "lon": 6.5395734
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Tiendeveen",
+    "ref:woonplaatscode": "1820",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q510553",
+    "wikipedia": "nl:Tiendeveen"
+  }
+},
+{
+  "type": "relation",
+  "id": 377210,
+  "center": {
+    "lat": 52.7293866,
+    "lon": 6.5340794
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Noordscheschut",
+    "ref:woonplaatscode": "1817",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q3343410",
+    "wikipedia": "nl:Noordscheschut"
+  }
+},
+{
+  "type": "relation",
+  "id": 377212,
+  "center": {
+    "lat": 52.6867605,
+    "lon": 6.5458285
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Hollandscheveld",
+    "ref:woonplaatscode": "1813",
+    "source": "BAG",
+    "start_date": "2008-08-21 00:00:00.01",
+    "type": "boundary",
+    "wikidata": "Q1875726",
+    "wikipedia": "nl:Hollandscheveld"
+  }
+},
+{
+  "type": "relation",
+  "id": 2681061,
+  "center": {
+    "lat": 52.6595886,
+    "lon": 6.4163460
+  },
+  "tags": {
+    "admin_level": "10",
+    "authoritative": "yes",
+    "boundary": "administrative",
+    "name": "Zuidwolde",
+    "name:fy": "Súdwâlde",
+    "ref:woonplaatscode": "3172",
+    "source": "BAG",
+    "source:date": "2017-05-02",
+    "start_date": "2010-05-01 00:00:00",
+    "type": "boundary",
+    "wikidata": "Q2754055",
+    "wikipedia": "nl:Zuidwolde (Drenthe)"
+  }
+},
+{
+  "type": "relation",
+  "id": 12883445,
+  "center": {
+    "lat": 52.7249147,
+    "lon": 6.4856077
+  },
+  "tags": {
+    "boundary": "place",
+    "name": "Oost",
+    "nlcbs:bu_code": "BU01185008",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 12883446,
+  "center": {
+    "lat": 52.7245942,
+    "lon": 6.4774047
+  },
+  "tags": {
+    "boundary": "place",
+    "name": "Centrum",
+    "nlcbs:bu_code": "BU01185000",
+    "place": "neighbourhood",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 12883465,
+  "center": {
+    "lat": 52.7246336,
+    "lon": 6.4966827
+  },
+  "tags": {
+    "boundary": "place",
+    "name": "Bentinckspark",
+    "nlcbs:bu_code": "BU01185002",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020",
+    "type": "boundary"
+  }
+},
+{
+  "type": "relation",
+  "id": 12883489,
+  "center": {
+    "lat": 52.7236586,
+    "lon": 6.5108084
+  },
+  "tags": {
+    "boundary": "place",
+    "name": "Krakeel",
+    "nlcbs:bu_code": "BU01185003",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020",
+    "type": "boundary",
+    "wikidata": "Q13136699"
+  }
+},
+{
+  "type": "relation",
+  "id": 12933828,
+  "center": {
+    "lat": 52.7165083,
+    "lon": 6.5029654
+  },
+  "tags": {
+    "boundary": "place",
+    "name": "Wolfsbos",
+    "nlcbs:bu_code": "BU01185004",
+    "place": "neighbourhood",
+    "source": "CBS Wijken en Buurten",
+    "source:date": "2020",
+    "type": "boundary"
+  }
+}
+
+  ]
+}

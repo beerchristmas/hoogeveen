@@ -1,0 +1,1110 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-13T11:57:27Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 47279925,
+  "lat": 52.7202393,
+  "lon": 6.4759313,
+  "tags": {
+    "name": "Hoogeveen",
+    "name:fy": "Hegefean",
+    "name:nl": "Hoogeveen",
+    "name:ru": "Хогевен",
+    "name:uk": "Гоґевен",
+    "place": "town",
+    "population": "39995",
+    "population:date": "2017-01-01",
+    "source:population": "CBS Wijk 2017",
+    "wikidata": "Q18691547",
+    "wikipedia": "nl:Hoogeveen (plaats)"
+  }
+},
+{
+  "type": "node",
+  "id": 47284232,
+  "lat": 52.7214502,
+  "lon": 6.5200103,
+  "tags": {
+    "name": "Krakeel",
+    "place": "hamlet",
+    "postal_code": "7914",
+    "source": "AND",
+    "wikidata": "Q13136699"
+  }
+},
+{
+  "type": "node",
+  "id": 47325055,
+  "lat": 52.7365450,
+  "lon": 6.4524098,
+  "tags": {
+    "name": "Fluitenberg",
+    "place": "village",
+    "population": "485",
+    "population:date": "2017-01-01",
+    "postal_code": "7931",
+    "source:population": "CBS Wijk 2017",
+    "wikidata": "Q3015492",
+    "wikipedia": "nl:Fluitenberg"
+  }
+},
+{
+  "type": "node",
+  "id": 47328154,
+  "lat": 52.7380200,
+  "lon": 6.4404400,
+  "tags": {
+    "name": "Kalenberg",
+    "place": "hamlet",
+    "source": "AND"
+  }
+},
+{
+  "type": "node",
+  "id": 5034493105,
+  "lat": 52.7261603,
+  "lon": 6.4755048,
+  "tags": {
+    "artist_name": "Firma L. Petit",
+    "artwork_type": "statue",
+    "historic": "memorial",
+    "memorial": "war_memorial",
+    "name": "Verzetsmonument",
+    "tourism": "artwork",
+    "wikidata": "Q18397065"
+  }
+},
+{
+  "type": "node",
+  "id": 7236246849,
+  "lat": 52.7170156,
+  "lon": 6.4715394,
+  "tags": {
+    "historic": "memorial",
+    "memorial": "war_memorial",
+    "name": "Joods Monument"
+  }
+},
+{
+  "type": "node",
+  "id": 9743761797,
+  "lat": 52.7398711,
+  "lon": 6.4906144,
+  "tags": {
+    "name": "Stadterij",
+    "place": "hamlet"
+  }
+},
+{
+  "type": "node",
+  "id": 9802455700,
+  "lat": 52.7334440,
+  "lon": 6.5277743,
+  "tags": {
+    "name": "Achterom",
+    "place": "hamlet"
+  }
+},
+{
+  "type": "node",
+  "id": 10807021354,
+  "lat": 52.7139358,
+  "lon": 6.4335264,
+  "tags": {
+    "historic": "memorial",
+    "memorial": "war_memorial",
+    "name": "Onderduikadres Flokstra"
+  }
+},
+{
+  "type": "node",
+  "id": 11292031201,
+  "lat": 52.7161582,
+  "lon": 6.4593002,
+  "tags": {
+    "historic": "memorial",
+    "name": "De Hoogeveense Gemeenschap"
+  }
+},
+{
+  "type": "node",
+  "id": 11392557403,
+  "lat": 52.7293072,
+  "lon": 6.4775885,
+  "tags": {
+    "historic": "memorial",
+    "name": "De Hoogeveense Kei"
+  }
+},
+{
+  "type": "node",
+  "id": 11476933292,
+  "lat": 52.7408012,
+  "lon": 6.4729837,
+  "tags": {
+    "name": "Toldijk",
+    "place": "hamlet"
+  }
+},
+{
+  "type": "node",
+  "id": 12758430793,
+  "lat": 52.7200786,
+  "lon": 6.4720129,
+  "tags": {
+    "historic": "memorial",
+    "memorial": "plaque"
+  }
+},
+{
+  "type": "node",
+  "id": 13057093669,
+  "lat": 52.7335888,
+  "lon": 6.4729612,
+  "tags": {
+    "historic": "memorial",
+    "memorial": "plaque",
+    "panoramax": "b719f779-49b6-4b32-b7c6-757103a91d9a"
+  }
+},
+{
+  "type": "way",
+  "id": 89709608,
+  "center": {
+    "lat": 52.7412532,
+    "lon": 6.5056708
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Klein van het Begin",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89709789,
+  "center": {
+    "lat": 52.7276178,
+    "lon": 6.5002881
+  },
+  "tags": {
+    "name": "11e wijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89709881,
+  "center": {
+    "lat": 52.7259075,
+    "lon": 6.5001388
+  },
+  "tags": {
+    "name": "11e wijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89710174,
+  "center": {
+    "lat": 52.7420523,
+    "lon": 6.5332807
+  },
+  "tags": {
+    "name": "Vlotwijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89710311,
+  "center": {
+    "lat": 52.7135756,
+    "lon": 6.5089065
+  },
+  "tags": {
+    "name": "Buitenvaart",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89715460,
+  "center": {
+    "lat": 52.7277446,
+    "lon": 6.5265741
+  },
+  "tags": {
+    "name": "24e Wijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89715470,
+  "center": {
+    "lat": 52.7288991,
+    "lon": 6.5044324
+  },
+  "tags": {
+    "name": "13e Wieke",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89730629,
+  "center": {
+    "lat": 52.7360038,
+    "lon": 6.4839176
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Scoutingbos",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89732205,
+  "center": {
+    "lat": 52.7148293,
+    "lon": 6.4958561
+  },
+  "tags": {
+    "name": "Omkanaal",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89732286,
+  "center": {
+    "lat": 52.7436001,
+    "lon": 6.4568005
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Zevenheuveltjes",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89736003,
+  "center": {
+    "lat": 52.7200163,
+    "lon": 6.4901510
+  },
+  "tags": {
+    "fishing": "yes",
+    "name": "Omkanaal",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89736280,
+  "center": {
+    "lat": 52.7132001,
+    "lon": 6.4780629
+  },
+  "tags": {
+    "name": "Slood",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89737218,
+  "center": {
+    "lat": 52.7134186,
+    "lon": 6.4793137
+  },
+  "tags": {
+    "name": "Lomanwijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89738161,
+  "center": {
+    "lat": 52.7124741,
+    "lon": 6.4780548
+  },
+  "tags": {
+    "name": "Slood",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89738646,
+  "center": {
+    "lat": 52.7070813,
+    "lon": 6.4889939
+  },
+  "tags": {
+    "name": "Trekgat",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89739192,
+  "center": {
+    "lat": 52.7100131,
+    "lon": 6.4368361
+  },
+  "tags": {
+    "name": "Wolderpartij",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89740280,
+  "center": {
+    "lat": 52.7153542,
+    "lon": 6.4395587
+  },
+  "tags": {
+    "name": "Oude Hoogeveenschevaart",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89740354,
+  "center": {
+    "lat": 52.7072447,
+    "lon": 6.4883612
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Trekgatbos",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89741128,
+  "center": {
+    "lat": 52.7179574,
+    "lon": 6.4926471
+  },
+  "tags": {
+    "fishing": "yes",
+    "name": "Omkanaal",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89741493,
+  "center": {
+    "lat": 52.7229067,
+    "lon": 6.4900970
+  },
+  "tags": {
+    "fishing": "no",
+    "name": "Omkanaal",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89741562,
+  "center": {
+    "lat": 52.7183085,
+    "lon": 6.4559924
+  },
+  "tags": {
+    "name": "Oude Hoogeveensche vaart",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89742347,
+  "center": {
+    "lat": 52.7252933,
+    "lon": 6.4902707
+  },
+  "tags": {
+    "fishing": "no",
+    "name": "Omkanaal",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 89743250,
+  "center": {
+    "lat": 52.7270758,
+    "lon": 6.4979851
+  },
+  "tags": {
+    "name": "10e Wijk",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 148985014,
+  "center": {
+    "lat": 52.7284508,
+    "lon": 6.4774735
+  },
+  "tags": {
+    "name": "Noordeinde",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 158035997,
+  "center": {
+    "lat": 52.7234806,
+    "lon": 6.4777353
+  },
+  "tags": {
+    "name": "Cascade",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 280044549,
+  "center": {
+    "lat": 52.7311995,
+    "lon": 6.4779668
+  },
+  "tags": {
+    "building": "yes",
+    "historic": "building",
+    "name": "Het Klooster",
+    "ref:bag": "0118100000085745",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "start_date": "1908"
+  }
+},
+{
+  "type": "way",
+  "id": 280045026,
+  "center": {
+    "lat": 52.7257345,
+    "lon": 6.4806109
+  },
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "church",
+    "denomination": "protestant",
+    "heritage": "2",
+    "heritage:operator": "rce",
+    "name": "Grote Kerk",
+    "ref:bag": "0118100000035304",
+    "ref:rce": "22255",
+    "religion": "christian",
+    "source": "BAG",
+    "source:date": "2014-05-07",
+    "start_date": "1652",
+    "wikidata": "Q17405228",
+    "wikipedia": "nl:Hervormde kerk (Hoogeveen)"
+  }
+},
+{
+  "type": "way",
+  "id": 500072657,
+  "center": {
+    "lat": 52.7299423,
+    "lon": 6.5279945
+  },
+  "tags": {
+    "name": "24e Wijk",
+    "natural": "water",
+    "water": "ditch"
+  }
+},
+{
+  "type": "way",
+  "id": 522809416,
+  "center": {
+    "lat": 52.7176910,
+    "lon": 6.4460153
+  },
+  "tags": {
+    "name": "Spartelvijver",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 641576296,
+  "center": {
+    "lat": 52.7293590,
+    "lon": 6.4523912
+  },
+  "tags": {
+    "leisure": "nature_reserve",
+    "name": "Oude Kene"
+  }
+},
+{
+  "type": "way",
+  "id": 668643066,
+  "center": {
+    "lat": 52.7274053,
+    "lon": 6.4599399
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Kraaienbos",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 668688817,
+  "center": {
+    "lat": 52.7249045,
+    "lon": 6.4442438
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Kinholtsbos",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 677715144,
+  "center": {
+    "lat": 52.7204701,
+    "lon": 6.4545968
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Schoonvelde",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 677715157,
+  "center": {
+    "lat": 52.7225892,
+    "lon": 6.4537322
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Schoonevelde",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 677897086,
+  "center": {
+    "lat": 52.7186601,
+    "lon": 6.4465136
+  },
+  "tags": {
+    "name": "Spartelvijver",
+    "natural": "water",
+    "source": "3dShapes"
+  }
+},
+{
+  "type": "way",
+  "id": 737293194,
+  "center": {
+    "lat": 52.7018919,
+    "lon": 6.5105604
+  },
+  "tags": {
+    "name": "Boekweitensloot",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 737293198,
+  "center": {
+    "lat": 52.7017966,
+    "lon": 6.5129539
+  },
+  "tags": {
+    "name": "Boekweitensloot",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 740995314,
+  "center": {
+    "lat": 52.7270132,
+    "lon": 6.5141788
+  },
+  "tags": {
+    "name": "18e wijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 824930579,
+  "center": {
+    "lat": 52.7065109,
+    "lon": 6.4805816
+  },
+  "tags": {
+    "name": "Roodhuizigerwijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 824930583,
+  "center": {
+    "lat": 52.7077555,
+    "lon": 6.4814916
+  },
+  "tags": {
+    "name": "Koekoekswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 824930587,
+  "center": {
+    "lat": 52.7087841,
+    "lon": 6.4856628
+  },
+  "tags": {
+    "name": "Kleine Strampel",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 903169356,
+  "center": {
+    "lat": 52.7440641,
+    "lon": 6.5192170
+  },
+  "tags": {
+    "name": "Wijken van Eleveld",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1083871183,
+  "center": {
+    "lat": 52.7086501,
+    "lon": 6.4899517
+  },
+  "tags": {
+    "name": "Kleine Strampel",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1083871449,
+  "center": {
+    "lat": 52.7084675,
+    "lon": 6.4970242
+  },
+  "tags": {
+    "name": "Kleine Strampel",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084043187,
+  "center": {
+    "lat": 52.7074803,
+    "lon": 6.4992750
+  },
+  "tags": {
+    "name": "Koekoekswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084044004,
+  "center": {
+    "lat": 52.7075651,
+    "lon": 6.4953747
+  },
+  "tags": {
+    "name": "Koekoekswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084905402,
+  "center": {
+    "lat": 52.7062180,
+    "lon": 6.4906309
+  },
+  "tags": {
+    "name": "Roodhuizigerwijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084906420,
+  "center": {
+    "lat": 52.7067774,
+    "lon": 6.4936117
+  },
+  "tags": {
+    "name": "Kleine Rieg",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084907098,
+  "center": {
+    "lat": 52.7096371,
+    "lon": 6.5030230
+  },
+  "tags": {
+    "name": "Jantinus Boerwijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1084917666,
+  "center": {
+    "lat": 52.7094775,
+    "lon": 6.4960023
+  },
+  "tags": {
+    "name": "Sloot",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1085192096,
+  "center": {
+    "lat": 52.7265784,
+    "lon": 6.4654713
+  },
+  "tags": {
+    "name": "Waterberging Griendtsveenweg",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1094618976,
+  "center": {
+    "lat": 52.7298725,
+    "lon": 6.4705499
+  },
+  "tags": {
+    "landuse": "forest",
+    "name": "Nobels bosje"
+  }
+},
+{
+  "type": "way",
+  "id": 1148899736,
+  "center": {
+    "lat": 52.7042597,
+    "lon": 6.4825235
+  },
+  "tags": {
+    "name": "Jan Triepswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1148899738,
+  "center": {
+    "lat": 52.7041159,
+    "lon": 6.4863432
+  },
+  "tags": {
+    "name": "Jan Triepswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1148899740,
+  "center": {
+    "lat": 52.7039581,
+    "lon": 6.4920930
+  },
+  "tags": {
+    "name": "Jan Triepswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149078352,
+  "center": {
+    "lat": 52.7035828,
+    "lon": 6.5022040
+  },
+  "tags": {
+    "name": "Jan Triepsijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149082620,
+  "center": {
+    "lat": 52.7014614,
+    "lon": 6.5066981
+  },
+  "tags": {
+    "name": "Kolkjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149082621,
+  "center": {
+    "lat": 52.7017093,
+    "lon": 6.4997841
+  },
+  "tags": {
+    "name": "Kolkjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149082624,
+  "center": {
+    "lat": 52.7020218,
+    "lon": 6.4910025
+  },
+  "tags": {
+    "name": "Kolkjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149083221,
+  "center": {
+    "lat": 52.7023520,
+    "lon": 6.4818173
+  },
+  "tags": {
+    "name": "Kolkjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149085586,
+  "center": {
+    "lat": 52.7032122,
+    "lon": 6.4776453
+  },
+  "tags": {
+    "name": "Holtjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149085587,
+  "center": {
+    "lat": 52.7025236,
+    "lon": 6.5060563
+  },
+  "tags": {
+    "name": "Holtjeswijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149521895,
+  "center": {
+    "lat": 52.7048599,
+    "lon": 6.4953036
+  },
+  "tags": {
+    "name": "Sloot",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149521903,
+  "center": {
+    "lat": 52.7065532,
+    "lon": 6.5007491
+  },
+  "tags": {
+    "name": "Kleine Rieg",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1149523703,
+  "center": {
+    "lat": 52.7059842,
+    "lon": 6.4992823
+  },
+  "tags": {
+    "name": "Roodhuizigerwijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1177770367,
+  "center": {
+    "lat": 52.7137147,
+    "lon": 6.4813760
+  },
+  "tags": {
+    "name": "Lomanwijk",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1224740503,
+  "center": {
+    "lat": 52.7017198,
+    "lon": 6.5149865
+  },
+  "tags": {
+    "name": "Boekweitensloot",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1227650892,
+  "center": {
+    "lat": 52.7227525,
+    "lon": 6.5004142
+  },
+  "tags": {
+    "name": "Bentincksdiep",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1227662457,
+  "center": {
+    "lat": 52.7440731,
+    "lon": 6.5150491
+  },
+  "tags": {
+    "name": "Wijken van Eleveld",
+    "natural": "water"
+  }
+},
+{
+  "type": "way",
+  "id": 1416179861,
+  "center": {
+    "lat": 52.7291823,
+    "lon": 6.4655622
+  },
+  "tags": {
+    "name": "Het gat van Gort",
+    "natural": "water"
+  }
+},
+{
+  "type": "relation",
+  "id": 1322764,
+  "center": {
+    "lat": 52.7170204,
+    "lon": 6.4468408
+  },
+  "tags": {
+    "name": "Oude Hoogeveenschevaart",
+    "natural": "water",
+    "source": "3dShapes",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 12268394,
+  "center": {
+    "lat": 52.7492015,
+    "lon": 6.4908538
+  },
+  "tags": {
+    "name": "Pesserma",
+    "natural": "wetland",
+    "type": "multipolygon",
+    "wetland": "wet_meadow"
+  }
+},
+{
+  "type": "relation",
+  "id": 16769486,
+  "center": {
+    "lat": 52.7236085,
+    "lon": 6.4975641
+  },
+  "tags": {
+    "name": "Bentincksdiep",
+    "natural": "water",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}
