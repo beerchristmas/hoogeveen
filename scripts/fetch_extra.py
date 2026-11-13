@@ -5,7 +5,7 @@
 neighbourhoods, waterways, motorways, bridges and locks. Small, so it has its own quick run on GitHub
 (.github/workflows/fetch-extra.yml), which puts the result on the data-extra branch.
 
-Output: data/extra/osm_pois.json, data/extra/osm_named.json
+Output: data/extra/osm_pois.json, data/extra/osm_named.json, data/extra/osm_villages.json
 """
 
 from config import ROOT
@@ -28,7 +28,10 @@ out center tags;""", "named places")
   way["bridge"]["name"]({bbox}); way["railway"="rail"]({bbox}); nwr["aeroway"]({bbox});
   relation["boundary"="administrative"]["admin_level"~"^(9|10|11)$"]({bbox}); );
 out center tags;""", "neighbourhoods and infrastructure")
+    overpass(EXTRA / "osm_villages.json", f"""[out:json][timeout:120];
+( nwr["place"~"^(village|hamlet|isolated_dwelling|town|farm)$"]({bbox});
+  nwr["leisure"="nature_reserve"]({bbox}); nwr["boundary"="protected_area"]({bbox}); nwr["natural"~"^(wood|heath|water|wetland)$"]["name"]({bbox});
+  nwr["landuse"="forest"]["name"]({bbox}); nwr["historic"]({bbox}); nwr["heritage"]({bbox}); nwr["building"="farm"]["name"]({bbox}); );
+out center tags;""", "villages and nature")
 
-
-if __name__ == "__main__":
     main()
