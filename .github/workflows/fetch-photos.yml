@@ -1,0 +1,35 @@
+# Look for photos of the named places on Wikimedia Commons and put the candidates, and the photos already chosen, on
+# the data-photos branch, for build environments that cannot reach Wikimedia themselves.
+name: Fetch photos
+on:
+  push:
+    branches: [main]
+    paths: [scripts/fetch_photos.py, scripts/photo_places.json, scripts/photo_chosen.json, .github/workflows/fetch-photos.yml]
+  workflow_dispatch:
+concurrency:
+  group: fetch-photos
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch
+        run: python scripts/fetch_photos.py > fetch.log 2>&1 || echo "FETCH FAILED: exit $?" >> fetch.log
+      - name: Publish to data-photos
+        if: always()
+        run: |
+          tail -20 fetch.log
+          mkdir -p photos && cp fetch.log photos/
+          cd photos
+          git init -q -b data-photos
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Photo candidates for ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" data-photos

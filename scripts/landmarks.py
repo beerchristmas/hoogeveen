@@ -20,8 +20,8 @@ import re
 
 import numpy as np
 
-from config import BUILD, CX, CY, RAW, XMAX, XMIN, YMAX, YMIN
-from geo import wgs_to_rd
+from config import BUILD, CX, CY, RAW, ROOT, XMAX, XMIN, YMAX, YMIN
+from geo import rd_to_wgs, wgs_to_rd
 
 RM = "Rijksmonument"
 
@@ -529,6 +529,7 @@ def places(bag):
             # Of a road or a stream in many pieces, the piece nearest the middle of the map.
             best = min(found, key=lambda p: (not p[2] and not as_point, np.hypot(p[0] - CX, p[1] - CY)))
             c["at"] = best[:2]
+            c["wikidata"] = next((p[3]["wikidata"] for p in found if "wikidata" in p[3]), None)
         i = None if as_point else bag.at(*c["at"])
         if c.pop("largest", False):  # a factory of many parts: the biggest building around
             near = np.hypot(bag.mid[:, 0] - c["at"][0], bag.mid[:, 1] - c["at"][1]) < 250
@@ -554,7 +555,7 @@ def places(bag):
                 continue  # a shop or an office that happens to have its name on the building
             text = f"{label} uit {f['year']}" if label in ("Kerk", "Moskee", "Flat", "Gebouw") else f"{label}. Het gebouw is uit {f['year']}"
             text += f", {f['h']} meter hoog." if f["h"] >= 15 else "."
-            entry = {"name": name, "at": (x, y), "kind": f"{label} · {f['year']}", "text": text}
+            entry = {"name": name, "at": (x, y), "kind": f"{label} · {f['year']}", "text": text, "wikidata": t.get("wikidata")}
             street, number = t.get("addr:street"), t.get("addr:housenumber")
             if street and number:
                 entry["address"] = f"{street} {number}"
@@ -628,6 +629,10 @@ def main():
         out["categories"].append({"key": key, "label": label, "names": members})
     BUILD.mkdir(parents=True, exist_ok=True)
     (BUILD / "landmarks.json").write_text(json.dumps(out, indent=1))
+    # The places to look for photos of (scripts/fetch_photos.py), in the repository because that runs on GitHub.
+    wanted = [{"name": e["name"], "latlon": [round(v, 5) for v in rd_to_wgs(*e["at"])], "wikidata": e.get("wikidata"), "kind": e.get("kind")}
+              for e in buildings + points if "photo" not in e]
+    (ROOT / "scripts" / "photo_places.json").write_text(json.dumps(wanted, ensure_ascii=False, indent=0))
     print(f"{len(buildings)} buildings and {len(points)} points with a story")
 
 
