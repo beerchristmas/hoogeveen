@@ -49,6 +49,7 @@ jobs:
           (cd data/raw && find . -type f | sort | xargs ls -l) > pub/files.txt || true
           cp fetch.log pub/
           cp area.new pub/area.txt
+          cp data/raw/osm_pois.json pub/ || true
           tar -C data -czf - raw | split -b 90m - pub/raw.tar.gz.
           cd pub
           git init -q -b data-raw

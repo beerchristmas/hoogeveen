@@ -207,6 +207,19 @@ out geom tags;"""
     overpass(out, q, "pitches and graveyards")
 
 
+def fetch_pois():
+    """Every named thing with a use in OpenStreetMap: schools, shops, companies, sports halls and so on."""
+    out = RAW / "osm_pois.json"
+    if out.exists():
+        return
+    bbox = osm_bbox()
+    keys = ("amenity", "shop", "leisure", "office", "craft", "healthcare", "man_made", "railway", "public_transport", "building", "club", "sport", "emergency", "industrial")
+    q = f"""[out:json][timeout:120];
+( {" ".join(f'nwr["name"]["{k}"]({bbox});' for k in keys)} );
+out center tags;"""
+    overpass(out, q, "named places")
+
+
 def fetch_routes():
     """Walking routes and the numbered walking-junction network (wandelknooppunten) from OpenStreetMap."""
     out = RAW / "osm_routes.json"
@@ -235,8 +248,8 @@ out geom;"""
 
 def main():
     RAW.mkdir(parents=True, exist_ok=True)
-    # The three OpenStreetMap queries run one after another: together they trip Overpass's rate limit.
-    osm = lambda: [f() for f in (fetch_osm, fetch_routes, fetch_roads)]
+    # The OpenStreetMap queries run one after another: together they trip Overpass's rate limit.
+    osm = lambda: [f() for f in (fetch_osm, fetch_routes, fetch_roads, fetch_pois)]
     jobs = [fetch_3dbag, fetch_addresses, osm, *(lambda c=c: fetch_bgt(c) for c in BGT_COLLECTIONS)]
     jobs += [lambda c=c, i=i, j=j: fetch_ahn(c, i, j) for c in ("dsm_05m", "dtm_05m") for i in range(NX) for j in range(NY)]
     jobs += [lambda i=i, j=j: fetch_aerial(i, j) for i in range(NX) for j in range(NY)]
