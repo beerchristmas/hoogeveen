@@ -20,7 +20,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Fetch
-        run: python scripts/fetch_photos.py > fetch.log 2>&1 || echo "FETCH FAILED: exit $?" >> fetch.log
+        run: |
+          python scripts/fetch_photos.py > fetch.log 2>&1 || echo "FETCH FAILED $?" >> fetch.log
       - name: Publish to data-photos
         if: always()
         run: |
