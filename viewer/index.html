@@ -281,7 +281,11 @@
   .card figcaption, .card .src { font-size: 11px; color: #7a6650; }
   .card .more a { font-weight: 500; color: #8a5a2b; }
   .card a { color: inherit; }
-  #info .frame { height: 200px; }
+  /* A place's photo sits beside its story, as wide as it is given and as tall as it needs: no bars at its sides. */
+  #info-body::after { content: ""; display: block; clear: both; }
+  #info figure { float: left; width: 44%; max-width: 250px; margin: 3px 14px 4px 0; }
+  #info .frame { height: auto; display: block; background: none; }
+  #info .frame img { width: 100%; max-height: 240px; object-fit: cover; object-position: 50% 25%; border-radius: 4px; }
   #info .links { display: flex; flex-wrap: wrap; gap: 4px 16px; }
   /* The buttons stay in view while a long card scrolls under them. */
   .card nav { flex-wrap: wrap; display: flex; gap: 8px; align-items: center; position: sticky; bottom: -14px; padding: 2px 0 14px; margin-bottom: -14px; background: #f4ead6; }
@@ -359,7 +363,7 @@
     .card .narrow { display: inline; }
     .card h2 { font-size: 19px; }
     .card p { font-size: 13px; }
-    #info .frame { height: 150px; }
+    #info figure { width: 38%; }
   }
   @media (max-height: 700px) {
     #intro p.long { display: none; }
@@ -484,8 +488,8 @@ Werk stap voor stap, controleer de licenties van de data die je gebruikt, en vra
   <div class="card-head"><span id="info-kind"></span><span id="info-address"></span></div>
   <h2 id="info-title"></h2>
   <p id="info-meta" class="src" hidden></p>
-  <figure id="info-figure" hidden><div class="frame"><img id="info-img" alt=""></div><figcaption id="info-credit"></figcaption></figure>
-  <p id="info-text"></p>
+  <div id="info-body"><figure id="info-figure" hidden><div class="frame"><img id="info-img" alt=""></div><figcaption id="info-credit"></figcaption></figure>
+  <p id="info-text"></p></div>
   <p id="info-links" class="more links" hidden></p>
   <nav>
     <button type="button" id="info-prev" aria-label="Vorige" data-en-label="Previous" hidden>←<span class="wide" data-en=" Previous"> Vorige</span></button>
