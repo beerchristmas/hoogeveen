@@ -16,10 +16,11 @@ Output: data/build/landmarks.json
 """
 
 import json
+import re
 
 import numpy as np
 
-from config import BUILD, RAW, XMAX, XMIN, YMAX, YMIN
+from config import BUILD, CX, CY, RAW, XMAX, XMIN, YMAX, YMIN
 from geo import wgs_to_rd
 
 RM = "Rijksmonument"
@@ -86,7 +87,7 @@ CURATED = [
         "name": "Het Kruis",
         "latlon": (52.72056, 6.47778),
         "kind": "Hier begon Hoogeveen",
-        "text": "Op deze kruising van de Hoofdstraat, Het Haagje, de Alteveerstraat en de Schutstraat kwamen twee vaarten samen. Hier vestigden zich de eerste winkeliers, turfhandelaren en ambachtslieden. Op de kaart van 1637 liep de vaart die nu Het Haagje is door tot aan het Groote Meer, dat verdwenen is. De vaarten zijn gedempt.",
+        "text": "Op deze kruising van de Hoofdstraat, Het Haagje, de Alteveerstraat en de Schutstraat kwamen twee vaarten samen. Hier vestigden zich de eerste winkeliers, turfhandelaren en ambachtslieden. Op de kaart van 1637 liep de vaart die nu Het Haagje is door tot aan het Groote Meer, dat verdwenen is. De vaarten zijn gedempt: de Hoofdstraat als eerste, in 1948. Op 2 oktober 1883 stapte Vincent van Gogh hier op de trekschuit naar Nieuw-Amsterdam.",
     },
     {
         "name": "Turfschipper",
@@ -197,7 +198,7 @@ CURATED = [
         "addr": "Dr G H Amshoffweg 1",
         "kind": "Ziekenhuis",
         "address": "Dr. G.H. Amshoffweg 1",
-        "text": "Rond het ziekenhuis staan vijf beelden: De Haan van Frank Letterie (1970), De Belhamel van Adri de Waard (1988), De Bron van Meri Matacin (1989), De Turenden van Sjer Jacobs (2002) en Piet van de Velde van Daphné Du Barry (2010).",
+        "text": "Het ziekenhuis is {h} meter hoog. Rond het gebouw staan vijf beelden: De Haan van Frank Letterie (1970), De Belhamel van Adri de Waard (1988), De Bron van Meri Matacin (1989), De Turenden van Sjer Jacobs (2002) en Piet van de Velde van Daphné Du Barry (2010).",
     },
     {
         "name": "De Beurs",
@@ -219,151 +220,146 @@ CURATED = [
         "kind": "Kunstwerk · 2007",
         "text": "Een reeks beelden van zo'n tien meter hoog langs de A28 en de A37, van Rudi van de Wint (1942-2006). Zijn zonen hebben ze na zijn dood geplaatst. De titel verwijst naar het volksgeloof in nevelheksen, de witte wieven die rond Hoogeveen over de velden zouden spoken.",
     },
+    # Infrastructure.
+    {
+        "name": "Vliegveld Hoogeveen",
+        "osm": ["Vliegveld Hoogeveen"],
+        "point": True,
+        "kind": "Vliegveld · EHHO",
+        "note": "Grasbaan van ruim een kilometer",
+        "web": "https://ehho.nl",
+        "text": "Vliegveld met één grasbaan van ruim een kilometer, de 09-27. Het was eerst bedoeld voor de oudere propellervliegtuigen van Fokker, dat een fabriek in Hoogeveen heeft. Nu zitten er vliegclubs, een zweefvliegclub, een paraclub en vliegscholen. Op het veld staat een oude Fokker-hangar uit 1936, die van vliegveld Ypenburg komt en hier begin deze eeuw weer is opgebouwd. Elk jaar is er Wings and Wheels, met klassieke vliegtuigen en auto's.",
+    },
+    {
+        "name": "A28",
+        "osm": ["A28"],
+        "point": True,
+        "kind": "Snelweg",
+        "text": "De snelweg van Utrecht naar Groningen. Het tracé tussen knooppunt Lankhorst en Hoogeveen werd in 1971 vastgesteld en het eerste stuk ging in 1976 open, toen nog als Rijksweg 37. Sinds het Rijkswegenplan van 1986 heet de hele route A28. Hoogeveen heeft twee afritten: 26 Hoogeveen en 27 Fluitenberg.",
+    },
+    {
+        "name": "A37",
+        "osm": ["A37"],
+        "point": True,
+        "kind": "Snelweg",
+        "text": "De snelweg naar Emmen en Duitsland, 42 kilometer lang en helemaal in Drenthe. Het was de tweebaans N37, tot het stuk van Hoogeveen tot Holsloot in 2003 als A37 openging; in oktober 2007 volgde de rest tot de grens. Daar gaat hij verder als de B402. De hele weg is deel van de E233.",
+    },
+    {
+        "name": "Knooppunt Hoogeveen",
+        "osm": ["Knooppunt Hoogeveen"],
+        "point": True,
+        "kind": "Knooppunt · 1981",
+        "text": "Hier komen de A28, de A37 en de N48 bij elkaar. Het knooppunt was in 1981 klaar en maakte van Hoogeveen een kruispunt van het noorden. In de tweede helft van de jaren zestig was Hoogeveen de snelst groeiende gemeente van Nederland; er werd gerekend op 100.000 inwoners rond 1990. Het bleef bij zo'n 45.000.",
+    },
+    {
+        "name": "Hoogeveensche Vaart",
+        "osm": ["Hoogeveensche Vaart"],
+        "point": True,
+        "kind": "Kanaal · 17e eeuw",
+        "text": "Het kanaal waarover de turf naar Meppel ging. Het stuk van Echten naar Meppel, de Nieuwe Grift, was in 1625 klaar. Van de vaart gingen om de 160 meter wijken het veen in: zo ver kon een arbeider met een kruiwagen turf lopen. In de tweede helft van de 19e eeuw was Hoogeveen de derde schippersplaats van het land en lagen er 's winters honderden schepen. De Compagnie verkocht de vaart in 1851 aan de Drentse Kanaal Maatschappij. Tussen 1964 en 1988 is hij geschikt gemaakt voor schepen van 300 ton en om de bebouwde kom heen gelegd; de vaarten in het centrum waren toen al gedempt. Sinds 1987 is de provincie de eigenaar.",
+    },
+    {
+        "name": "Nieuwebrugsluis",
+        "osm": ["Nieuwebrugsluis"],
+        "point": True,
+        "kind": "Sluis",
+        "text": "Een van de drie sluizen in de Hoogeveensche Vaart, met de Rogatsluis en de Ossesluis. De kolk is 65 meter lang en 7,5 meter breed. Sinds 18 juni 2009 gaat de bediening op afstand, vanuit de bedienpost bij deze sluis.",
+    },
+    {
+        "name": "Oude Diep",
+        "osm": ["Oude Diep"],
+        "point": True,
+        "kind": "Beek",
+        "text": "Een beekje dat bij Mantinge ontspringt en voorbij Hoogeveen in de Hoogeveensche Vaart uitkomt. De beek was rechtgetrokken; de laatste decennia heeft hij zijn bochten teruggekregen en in 2009 is er een rietveld van 7 hectare aangelegd dat het water zuivert. Bij onderzoek in het beekdal zijn resten uit de bronstijd gevonden.",
+    },
+    {
+        "name": "Monument voor Albert Albino",
+        "latlon": (52.73332, 6.47305),
+        "kind": "Oorlogsmonument",
+        "text": "Een propellerblad van een Lockheed P-38 Lightning. Op de middag van 29 november 1943 begeleidde tweede luitenant Albert A. Albino, 24 jaar, bommenwerpers naar Bremen. Op de terugweg schoot een Duitse jager hem neer. Het toestel sloeg naast het stationsgebouw in het spoor en verdween in de grond. Pas in maart 1978, bij de aanleg van de voetgangerstunnel, kwamen een propeller en de piloot zelf boven. Hij is begraven in Portland, Oregon, waar hij vandaan kwam.",
+    },
+    # Companies.
+    {
+        "name": "DOC Kaas",
+        "osm": ["DOC Kaas"],
+        "largest": True,
+        "kind": "Kaasfabriek · {year}",
+        "text": "De kaasfabriek op het Zuivelpark, de opvolger van de Coöperatieve Zuivelfabriek die Hoogeveen al rond 1900 had. De fabriek is gebouwd om zonder leidingwater, grondwater of oppervlaktewater te draaien: het proceswater komt uit de wei die wordt ingedampt. Uit 1000 liter melk komt zo'n 110 kilo kaas. Per jaar verlaat ongeveer 25 miljoen kilo gerijpte kaas het pakhuis. Het hoofdgebouw is {h} meter hoog en beslaat {area} vierkante meter.",
+    },
+    {
+        "name": "DOC Kaas Alteveerstraat",
+        "osm": ["DOC Kaas locatie Alteveerstraat"],
+        "point": True,
+        "kind": "Zuivelfabriek",
+        "text": "De oude zuivelfabriek van Hoogeveen. Voor deze fabriek begon Drenthina in 1925 blikken te maken, en zo kreeg Hoogeveen ook een blikfabriek.",
+    },
+    {
+        "name": "Trivium Packaging",
+        "osm": ["Trivium Packaging"],
+        "kind": "Blikfabriek",
+        "text": "In 1925 begon metaalfabriek Drenthina blikken te maken voor de zuivelfabriek. Daarna kwam conservenfabriek Lukas Aardenburg, die er bonen in deed. Drenthina ging op in Thomassen & Drijver-Verblifa. Dit gebouw is uit {year}.",
+    },
+    {
+        "name": "Schietsportvereniging Lucas Aardenburg",
+        "osm": ["Schietsport Vereniging Lucas Aardenburg"],
+        "kind": "Schietvereniging",
+        "text": "De vereniging draagt nog de naam van de Kennemer Conservenfabriek Lukas Aardenburg, die zich tussen 1920 en 1930 in Hoogeveen vestigde om de oogst uit de streek in te blikken. Later maakte de fabriek diepvries van Iglo, als onderdeel van Unilever.",
+    },
+    {
+        "name": "Fokker Aerostructures",
+        "osm": ["Fokker Aerostructures"],
+        "kind": "Vliegtuigbouw",
+        "text": "Begonnen op 18 september 1961 als NV Lichtwerk. In 1969 werd het onderdeel van Fokker, en vanaf de jaren zeventig heette het Fokker Bedrijf Hoogeveen. Er werden vliegtuigonderdelen en shelters gebouwd.",
+    },
+    {
+        "name": "TVM Verzekeringen",
+        "osm": ["TVM Verzekeringen"],
+        "kind": "Hoofdkantoor · {year}",
+        "text": "Verzekeraar voor het wegtransport, en jarenlang naamgever van een van de grote Nederlandse wielerploegen, met renners als Jeroen Blijlevens, Gert-Jan Theunisse, Peter Van Petegem, Bart Voskamp en Servais Knaven.",
+    },
+    {
+        "name": "Asielzoekerscentrum (oude gevangenis De Grittenborgh)",
+        "osm": ["Asielzoekerscentrum Hoogeveen"],
+        "kind": "Voormalige gevangenis",
+        "text": "Dit was gevangenis De Grittenborgh, bij de sluiting een van de modernste van het land en toen 25 jaar oud. Op 3 oktober 2013 gingen de laatste zes gedetineerden naar Veenhuizen: staatssecretaris Teeven sloot negentien gevangenissen om te bezuinigen. In de jaren negentig ontsnapten hier in een paar jaar zestien langgestraften. Bij de uitbraak van 6 januari 1993 staken drie gedetineerden bewaarders neer en kwamen ze buiten met een mes op de keel van een bewaarster. Nu is het een asielzoekerscentrum.",
+    },
+    # Sport.
+    {
+        "name": "vv Hoogeveen",
+        "osm": ["Voetbalvereniging Hoogeveen"],
+        "point": True,
+        "kind": "Voetbalclub · 1930",
+        "text": "Opgericht op 29 april 1930, blauw-wit, zo'n 650 leden. In 1978 werd de club kampioen van de Hoofdklasse en daarna algeheel landskampioen bij de zondagamateurs. De noordelijke districtsbeker kwam in 1980 en 2008 naar Hoogeveen. Op het hoofdveld in het Bentinckspark kunnen ongeveer 6000 mensen kijken.",
+    },
+    {
+        "name": "HZVV",
+        "osm": ["Hoogeveense Zaterdag Voetbal Vereniging"],
+        "point": True,
+        "kind": "Voetbalclub · 1929",
+        "text": "De Hoogeveense Zaterdag Voetbal Vereniging, opgericht op 5 december 1929. De zaterdagclub speelt net als vv Hoogeveen op het Bentinckspark en is een paar maanden ouder dan de buurman.",
+    },
+    # Tall and old buildings; the numbers come from the BAG and 3D BAG.
+    {
+        "name": "De Arend",
+        "osm": ["De Arend"],
+        "kind": "Flat · {year}",
+        "text": "Woonflat uit {year}, {h} meter hoog en daarmee de hoogste woontoren van Hoogeveen. Rond 2010 werd over sloop gesproken.",
+    },
+    {"name": "Flat Jennerstraat", "addr": "Jennerstraat 130", "kind": "Flat · {year}", "address": "Jennerstraat", "text": "Flat uit {year}, {h} meter hoog."},
+    {"name": "Flat Hoofdstraat 159", "addr": "Hoofdstraat 159-63", "kind": "Flat · {year}", "address": "Hoofdstraat 159", "text": "Flat uit {year}, {h} meter hoog."},
+    {"name": "Hoofdstraat 9", "addr": "Hoofdstraat 9", "kind": "Pand · {year}", "address": "Hoofdstraat 9", "text": "Volgens de BAG uit {year}. Alleen het Schippershuus en de Grote Kerk staan er met een ouder bouwjaar in."},
+    {"name": "Schutstraat 8a", "addr": "Schutstraat 8a", "kind": "Pand · {year}", "address": "Schutstraat 8a", "text": "Volgens de BAG uit {year}, een van de oudste panden van Hoogeveen."},
+    {"name": "Het Haagje 38 en 40", "addr": "Het Haagje 38", "kind": "Pand · {year}", "address": "Het Haagje 38 en 40", "text": "Twee panden die volgens de BAG uit {year} zijn, aan de vaart die van Het Kruis naar het Groote Meer liep."},
+    {
+        "name": "Herman Bavinckhuis",
+        "osm": ["Herman Bavinckhuis"],
+        "kind": "Kerkelijk centrum",
+        "text": "Genoemd naar Herman Bavinck (1854-1921), de theoloog die in Hoogeveen is geboren en het gereformeerde denken van zijn tijd mee heeft gevormd.",
+    },
 ]
 
-# OpenStreetMap kinds: (tag, value) to the label on the info card and whether it is a building.
-OSM_KINDS = [
-    (("building", "mosque"), "Moskee", True),
-    (("amenity", "place_of_worship"), "Kerk", True),
-    (("tourism", "museum"), "Museum", True),
-    (("tourism", "hotel"), "Hotel", True),
-    (("memorial", "war_memorial"), "Oorlogsmonument", False),
-    (("memorial", "plaque"), "Plaquette", False),
-    (("historic", "memorial"), "Monument", False),
-    (("artwork_type", "statue"), "Standbeeld", False),
-    (("artwork_type", "mural"), "Muurschildering", False),
-    (("tourism", "artwork"), "Kunstwerk", False),
-    (("tourism", "zoo"), "Dierenweide", False),
-    (("tourism", "viewpoint"), "Uitkijkpunt", False),
-    (("tourism", "caravan_site"), "Camperplaats", False),
-    (("landuse", "cemetery"), "Begraafplaats", False),
-    (("leisure", "pitch"), "Sportveld", False),
-]
-
-
-def osm_places():
-    """Named OpenStreetMap elements inside the map: {name: [(x, y, kind, is_building, tags), ...]}."""
-    path = RAW / "osm_landmarks.json"
-    out = {}
-    if not path.exists():
-        return out
-    for e in json.loads(path.read_text())["elements"]:
-        t = e.get("tags", {})
-        if "name" not in t:
-            continue
-        pts = [(e["lat"], e["lon"])] if "lat" in e else [(g["lat"], g["lon"]) for g in e.get("geometry", [])]
-        pts += [(g["lat"], g["lon"]) for m in e.get("members", []) for g in m.get("geometry", [])]
-        if not pts:
-            continue
-        x, y = np.mean([wgs_to_rd(lat, lon) for lat, lon in pts], axis=0)
-        if not (XMIN < x < XMAX and YMIN < y < YMAX):
-            continue
-        for (k, v), label, is_building in OSM_KINDS:
-            if t.get(k) == v:
-                year = t.get("start_date", "")[:4]
-                kind = f"{label} · {year}" if year.isdigit() else label
-                out.setdefault(t["name"], []).append((float(x), float(y), kind, is_building and "lat" not in e, t))
-                break
-    return out
-
-
-def places():
-    """BUILDINGS and POINTS from CURATED. Only places with a story are on the map; OpenStreetMap is where some of
-    them get their position from."""
-    osm = osm_places()
-    for name, x, y, kind, is_building, t in osm_pois():
-        osm.setdefault(name, []).append((x, y, kind, is_building, t))
-    buildings, points = [], []
-    for c in CURATED:
-        c = dict(c)
-        names = c.pop("osm", [])
-        if "addr" in c:
-            c["at"] = address_xy(c.pop("addr"))
-            buildings.append(c)
-            continue
-        if "latlon" in c:
-            c["at"] = wgs_to_rd(*c.pop("latlon"))
-        elif "at" not in c:
-            found = [p for n in names for p in osm.get(n, [])]
-            assert found, f"{c['name']}: not in OpenStreetMap"
-            c["at"] = found[0][:2]
-            if found[0][3] and c.pop("building", True):
-                buildings.append(c)
-                continue
-        points.append(c)
-    return buildings, points
-
-
-# Dutch labels for OpenStreetMap values; a value that is not here gets the label of its key, and None leaves it out.
-POI_LABELS = {
-    "amenity": {
-        "school": "School", "kindergarten": "Kinderopvang", "childcare": "Kinderopvang", "college": "School", "university": "Hogeschool",
-        "restaurant": "Restaurant", "cafe": "Café", "pub": "Café", "bar": "Café", "fast_food": "Snackbar", "ice_cream": "IJssalon",
-        "bank": "Bank", "pharmacy": "Apotheek", "doctors": "Huisarts", "dentist": "Tandarts", "clinic": "Kliniek", "hospital": "Ziekenhuis",
-        "veterinary": "Dierenarts", "police": "Politie", "fire_station": "Brandweer", "townhall": "Gemeentehuis", "library": "Bibliotheek",
-        "theatre": "Theater", "cinema": "Bioscoop", "community_centre": "Buurthuis", "social_facility": "Zorg", "nursing_home": "Zorg",
-        "fuel": "Tankstation", "car_wash": "Autowasstraat", "post_office": "Postkantoor", "courthouse": "Rechtbank", "arts_centre": "Kunstencentrum",
-        "music_school": "Muziekschool", "driving_school": "Rijschool", "car_rental": "Autoverhuur", "marketplace": "Markt", "events_venue": "Zaal",
-        "nightclub": "Discotheek", "place_of_worship": "Kerk", "crematorium": "Crematorium", "funeral_hall": "Uitvaartcentrum",
-        "animal_shelter": "Dierenasiel", "bus_station": "Busstation", "prison": "Gevangenis", "social_centre": "Verenigingsgebouw",
-        **dict.fromkeys(("parking", "bicycle_parking", "bench", "recycling", "waste_basket", "post_box", "vending_machine", "atm", "shelter", "toilets",
-                         "charging_station", "parking_entrance", "telephone", "drinking_water", "parking_space", "bicycle_repair_station",
-                         "waste_disposal", "taxi", "parcel_locker", "motorcycle_parking", "clock", "fountain", "grit_bin", "letter_box"), None),
-    },
-    "shop": {
-        "supermarket": "Supermarkt", "bakery": "Bakker", "butcher": "Slager", "hairdresser": "Kapper", "clothes": "Kledingwinkel", "shoes": "Schoenenwinkel",
-        "bicycle": "Fietsenwinkel", "car": "Autobedrijf", "car_repair": "Garage", "doityourself": "Bouwmarkt", "garden_centre": "Tuincentrum",
-        "furniture": "Meubelzaak", "florist": "Bloemist", "chemist": "Drogist", "optician": "Opticien", "books": "Boekhandel", "jewelry": "Juwelier",
-        "electronics": "Elektronicazaak", "kitchen": "Keukenzaak", "pet": "Dierenwinkel", "toys": "Speelgoedwinkel", "alcohol": "Slijter",
-        "department_store": "Warenhuis", "mall": "Winkelcentrum", "beauty": "Schoonheidssalon", "greengrocer": "Groenteboer", "seafood": "Viswinkel",
-        "cheese": "Kaaswinkel", "sports": "Sportwinkel", "second_hand": "Kringloopwinkel", "charity": "Kringloopwinkel", "tyres": "Bandenservice",
-        "mobile_phone": "Telefoonwinkel", "travel_agency": "Reisbureau", "funeral_directors": "Uitvaartverzorger", "laundry": "Wasserette",
-        "bed": "Beddenzaak", "variety_store": "Winkel", "convenience": "Winkel", "kiosk": "Kiosk", "tobacco": "Tabakszaak", "vacant": None,
-    },
-    "leisure": {
-        "sports_centre": "Sporthal", "sports_hall": "Sporthal", "swimming_pool": "Zwembad", "fitness_centre": "Sportschool", "stadium": "Stadion",
-        "park": "Park", "playground": "Speeltuin", "garden": "Tuin", "dog_park": "Hondenveld", "ice_rink": "IJsbaan", "track": "Baan",
-        "golf_course": "Golfbaan", "marina": "Haven", "nature_reserve": "Natuurgebied", "bowling_alley": "Bowlingbaan", "horse_riding": "Manege",
-        "dance": "Dansschool", "amusement_arcade": "Speelhal", "indoor_play": "Speelparadijs", "pitch": "Sportveld", "sauna": "Sauna",
-        "picnic_table": None, "slipway": None, "fitness_station": None,
-    },
-    "healthcare": {"physiotherapist": "Fysiotherapeut", "doctor": "Huisarts", "dentist": "Tandarts", "pharmacy": "Apotheek", "hospital": "Ziekenhuis"},
-    "office": {"government": "Overheid", "lawyer": "Advocaat", "notary": "Notaris", "estate_agent": "Makelaar", "insurance": "Verzekeraar", "accountant": "Accountant"},
-    "man_made": {"water_tower": "Watertoren", "windmill": "Molen", "tower": "Toren", "chimney": "Schoorsteen", "bridge": "Brug", "works": "Fabriek",
-                 "wastewater_plant": "Rioolwaterzuivering", "surveillance": None, "street_cabinet": None, "pipeline": None, "utility_pole": None},
-    "railway": {"station": "Station"},
-    "building": {"school": "School", "church": "Kerk", "industrial": "Bedrijf", "retail": "Winkel", "office": "Kantoor", "warehouse": "Bedrijf",
-                 "apartments": "Appartementen", "residential": "Appartementen", "hospital": "Ziekenhuis", "sports_hall": "Sporthal", "train_station": "Station"},
-}
-POI_KEYS = {"amenity": "Voorziening", "shop": "Winkel", "leisure": "Recreatie", "healthcare": "Zorg", "office": "Kantoor", "craft": "Bedrijf",
-            "club": "Vereniging", "industrial": "Bedrijf", "man_made": "Bouwwerk", "railway": None, "emergency": None, "public_transport": None,
-            "building": "Gebouw", "sport": "Sport"}
-
-
-def osm_pois():
-    """Named places in data/raw/osm_pois.json inside the map: (name, x, y, kind, is_building, tags)."""
-    path = RAW / "osm_pois.json"
-    out = []
-    if not path.exists():
-        return out
-    for e in json.loads(path.read_text())["elements"]:
-        t = e.get("tags", {})
-        c = e if "lat" in e else e.get("center")
-        if "name" not in t or not c or t.get("highway") or t.get("disused") == "yes":
-            continue
-        kind = None
-        for key, fallback in POI_KEYS.items():
-            if key in t:
-                kind = POI_LABELS.get(key, {}).get(t[key], fallback)
-                if kind or key != "building":
-                    break
-        if not kind:
-            continue
-        x, y = wgs_to_rd(c["lat"], c["lon"])
-        if XMIN < x < XMAX and YMIN < y < YMAX:
-            out.append((t["name"], float(x), float(y), kind, e["type"] != "node" and "building" in t, t))
-    return out
-
+# Lattice masts: {"latlon": (lat, lon), "height": m, "base": m, "tip": m}.
+MASTS = []
 
 # Series in the viewer's panel: a walk past these places, starting with the one nearest the village.
 CATEGORIES = []
@@ -371,8 +367,219 @@ CATEGORIES = []
 # What the viewer shows when a place is clicked; the rest of an entry is for the render.
 INFO = ("note", "kind", "text", "address", "web", "more", "photo", "stop")
 
-# Lattice masts: {"latlon": (lat, lon), "height": m, "base": m, "tip": m}.
-MASTS = []
+EXTRA = RAW.parent / "extra"
+
+# Named OpenStreetMap things that get a card of their own when they stand in a building: (tag, value) to what the
+# card calls them. Their story is short: what it is, when the building was built and how tall it is.
+AUTO_KINDS = [
+    (("building", "mosque"), "Moskee"),
+    (("amenity", "place_of_worship"), "Kerk"),
+    (("building", "church"), "Kerk"),
+    (("amenity", "school"), "School"),
+    (("amenity", "college"), "School"),
+    (("amenity", "kindergarten"), "Kinderopvang"),
+    (("amenity", "theatre"), "Theater"),
+    (("amenity", "cinema"), "Bioscoop"),
+    (("amenity", "library"), "Bibliotheek"),
+    (("amenity", "archive"), "Archief"),
+    (("amenity", "community_centre"), "Buurthuis"),
+    (("amenity", "police"), "Politiebureau"),
+    (("amenity", "fire_station"), "Brandweerkazerne"),
+    (("amenity", "social_facility"), "Zorg"),
+    (("tourism", "museum"), "Museum"),
+    (("tourism", "hotel"), "Hotel"),
+    (("leisure", "sports_centre"), "Sportaccommodatie"),
+    (("leisure", "sports_hall"), "Sporthal"),
+    (("leisure", "swimming_pool"), "Zwembad"),
+    (("leisure", "bowling_alley"), "Bowlingbaan"),
+    (("club", "sport"), "Sportclub"),
+    (("man_made", "works"), "Fabriek"),
+    (("building", "apartments"), "Flat"),
+    (("building", "industrial"), "Bedrijf"),
+    (("building", "commercial"), "Kantoor"),
+    (("building", "office"), "Kantoor"),
+    (("building", "nursing"), "Zorg"),
+    (("building", "school"), "School"),
+    (("building", "retail"), "Winkels"),
+    (("building", "yes"), "Gebouw"),
+]
+SKIP_NAMES = {"Vliegveld Hoogeveen", "1", "2", "Hoogeveen"}
+
+# What is known about a neighbourhood beyond the years its houses were built.
+WIJKEN = {
+    "Oranjebuurt": "De eerste huizen kwamen rond 1885 aan de Oranjestraat. Vanaf 1914 liet Bouwvereniging Hoogeveen er arbeiderswoningen bouwen naar ontwerp van gemeentearchitect J. Carmiggelt: 40 in 1915, daarna een deel van een plan voor nog 142.",
+    "Venesluis": "Een wijk uit de jaren zestig, de tijd dat Philips, Fokker en Standard Electric naar Hoogeveen kwamen en de gemeente de snelst groeiende van het land was.",
+    "Erflanden": "De jongste grote wijk, tegen de A28 aan, met een geluidswal ertussen.",
+    "De Weide": "Gebouwd nadat een grenswijziging uitbreiding naar het westen mogelijk maakte, aan de overkant van de A28.",
+    "Wolfsbos": "De wijk ligt tegen de A37, achter geluidsschermen.",
+    "Zuid": "Wijk met portiekflats. Het Zuiderpark is in 2009 vernieuwd.",
+}
+
+
+def osm_index():
+    """Named OpenStreetMap things inside the map, from the three downloads: {name: [(x, y, is_building, tags)]}."""
+    out, seen = {}, set()
+    files = [RAW / "osm_landmarks.json", EXTRA / "osm_pois.json", EXTRA / "osm_named.json"]
+    if not files[1].exists():
+        files[1] = RAW / "osm_pois.json"
+    for path in files:
+        if not path.exists():
+            continue
+        for e in json.loads(path.read_text())["elements"]:
+            t = e.get("tags", {})
+            key = (e["type"], e["id"])
+            if key in seen:
+                continue
+            seen.add(key)
+            if "lat" in e:
+                pts = [(e["lat"], e["lon"])]
+            elif "center" in e:
+                pts = [(e["center"]["lat"], e["center"]["lon"])]
+            else:
+                pts = [(g["lat"], g["lon"]) for g in e.get("geometry", [])]
+                pts += [(g["lat"], g["lon"]) for m in e.get("members", []) for g in m.get("geometry", [])]
+            if not pts:
+                continue
+            x, y = np.mean([wgs_to_rd(lat, lon) for lat, lon in pts], axis=0)
+            if not (XMIN < x < XMAX and YMIN < y < YMAX):
+                continue
+            for name in {t.get("name"), t.get("ref") if t.get("highway") else None} - {None}:
+                out.setdefault(name, []).append((float(x), float(y), e["type"] != "node" and "building" in t, t))
+    return out
+
+
+class Bag:
+    """The 3D BAG buildings: which one stands at a point, with its year, height and footprint."""
+
+    def __init__(self):
+        self.ids, self.rings, self.attrs = [], [], []
+        for line in open(RAW / "3dbag.jsonl"):
+            f = json.loads(line)
+            t = f["transform"]
+            V = np.array(f["vertices"], dtype=np.float64) * t["scale"] + t["translate"]
+            co = f["CityObjects"][f["id"]]
+            self.ids.append(f["id"])
+            self.rings.append(V[co["geometry"][0]["boundaries"][0][0]][:, :2])
+            self.attrs.append(co["attributes"])
+        self.mid = np.array([r.mean(0) for r in self.rings])
+        self.height = np.array([(a.get("b3_h_dak_max") or 0) - (a.get("b3_h_maaiveld") or 0) for a in self.attrs])
+        self.year = np.array([a.get("oorspronkelijkbouwjaar") or 0 for a in self.attrs])
+        self.area = np.array([a.get("b3_opp_grond") or 0 for a in self.attrs])
+        # The tallest buildings, without the chimneys and masts.
+        self.tallest = [i for i in np.argsort(-self.height) if self.area[i] >= 150][:10]
+
+    def at(self, x, y, reach=20):
+        """Index of the building under a point, or of the nearest one within reach; None when there is none."""
+        d = np.hypot(self.mid[:, 0] - x, self.mid[:, 1] - y)
+        for i in np.argsort(d)[:40]:
+            if d[i] > 300:
+                break
+            if point_in_ring(x, y, self.rings[i]):
+                return int(i)
+        i = int(d.argmin())
+        return i if d[i] <= reach else None
+
+    def facts(self, i):
+        rank = self.tallest.index(i) + 1 if i in self.tallest else None
+        return {"year": int(self.year[i]), "h": round(float(self.height[i])), "area": f"{round(float(self.area[i]), -2):,.0f}".replace(",", "."), "rank": rank}
+
+
+def rank_text(rank):
+    return "Het hoogste gebouw van Hoogeveen." if rank == 1 else f"Het op {['', 'een', 'twee', 'drie', 'vier', 'vijf', 'zes', 'zeven', 'acht', 'negen'][rank - 1]} na hoogste gebouw van Hoogeveen."
+
+
+def fill(entry, facts):
+    """Put a building's year, height and footprint into an entry's {year}, {h} and {area}, and add its rank."""
+    for k in ("kind", "text", "note"):
+        if k in entry:
+            for name, v in facts.items():
+                entry[k] = entry[k].replace("{" + name + "}", str(v))
+    if facts["rank"] and "hoogste" not in entry.get("text", ""):
+        entry["text"] = f"{entry.get('text', '')} {rank_text(facts['rank'])}".strip()
+
+
+def places(bag):
+    """BUILDINGS and POINTS: the curated places, then the named buildings and the neighbourhoods of OpenStreetMap,
+    each with the few facts the data gives. A place without a story is not on the map."""
+    osm = osm_index()
+    buildings, points, used, names = [], [], set(), set()
+
+    def add_building(c, i):
+        if i in used:
+            return False
+        used.add(i)
+        fill(c, bag.facts(i))
+        buildings.append({**c, "pid": bag.ids[i]})
+        return True
+
+    for c in CURATED:
+        c = dict(c)
+        hints = c.pop("osm", [])
+        names.update(hints)
+        names.add(c["name"])
+        as_point = c.pop("point", False)
+        if "addr" in c:
+            c["at"] = address_xy(c.pop("addr"))
+        elif "latlon" in c:
+            c["at"] = wgs_to_rd(*c.pop("latlon"))
+            as_point = True
+        else:
+            found = [p for n in hints for p in osm.get(n, [])]
+            assert found, f"{c['name']}: not in OpenStreetMap"
+            # Of a road or a stream in many pieces, the piece nearest the middle of the map.
+            best = min(found, key=lambda p: (not p[2] and not as_point, np.hypot(p[0] - CX, p[1] - CY)))
+            c["at"] = best[:2]
+        i = None if as_point else bag.at(*c["at"])
+        if c.pop("largest", False):  # a factory of many parts: the biggest building around
+            near = np.hypot(bag.mid[:, 0] - c["at"][0], bag.mid[:, 1] - c["at"][1]) < 250
+            i = int(np.argmax(np.where(near, bag.area, 0)))
+        if i is None or not add_building(c, i):
+            assert as_point or i is None, f"{c['name']}: its building is already taken"
+            assert not any("{" in c.get(k, "") for k in ("kind", "text")), f"{c['name']}: no building to take its facts from"
+            points.append(c)
+
+    # Named buildings.
+    for name, found in sorted(osm.items()):
+        if name in names or name in SKIP_NAMES:
+            continue
+        for x, y, is_building, t in found:
+            label = next((label for (k, v), label in AUTO_KINDS if t.get(k) == v), None)
+            i = bag.at(x, y, reach=0) if label else None
+            if i is None or bag.year[i] < 1000:
+                continue
+            f = bag.facts(i)
+            if "zwembad" in name.lower():
+                label = "Zwembad"
+            if label == "Gebouw" and f["year"] >= 1940 and not re.search(r"vereniging|club", name, re.I):
+                continue  # a shop or an office that happens to have its name on the building
+            text = f"{label} uit {f['year']}" if label in ("Kerk", "Moskee", "Flat", "Gebouw") else f"{label}. Het gebouw is uit {f['year']}"
+            text += f", {f['h']} meter hoog." if f["h"] >= 15 else "."
+            entry = {"name": name, "at": (x, y), "kind": f"{label} · {f['year']}", "text": text}
+            street, number = t.get("addr:street"), t.get("addr:housenumber")
+            if street and number:
+                entry["address"] = f"{street} {number}"
+            web = t.get("website") or t.get("contact:website")
+            if web and web.startswith("http"):
+                entry["web"] = web
+            if add_building(entry, i):
+                names.add(name)
+                break
+
+    # Neighbourhoods: when their houses were built.
+    for name, found in sorted(osm.items()):
+        x, y, _, t = found[0]
+        if t.get("place") not in ("neighbourhood", "quarter", "suburb") or name in names:
+            continue
+        near = (np.hypot(bag.mid[:, 0] - x, bag.mid[:, 1] - y) < 350) & (bag.year > 1000) & (bag.area > 30)
+        if near.sum() < 30:
+            continue
+        lo, hi = np.percentile(bag.year[near], [25, 75]).astype(int)
+        text = f"De helft van de {near.sum()} gebouwen binnen 350 meter is gebouwd tussen {lo} en {hi}."
+        if name in WIJKEN:
+            text = f"{WIJKEN[name]} {text}"
+        points.append({"name": name, "at": (x, y), "kind": "Wijk" if t["place"] != "quarter" else "Buurt", "text": text})
+        names.add(name)
+    return buildings, points
 
 
 def point_in_ring(x, y, ring):
@@ -394,58 +601,21 @@ def address_xy(name):
     return ADDRESSES[name.lower()]
 
 
-def building_at(rings, x, y):
-    for rid, ring, a in rings:
-        if point_in_ring(x, y, ring):
-            return rid, a
-    return None, None
-
-
 def main():
-    feats = [json.loads(line) for line in open(RAW / "3dbag.jsonl")]
-    rings = []
-    for f in feats:
-        t = f["transform"]
-        V = np.array(f["vertices"], dtype=np.float64) * t["scale"] + t["translate"]
-        co = f["CityObjects"][f["id"]]
-        rings.append((f["id"], V[co["geometry"][0]["boundaries"][0][0]][:, :2], co["attributes"]))
-
+    bag = Bag()
     out = {"buildings": {}, "places": [], "masts": [], "hotspots": [], "categories": []}
-    BUILDINGS, POINTS = places()
-    for b in BUILDINGS:
-        if "addrs" in b:
-            pts = [address_xy(a) for a in b["addrs"]]
-            pids = [building_at(rings, *pt)[0] for pt in pts]
-            assert all(pids), f"{b['name']}: no building at {b['addrs']}"
-            x, y = np.mean(pts, axis=0)
-            out["places"].append({"name": b["name"], "note": b.get("note"), "x": x, "y": y, "h": 4.0})
-            out["hotspots"].append({"name": b["name"], "pids": pids, "x": x, "y": y, **{k: b[k] for k in INFO if k in b}})
-            print(f"{b['name']}: {', '.join(pids)}")
-            continue
-        x, y = b["at"] if "at" in b else wgs_to_rd(*b["latlon"])
-        pid, attrs = None, None
-        for rid, ring, a in rings:
-            if point_in_ring(x, y, ring):
-                pid, attrs = rid, a
-                break
-        if pid is None:
-            d = [(np.hypot(*(ring.mean(0) - (x, y))), rid, a) for rid, ring, a in rings]
-            dist, pid, attrs = min(d, key=lambda t: t[0])
-            if dist > 20:
-                pid = None
-        height = ((attrs or {}).get("b3_h_dak_max") or 0) - ((attrs or {}).get("b3_h_maaiveld") or 0)
-        if "tower" in b:
-            height = b["tower"]["top"]
-        elif "turret" in b:
-            height = b["turret"]["top"]
+    buildings, points = places(bag)
+    for b in buildings:
+        x, y = b["at"]
+        pid = b["pid"]
+        i = bag.ids.index(pid)
+        height = b["tower"]["top"] if "tower" in b else b["turret"]["top"] if "turret" in b else float(bag.height[i])
         out["places"].append({"name": b["name"], "note": b.get("note"), "x": x, "y": y, "h": round(height, 1)})
-        if pid and "style" in b:
-            out["buildings"][pid] = {k: v for k, v in b.items() if k not in ("at", "latlon", *INFO)}
-        if pid:
-            out["hotspots"].append({"name": b["name"], "pid": pid, "x": x, "y": y, **{k: b[k] for k in INFO if k in b}})
-        print(f"{b['name']}: {pid or 'no building'}")
-    for p in POINTS:
-        x, y = p["at"] if "at" in p else address_xy(p["addr"]) if "addr" in p else wgs_to_rd(*p["latlon"])
+        if "style" in b:
+            out["buildings"][pid] = {k: v for k, v in b.items() if k not in ("at", "pid", "name", *INFO)}
+        out["hotspots"].append({"name": b["name"], "pid": pid, "x": x, "y": y, **{k: b[k] for k in INFO if k in b}})
+    for p in points:
+        x, y = p["at"]
         out["places"].append({"name": p["name"], "note": p.get("note"), "x": x, "y": y, "h": 2.0})
         out["hotspots"].append({"name": p["name"], "x": x, "y": y, **{k: p[k] for k in INFO if k in p}})
     for m in MASTS:
@@ -458,6 +628,7 @@ def main():
         out["categories"].append({"key": key, "label": label, "names": members})
     BUILD.mkdir(parents=True, exist_ok=True)
     (BUILD / "landmarks.json").write_text(json.dumps(out, indent=1))
+    print(f"{len(buildings)} buildings and {len(points)} points with a story")
 
 
 if __name__ == "__main__":
